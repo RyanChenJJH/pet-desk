@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "r4-girl",
+  "name": "R4 Girl",
+  "displayName": "R4 女孩",
+  "version": "4.0.0",
+  "author": "RyanChenJJH",
+  "description": "SVG desktop pet theme derived from R4_GIRL/GIRL.png.",
+  "visibleHeightRatio": 0.42,
+  "baselineBottomRatio": 0.05,
+  "states": {
+    "idle": {
+      "files": ["assets/idle-follow.svg"],
+      "eyeTracking": {
+        "enabled": true,
+        "eyesId": "eyes-js",
+        "bodyId": "body-js",
+        "shadowId": "shadow-js",
+        "maxOffset": 1.4
+      }
+    },
+    "working": {
+      "files": ["assets/working.svg"]
+    },
+    "thinking": {
+      "files": ["assets/thinking.svg"]
+    },
+    "notification": {
+      "files": ["assets/notification.svg"],
+      "fallbackTo": "idle"
+    },
+    "sleeping": {
+      "files": ["assets/sleeping.svg"],
+      "fallbackTo": "idle"
+    },
+    "roam": {
+      "files": ["assets/roam.svg"],
+      "fallbackTo": "idle"
+    }
+  }
+}
+
