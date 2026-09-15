@@ -1,15 +1,15 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="body-grad-roam" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="fur-grad-roam" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="70%" stop-color="#FDFAF7"/>
-      <stop offset="100%" stop-color="#ECE7E1"/>
+      <stop offset="85%" stop-color="#FCFCFD"/>
+      <stop offset="100%" stop-color="#EFF2F5"/>
     </linearGradient>
   </defs>
   <style>
     #shadow-roam {
       animation: shadow-waddle 0.9s ease-in-out infinite alternate;
-      transform-origin: 2px 18px;
+      transform-origin: 1px 18px;
     }
     #bear-body-roam {
       animation: waddle-body 0.9s ease-in-out infinite alternate;
@@ -25,94 +25,100 @@
     }
     #arm-swing-left {
       animation: arm-swing-l 0.9s ease-in-out infinite;
-      transform-origin: -7px 9px;
+      transform-origin: -6px 8px;
     }
     #arm-swing-right {
       animation: arm-swing-r 0.9s ease-in-out infinite;
-      transform-origin: 7px 9px;
+      transform-origin: 6px 8px;
     }
-    #tuft-bob {
-      animation: tuft-bounce 0.45s ease-in-out infinite alternate;
-      transform-origin: 3px -21px;
+    #bangs-bounce {
+      animation: bangs-bob 0.45s ease-in-out infinite alternate;
+      transform-origin: 4px -14px;
     }
     @keyframes waddle-body {
-      0% { transform: rotate(-4.5deg) translateY(-0.8px); }
-      100% { transform: rotate(4.5deg) translateY(0.8px); }
+      0% { transform: rotate(-4deg) translateY(-0.6px); }
+      100% { transform: rotate(4deg) translateY(0.6px); }
     }
     @keyframes shadow-waddle {
-      0% { transform: scale(0.95, 1) translateX(-1px); }
-      100% { transform: scale(1.05, 1) translateX(1px); }
+      0% { transform: scale(0.96, 1) translateX(-0.8px); }
+      100% { transform: scale(1.04, 1) translateX(0.8px); }
     }
     @keyframes step-feet-l {
-      0%, 100% { transform: rotate(15deg) translateY(-1.5px); }
-      50% { transform: rotate(-15deg) translateY(0.5px); }
+      0%, 100% { transform: rotate(14deg) translateY(-1.2px); }
+      50% { transform: rotate(-14deg) translateY(0.4px); }
     }
     @keyframes step-feet-r {
-      0%, 100% { transform: rotate(-15deg) translateY(0.5px); }
-      50% { transform: rotate(15deg) translateY(-1.5px); }
+      0%, 100% { transform: rotate(-14deg) translateY(0.4px); }
+      50% { transform: rotate(14deg) translateY(-1.2px); }
     }
     @keyframes arm-swing-l {
-      0%, 100% { transform: rotate(-22deg); }
-      50% { transform: rotate(22deg); }
+      0%, 100% { transform: rotate(-20deg); }
+      50% { transform: rotate(20deg); }
     }
     @keyframes arm-swing-r {
-      0%, 100% { transform: rotate(22deg); }
-      50% { transform: rotate(-22deg); }
+      0%, 100% { transform: rotate(20deg); }
+      50% { transform: rotate(-20deg); }
     }
-    @keyframes tuft-bounce {
-      0% { transform: rotate(-6deg) translateY(0); }
-      100% { transform: rotate(6deg) translateY(-0.8px); }
+    @keyframes bangs-bob {
+      0% { transform: rotate(-4deg); }
+      100% { transform: rotate(4deg) translateY(-0.5px); }
     }
   </style>
 
   <g id="shadow-roam">
-    <ellipse cx="2" cy="18" rx="12.5" ry="2.6" fill="rgba(0,0,0,0.12)"/>
+    <ellipse cx="1" cy="18" rx="11" ry="2.2" fill="rgba(0,0,0,0.11)"/>
   </g>
 
   <g id="bear-body-roam">
     <g id="leg-left">
-      <ellipse cx="-4" cy="17" rx="3.2" ry="1.8" fill="#ECE7E1" stroke="#2B2523" stroke-width="1.0"/>
+      <ellipse cx="-4" cy="17" rx="3.0" ry="1.6" fill="#EFF2F5" stroke="#1E1B18" stroke-width="0.95"/>
     </g>
     <g id="arm-swing-left">
-      <path d="M -7,9 Q -11,13 -9,16 Q -6,17 -6,13" fill="#ECE7E1" stroke="#2B2523" stroke-width="1.0"/>
+      <path d="M -6,8 Q -9,11 -7.5,14 Q -5,15 -5,12" fill="#EFF2F5" stroke="#1E1B18" stroke-width="0.95"/>
     </g>
 
+    <!-- 直筒柱状侧面轮廓 (朝右) -->
     <path d="
-      M -10,16 
-      C -14,14 -12,-4 -10,-12
-      C -8,-18 2,-20 6,-18
-      C 12,-16 16,-9 16,-2
-      C 16,6 15,13 11,16
-      C 6,18.5 -6,18.5 -10,16 Z"
-      fill="url(#body-grad-roam)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+      M -9,16
+      C -11,14 -10,-4 -8.5,-12
+      C -7.5,-17 0,-20 5,-19
+      C 9,-18 11.5,-13 11.8,-6
+      C 12.2,2 12.5,14 9,16
+      C 5,18 -5,18 -9,16 Z"
+      fill="url(#fur-grad-roam)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
 
-    <path d="M -10,13.5 C -10,16 2,18 10,16 C 14,15 15,12 11,11 C 3,11 -7,10 -10,13.5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
-    <path d="M -4,5 L 2,12 L 4,12 L 0,5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
-    <circle cx="2" cy="11.5" r="0.75" fill="#2563EB"/>
+    <!-- 侧面肩带 -->
+    <path d="M -3,6 L 2,12 L 4,11 L -1,5 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
 
+    <!-- 顶角耳簇与杂毛 -->
     <g id="ears-roam">
-      <path d="M -6,-18 C -7,-22 -2,-22 -2,-17 Z" fill="#ECE7E1" stroke="#2B2523" stroke-width="1.0"/>
-      <path d="M 6,-18 C 6,-23 12,-22 10,-16 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+      <path d="M -5,-18 C -7,-21 -3,-22 -2,-18" fill="none" stroke="#1E1B18" stroke-width="1.05" stroke-linecap="round"/>
+      <path d="M 5,-18 C 7,-22 10,-21 8,-17" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M 0,-20 Q 1,-22 2,-20.5" fill="none" stroke="#1E1B18" stroke-width="0.9" stroke-linecap="round"/>
     </g>
 
-    <g id="tuft-bob">
-      <path d="M 2,-19 Q 3,-23 5,-23 Q 4,-21 3.5,-19" fill="none" stroke="#2B2523" stroke-width="1.1" stroke-linecap="round"/>
+    <!-- 侧面刘海波浪 -->
+    <g id="bangs-bounce">
+      <path d="M 2,-16 C 4,-12 5,-10 3,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <line x1="4.5" y1="-12" x2="4.8" y2="-10.5" stroke="#1E1B18" stroke-width="0.75" stroke-linecap="round"/>
     </g>
 
+    <!-- 侧视面部五官 (朝右注视) -->
     <g id="face-roam">
-      <circle cx="8" cy="-2.5" r="0.9" fill="#1C1917"/>
-      <line x1="12" y1="-1" x2="16.5" y2="-1.2" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
-      <line x1="12" y1="1.5" x2="16" y2="2" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
-      <path d="M 12,-0.5 L 14.5,-0.2 Q 13,1.2 12,-0.5 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.8"/>
-      <path d="M 11.5,4 Q 13.5,3.2 13.5,5" fill="none" stroke="#2B2523" stroke-width="0.8"/>
-      <path d="M 6,9 Q 9,10.5 12,9" fill="none" stroke="#2B2523" stroke-width="0.85" stroke-linecap="round"/>
+      <circle cx="7.5" cy="-1.5" r="0.75" fill="#1E1B18"/>
+      <line x1="9" y1="1" x2="14" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="9" y1="3" x2="13.5" y2="3.4" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 9.5,-0.2 L 11.5,-0.2 Q 10.5,1.2 9.5,-0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.8"/>
+      <path d="M 9,4.2 L 10.5,3.6 L 10.2,4.8 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.7"/>
+      <polygon points="10.8,3.5 10.2,4.5 11.0,4.6" fill="#1E1B18"/>
+      <path d="M 5,9 Q 7.5,10.2 10,9.2" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
     <g id="leg-right">
-      <ellipse cx="5" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <ellipse cx="5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
     </g>
     <g id="arm-swing-right">
-      <path d="M 7,9 Q 11,13 9,16 Q 6,17 6,13" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <path d="M 6,8 Q 9,11 7.5,14 Q 5,15 5,12" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.05"/>
     </g>
   </g>
 </svg>

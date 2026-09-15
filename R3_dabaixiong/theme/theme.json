@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "name": "Dabaixiong",
   "author": "Antigravity & User",
-  "version": "1.0.0",
-  "description": "Adorable fluffy white bear with wide-set bead eyes, double chin, waddling walk, furious typing with cookie nibbles, and snot-bubble snores.",
+  "version": "1.1.0",
+  "description": "Faithful to original art: cylindrical white bear with wide-set bead eyes, drooping bangs, shoulder straps, typing with sparks and snot bubble sleep.",
   "viewBox": {
     "x": -25,
     "y": -25,
@@ -12,14 +12,14 @@
   },
   "layout": {
     "contentBox": {
-      "x": -15,
-      "y": -18,
-      "width": 30,
-      "height": 36
+      "x": -13,
+      "y": -16,
+      "width": 26,
+      "height": 28
     },
     "centerX": 0,
     "baselineY": 18,
-    "visibleHeightRatio": 0.62,
+    "visibleHeightRatio": 0.42,
     "baselineBottomRatio": 0.05
   },
   "eyeTracking": {
@@ -80,16 +80,16 @@
   },
   "hitBoxes": {
     "default": {
-      "x": -14,
+      "x": -13,
       "y": -16,
-      "w": 28,
+      "w": 26,
       "h": 34
     },
     "sleeping": {
-      "x": -14,
-      "y": -4,
-      "w": 28,
-      "h": 22
+      "x": -13,
+      "y": -8,
+      "w": 26,
+      "h": 26
     }
   }
 }

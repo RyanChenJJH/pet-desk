@@ -1,119 +1,136 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="fur-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="80%" stop-color="#FDFAF7"/>
-      <stop offset="100%" stop-color="#ECE7E1"/>
+      <stop offset="85%" stop-color="#FCFCFD"/>
+      <stop offset="100%" stop-color="#EFF2F5"/>
     </linearGradient>
-    <radialGradient id="bubble-grad" cx="35%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="40%" stop-color="rgba(186,230,253,0.6)"/>
-      <stop offset="100%" stop-color="rgba(56,189,248,0.7)"/>
-    </radialGradient>
   </defs>
   <style>
-    #shadow-sleep {
-      animation: shadow-snore 3.6s ease-in-out infinite;
+    #body-sleep {
+      animation: sleep-breathe 3.6s ease-in-out infinite;
       transform-origin: 0px 18px;
     }
-    #marshmallow-body {
-      animation: marshmallow-snore 3.6s ease-in-out infinite;
+    #shadow-sleep {
+      animation: sleep-shadow-breathe 3.6s ease-in-out infinite;
       transform-origin: 0px 18px;
     }
     #snot-bubble {
-      animation: bubble-blow-pop 3.6s ease-in infinite;
-      transform-origin: 1.5px 1.5px;
+      animation: snot-blow-pop 3.6s ease-in-out infinite;
+      transform-origin: 2px 0px;
     }
-    #zzz-1 {
-      animation: zzz-float 3.6s ease-in-out infinite;
+    #zzz-group {
+      animation: zzz-float 3.6s ease-out infinite;
+      transform-origin: 8px -10px;
     }
-    #zzz-2 {
-      animation: zzz-float 3.6s ease-in-out 1.2s infinite;
+
+    @keyframes sleep-breathe {
+      0%, 100% { transform: scale(1.05, 0.93) translateY(0.5px); }
+      50% { transform: scale(1.08, 0.88) translateY(1.1px); }
     }
-    @keyframes marshmallow-snore {
-      0%, 100% { transform: scale(1.06, 0.94) translateY(1.2px); }
-      50% { transform: scale(0.98, 1.02) translateY(0); }
+    @keyframes sleep-shadow-breathe {
+      0%, 100% { transform: scale(1, 1); opacity: 0.85; }
+      50% { transform: scale(1.06, 1.02); opacity: 0.95; }
     }
-    @keyframes shadow-snore {
-      0%, 100% { transform: scale(1.1, 1.1); opacity: 0.16; }
-      50% { transform: scale(0.95, 0.95); opacity: 0.11; }
-    }
-    @keyframes bubble-blow-pop {
-      0% { transform: scale(0.1); opacity: 0; }
-      20% { transform: scale(0.5); opacity: 0.8; }
-      70% { transform: scale(2.2); opacity: 0.95; }
-      78% { transform: scale(2.5); opacity: 1; }
-      80% { transform: scale(2.8); opacity: 0; }
-      100% { transform: scale(0.1); opacity: 0; }
+    @keyframes snot-blow-pop {
+      0%, 10% { transform: scale(0); opacity: 0; }
+      20% { transform: scale(0.35); opacity: 0.8; }
+      55% { transform: scale(1.1); opacity: 0.9; }
+      75% { transform: scale(1.55); opacity: 0.95; }
+      80% { transform: scale(1.8) translate(0.5px, -0.5px); opacity: 0.25; }
+      83%, 100% { transform: scale(0); opacity: 0; }
     }
     @keyframes zzz-float {
-      0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
-      30% { opacity: 0.85; }
-      80% { opacity: 0.4; transform: translate(6px, -12px) scale(1.2); }
-      100% { opacity: 0; transform: translate(9px, -16px) scale(1.4); }
+      0%, 15% { transform: translate(0px, 4px) scale(0.5); opacity: 0; }
+      35% { transform: translate(1px, 0px) scale(0.9); opacity: 0.85; }
+      75% { transform: translate(3px, -6px) scale(1.15); opacity: 0.85; }
+      90%, 100% { transform: translate(4px, -10px) scale(1.3); opacity: 0; }
     }
   </style>
 
+  <!-- 地面阴影 (塌陷扁平更宽) -->
   <g id="shadow-sleep">
-    <ellipse cx="0" cy="18" rx="14.5" ry="3.0" fill="rgba(0,0,0,0.12)"/>
+    <ellipse cx="0" cy="18" rx="12.5" ry="2.6" fill="rgba(0,0,0,0.11)"/>
   </g>
 
-  <g id="marshmallow-body">
-    <g id="feet-sprawl">
-      <ellipse cx="-9" cy="17" rx="3.8" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
-      <ellipse cx="9" cy="17" rx="3.8" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+  <!-- 身体与装饰 -->
+  <g id="body-sleep">
+    <g id="feet">
+      <ellipse cx="-6.0" cy="17.5" rx="3.4" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+      <ellipse cx="6.0" cy="17.5" rx="3.4" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
     </g>
 
+    <!-- 直筒柱身 (年糕软塌) -->
     <path d="
-      M -14,16 
-      C -18,15 -15,-2 -13,-10
-      C -11,-15 -6,-18 0,-18
-      C 6,-18 11,-15 13,-10
-      C 15,-2 18,15 14,16
-      C 9,19 -9,19 -14,16 Z"
-      fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+      M -11,16
+      C -13,15 -12,2 -11.5,-6
+      C -11.2,-13 -10.5,-18 -7,-20
+      C -3,-21 3,-21 7,-20
+      C 10.5,-18 11.2,-13 11.5,-6
+      C 12,2 13,15 11,16
+      C 7,18 -7,18 -11,16 Z"
+      fill="url(#fur-grad)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
 
-    <g id="overalls-sleep">
-      <path d="M -13.5,14 C -14,16.5 -7,18.5 0,18.5 C 7,18.5 14,16.5 13.5,14 C 13,11 9,11 0,11 C -9,11 -13,11 -13.5,14 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
-      <path d="M -9,5 L -7,12 L -5,12 L -7,5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
-      <circle cx="-6" cy="11.5" r="0.75" fill="#2563EB"/>
-      <path d="M 9,5 L 7,12 L 5,12 L 7,5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
-      <circle cx="6" cy="11.5" r="0.75" fill="#2563EB"/>
+    <!-- 浅蓝肩带 -->
+    <g id="straps">
+      <path d="M -11,10 C -11,1 -9.5,-12 -8,-16 L -6,-15 C -7.5,-11 -9,1 -9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
+      <path d="M 11,10 C 11,1 9.5,-12 8,-16 L 6,-15 C 7.5,-11 9,1 9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
     </g>
 
-    <g id="ears-sleep">
-      <path d="M -13,-14 C -15,-18 -9,-19 -8,-15 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
-      <path d="M 13,-14 C 15,-18 9,-19 8,-15 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    <!-- 耷拉的睡意尖耳与杂毛 -->
+    <g id="ears-and-spikes">
+      <path d="M -10,-16.5 C -12.5,-19 -10.5,-21 -7.5,-19.5" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M 10,-16.5 C 12.5,-19 10.5,-21 7.5,-19.5" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M -1,-20.5 Q 0,-22.5 1,-20.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
     </g>
 
-    <g id="eyes-closed">
-      <path d="M -9,-2 Q -7.5,0.5 -6,-2" fill="none" stroke="#2B2523" stroke-width="1.2" stroke-linecap="round"/>
-      <path d="M 6,-2 Q 7.5,0.5 9,-2" fill="none" stroke="#2B2523" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- 额前刘海与汗滴 -->
+    <g id="forehead-bangs">
+      <path d="M -6.5,-16 C -5.5,-12 -3.5,-10 -5,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -2.5,-16 C -2,-13 -1.5,-11 -2,-7.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M 3.5,-17 C 5,-13 4.5,-10 3,-6.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <line x1="-5.2" y1="-13.5" x2="-5" y2="-12" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="4.2" y1="-13" x2="4.5" y2="-11.5" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
     </g>
 
-    <g id="face-sleep">
-      <path d="M -1.8,-0.2 L 1.8,-0.2 Q 0,2.0 -1.8,-0.2 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9"/>
-      <line x1="0" y1="1.5" x2="0" y2="3.2" stroke="#2B2523" stroke-width="0.9"/>
-      <ellipse cx="0" cy="4.5" rx="1.5" ry="1.0" fill="#F49DAE" stroke="#2B2523" stroke-width="0.8"/>
-      <path d="M -4,9 Q 0,11 4,9" fill="none" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+    <!-- 闭眼睡意弯弧 (︶ ︶) -->
+    <path d="M -9.2,-0.8 Q -7.5,0.8 -5.8,-0.8" fill="none" stroke="#1E1B18" stroke-width="1.0" stroke-linecap="round"/>
+    <path d="M 5.8,-0.8 Q 7.5,0.8 9.2,-0.8" fill="none" stroke="#1E1B18" stroke-width="1.0" stroke-linecap="round"/>
+
+    <!-- 面部胡须与粉鼻 -->
+    <g id="face-features">
+      <line x1="-10.5" y1="1.5" x2="-15.5" y2="2.5" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="-10.5" y1="3.5" x2="-15.0" y2="5.0" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="10.5" y1="1.5" x2="15.5" y2="2.5" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="10.5" y1="3.5" x2="15.0" y2="5.0" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M -1.5,0.2 L 1.5,0.2 Q 0,2.0 -1.5,0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.85"/>
+      <line x1="0" y1="1.8" x2="0" y2="3.8" stroke="#1E1B18" stroke-width="0.85"/>
+      <g id="mouth-totem">
+        <path d="M -1.8,5.2 L 0,3.8 L 1.8,5.2 Q 0,5.8 -1.8,5.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.75"/>
+        <polygon points="-2.6,3.6 -1.8,5.0 -2.9,5.2" fill="#1E1B18"/>
+        <polygon points="2.6,3.6 1.8,5.0 2.9,5.2" fill="#1E1B18"/>
+        <polygon points="-0.35,6.0 0.35,6.0 0,6.7" fill="#1E1B18"/>
+      </g>
+      <path d="M -3.2,9.8 Q 0,11.2 3.2,9.8" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
-    <!-- 吹大的淡蓝半透明鼻涕泡泡 -->
+    <!-- 安祥搭在肚子上的双爪 -->
+    <g id="sleeping-paws">
+      <ellipse cx="-5" cy="11.5" rx="2.5" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" transform="rotate(-8 -5 11.5)"/>
+      <ellipse cx="5" cy="11.5" rx="2.5" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" transform="rotate(8 5 11.5)"/>
+    </g>
+
+    <!-- 晶莹剔透鼻涕泡泡 (膨胀与破碎) -->
     <g id="snot-bubble">
-      <circle cx="2" cy="1.5" r="3.2" fill="url(#bubble-grad)" stroke="rgba(56,189,248,0.8)" stroke-width="0.6"/>
-      <circle cx="1.2" cy="0.6" r="0.7" fill="#FFFFFF"/>
+      <circle cx="2" cy="0.5" r="3.2" fill="rgba(186,230,253,0.7)" stroke="#38BDF8" stroke-width="0.55"/>
+      <ellipse cx="1.2" cy="-0.6" rx="0.9" ry="0.45" fill="#FFFFFF" opacity="0.85"/>
     </g>
+  </g>
 
-    <g id="arms-sleep">
-      <ellipse cx="-11" cy="12" rx="2.5" ry="1.6" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
-      <ellipse cx="11" cy="12" rx="2.5" ry="1.6" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
-    </g>
-
-    <g id="zzz-1" transform="translate(6, -16)">
-      <text font-family="sans-serif" font-size="4.2" font-weight="bold" fill="#60A5FA">Z</text>
-    </g>
-    <g id="zzz-2" transform="translate(10, -21)">
-      <text font-family="sans-serif" font-size="3.2" font-weight="bold" fill="#93C5FD">z</text>
-    </g>
+  <!-- 飘浮的粉紫 Zzz -->
+  <g id="zzz-group">
+    <text x="8" y="-12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="3.6" font-weight="bold" fill="#A855F7">Z</text>
+    <text x="11.5" y="-16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="2.8" font-weight="bold" fill="#C084FC">z</text>
+    <text x="14" y="-19.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="2.2" font-weight="bold" fill="#E9D5FF">z</text>
   </g>
 </svg>

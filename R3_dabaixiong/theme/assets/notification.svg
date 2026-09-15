@@ -1,119 +1,156 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="fur-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="80%" stop-color="#FDFAF7"/>
-      <stop offset="100%" stop-color="#ECE7E1"/>
+      <stop offset="85%" stop-color="#FCFCFD"/>
+      <stop offset="100%" stop-color="#EFF2F5"/>
     </linearGradient>
-    <linearGradient id="star-cookie-grad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="star-grad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#FEF08A"/>
       <stop offset="50%" stop-color="#FCD34D"/>
       <stop offset="100%" stop-color="#F59E0B"/>
     </linearGradient>
   </defs>
   <style>
-    #shadow-jump {
-      animation: shadow-contract 1.8s ease-in-out infinite;
-      transform-origin: 0px 18px;
-    }
     #body-notify {
-      animation: shock-bounce 1.8s ease-in-out infinite;
+      animation: jump-shock 1.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
       transform-origin: 0px 18px;
     }
-    #cookie-hands {
-      animation: hold-cookie-cheer 1.8s ease-in-out infinite;
-      transform-origin: 0px -10px;
+    #shadow-notify {
+      animation: shadow-shock 1.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+      transform-origin: 0px 18px;
     }
-    #sparkle-1 {
-      animation: star-twinkle 1.2s ease-in-out infinite;
+    #star-prop {
+      animation: star-swing 0.8s ease-in-out infinite alternate;
+      transform-origin: 0px -7px;
     }
-    #sparkle-2 {
-      animation: star-twinkle 1.2s ease-in-out 0.6s infinite;
+    #star-sparks {
+      animation: sparks-pulse 0.8s ease-in-out infinite alternate;
     }
-    @keyframes shock-bounce {
-      0%, 100% { transform: translateY(0) scale(1, 1); }
-      15% { transform: translateY(-5.5px) scale(0.96, 1.05); }
-      30% { transform: translateY(0.5px) scale(1.08, 0.92); }
-      45%, 85% { transform: translateY(0) scale(1, 1); }
+    #ears-perk {
+      animation: ears-alert 0.8s ease-in-out infinite alternate;
+      transform-origin: 0px -20px;
     }
-    @keyframes shadow-contract {
-      0%, 100% { transform: scale(1, 1); opacity: 0.12; }
-      15% { transform: scale(0.65, 0.65); opacity: 0.05; }
-      30% { transform: scale(1.15, 1.15); opacity: 0.16; }
-      45%, 85% { transform: scale(1, 1); opacity: 0.12; }
+
+    @keyframes jump-shock {
+      0%, 100% { transform: translateY(0px) scale(1, 1); }
+      15% { transform: translateY(1.2px) scale(1.06, 0.94); }
+      35% { transform: translateY(-4.5px) scale(0.95, 1.05); }
+      55% { transform: translateY(0px) scale(1.08, 0.92); }
+      70% { transform: translateY(-1.2px) scale(0.98, 1.02); }
+      85% { transform: translateY(0px) scale(1, 1); }
     }
-    @keyframes hold-cookie-cheer {
-      0%, 35%, 100% { transform: translateY(12px) scale(0); opacity: 0; }
-      42% { transform: translateY(0) scale(1.1); opacity: 1; }
-      48%, 85% { transform: translateY(0) rotate(6deg) scale(1); opacity: 1; }
-      65% { transform: translateY(0) rotate(-6deg) scale(1); opacity: 1; }
-      92% { transform: translateY(6px) scale(0.4); opacity: 0; }
+    @keyframes shadow-shock {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      15% { transform: scale(1.08); opacity: 1; }
+      35% { transform: scale(0.68); opacity: 0.45; }
+      55% { transform: scale(1.16); opacity: 1; }
+      70% { transform: scale(0.92); opacity: 0.75; }
+      85% { transform: scale(1); opacity: 0.9; }
     }
-    @keyframes star-twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(0.7); }
-      50% { opacity: 1; transform: scale(1.2); }
+    @keyframes star-swing {
+      0% { transform: rotate(-14deg) scale(1); }
+      100% { transform: rotate(14deg) scale(1.1); }
+    }
+    @keyframes sparks-pulse {
+      0% { opacity: 0.3; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+    @keyframes ears-alert {
+      0% { transform: scaleY(1); }
+      100% { transform: scaleY(1.12); }
     }
   </style>
 
-  <g id="shadow-jump">
-    <ellipse cx="0" cy="18" rx="13" ry="2.8" fill="rgba(0,0,0,0.12)"/>
+  <!-- 地面阴影 -->
+  <g id="shadow-notify">
+    <ellipse cx="0" cy="18" rx="11" ry="2.2" fill="rgba(0,0,0,0.12)"/>
   </g>
 
+  <!-- 身体与装饰 -->
   <g id="body-notify">
     <g id="feet">
-      <ellipse cx="-6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
-      <ellipse cx="6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
-    </g>
-    <path d="M -12,16 C -16,15 -14,-4 -12,-12 C -11,-17 -6,-20 0,-20 C 6,-20 11,-17 12,-12 C 14,-4 16,15 12,16 C 8,18.5 -8,18.5 -12,16 Z" fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
-    
-    <g id="overalls">
-      <path d="M -12.5,13.5 C -13,16 -7,18 0,18 C 7,18 13,16 12.5,13.5 C 12,10 9,10 0,10 C -9,10 -12,10 -12.5,13.5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
-      <path d="M -9,4 L -7,11 L -5,11 L -7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
-      <circle cx="-6" cy="10.5" r="0.75" fill="#2563EB"/>
-      <path d="M 9,4 L 7,11 L 5,11 L 7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
-      <circle cx="6" cy="10.5" r="0.75" fill="#2563EB"/>
+      <ellipse cx="-5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+      <ellipse cx="5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
     </g>
 
-    <!-- 惊吓立直炸毛双耳 -->
-    <g id="ears-alert">
-      <path d="M -13,-18 C -15,-23 -9,-24 -7,-18 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
-      <path d="M 13,-18 C 15,-23 9,-24 7,-18 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+    <!-- 直筒柱身 -->
+    <path d="
+      M -11,16
+      C -13,15 -12,2 -11.5,-6
+      C -11.2,-13 -10.5,-18 -7,-20
+      C -3,-21 3,-21 7,-20
+      C 10.5,-18 11.2,-13 11.5,-6
+      C 12,2 13,15 11,16
+      C 7,18 -7,18 -11,16 Z"
+      fill="url(#fur-grad)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
+
+    <!-- 浅蓝肩带 -->
+    <g id="straps">
+      <path d="M -11,10 C -11,1 -9.5,-12 -8,-16 L -6,-15 C -7.5,-11 -9,1 -9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
+      <path d="M 11,10 C 11,1 9.5,-12 8,-16 L 6,-15 C 7.5,-11 9,1 9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
     </g>
 
-    <!-- 瞪大的眼睛 -->
-    <circle cx="-7.5" cy="-3" r="1.3" fill="#1C1917"/>
-    <circle cx="-7.8" cy="-3.3" r="0.4" fill="#FFFFFF"/>
-    <circle cx="7.5" cy="-3" r="1.3" fill="#1C1917"/>
-    <circle cx="7.2" cy="-3.3" r="0.4" fill="#FFFFFF"/>
-
-    <!-- 惊呼大张的“O”形嘴巴 -->
-    <g id="face-notify">
-      <path d="M -1.8,-0.5 L 1.8,-0.5 Q 0,1.8 -1.8,-0.5 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9"/>
-      <ellipse cx="0" cy="5.2" rx="2.5" ry="3.2" fill="#D97284" stroke="#2B2523" stroke-width="0.9"/>
-      <path d="M -3.5,10.5 Q 0,12 3.5,10.5" fill="none" stroke="#2B2523" stroke-width="0.85" stroke-linecap="round"/>
+    <!-- 头顶尖耳与杂毛 (惊喜欢呼竖耳) -->
+    <g id="ears-perk">
+      <path d="M -10,-17 C -13.5,-21 -11.5,-23 -7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.15" stroke-linecap="round"/>
+      <path d="M 10,-17 C 13.5,-21 11.5,-23 7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.15" stroke-linecap="round"/>
+      <path d="M -1,-21 Q 0,-24.5 1,-21" fill="none" stroke="#1E1B18" stroke-width="1.0" stroke-linecap="round"/>
     </g>
 
-    <!-- 双手高举的大号金黄星星曲奇饼干道具 -->
-    <g id="cookie-hands">
-      <path d="M -11,8 Q -10,-2 -4,-7" fill="none" stroke="#FDFAF7" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M 11,8 Q 10,-2 4,-7" fill="none" stroke="#FDFAF7" stroke-width="2.2" stroke-linecap="round"/>
-      <circle cx="-4" cy="-7.5" rx="1.5" ry="1.5" fill="#FDFAF7" stroke="#2B2523" stroke-width="0.8"/>
-      <circle cx="4" cy="-7.5" rx="1.5" ry="1.5" fill="#FDFAF7" stroke="#2B2523" stroke-width="0.8"/>
+    <!-- 额前刘海与汗滴 -->
+    <g id="forehead-bangs">
+      <path d="M -6.5,-16 C -5.5,-12 -3.5,-10 -5,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -2.5,-16 C -2,-13 -1.5,-11 -2,-7.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M 3.5,-17 C 5,-13 4.5,-10 3,-6.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <line x1="-5.2" y1="-13.5" x2="-5" y2="-12" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="4.2" y1="-13" x2="4.5" y2="-11.5" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+    </g>
 
-      <g id="star-cookie" transform="translate(0, -11) scale(1.1)">
-        <polygon points="0,-6 1.8,-1.8 6.2,-1.5 2.8,1.4 3.9,5.8 0,3.4 -3.9,5.8 -2.8,1.4 -6.2,-1.5 -1.8,-1.8" fill="url(#star-cookie-grad)" stroke="#D97706" stroke-width="0.8" stroke-linejoin="round"/>
-        <circle cx="0" cy="0" r="0.5" fill="#B45309"/>
-        <circle cx="-1.5" cy="-0.8" r="0.4" fill="#B45309"/>
-        <circle cx="1.5" cy="0.8" r="0.4" fill="#B45309"/>
+    <!-- 惊喜大眼睛 -->
+    <circle cx="-7.5" cy="-0.5" r="0.9" fill="#1E1B18"/>
+    <circle cx="7.5" cy="-0.5" r="0.9" fill="#1E1B18"/>
+
+    <!-- 面部胡须与粉鼻 -->
+    <g id="face-features">
+      <line x1="-10.5" y1="1" x2="-16" y2="0.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="-10.5" y1="3.2" x2="-15.5" y2="4.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="10.5" y1="1" x2="16" y2="0.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <line x1="10.5" y1="3.2" x2="15.5" y2="4.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M -1.5,0.2 L 1.5,0.2 Q 0,2.0 -1.5,0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.85"/>
+      <line x1="0" y1="1.8" x2="0" y2="3.8" stroke="#1E1B18" stroke-width="0.85"/>
+      
+      <!-- 惊喜微张粉口与图腾三角 -->
+      <g id="mouth-totem">
+        <path d="M -2.0,5.0 L 0,3.5 L 2.0,5.0 Q 0,6.5 -2.0,5.0 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.8"/>
+        <polygon points="-2.7,3.6 -1.8,5.0 -3.0,5.4" fill="#1E1B18"/>
+        <polygon points="2.7,3.6 1.8,5.0 3.0,5.4" fill="#1E1B18"/>
+        <polygon points="-0.4,6.2 0.4,6.2 0,7.0" fill="#1E1B18"/>
       </g>
+      <path d="M -3.2,10.0 Q 0,11.5 3.2,10.0" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
-    <!-- 闪耀小星星 -->
-    <g id="sparkle-1" transform="translate(-13, -15)">
-      <polygon points="0,-2 0.6,-0.6 2,0 0.6,0.6 0,2 -0.6,0.6 -2,0 -0.6,-0.6" fill="#FBBF24"/>
+    <!-- 双爪高举捧星 -->
+    <g id="arms-raised">
+      <path d="M -9,7 C -12,4 -11,-2 -6,-3 C -4,-1 -6,4 -7,8 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" stroke-linejoin="round"/>
+      <circle cx="-5" cy="-3.5" r="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95"/>
+
+      <path d="M 9,7 C 12,4 11,-2 6,-3 C 4,-1 6,4 7,8 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" stroke-linejoin="round"/>
+      <circle cx="5" cy="-3.5" r="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95"/>
     </g>
-    <g id="sparkle-2" transform="translate(13, -15)">
-      <polygon points="0,-2 0.6,-0.6 2,0 0.6,0.6 0,2 -0.6,0.6 -2,0 -0.6,-0.6" fill="#FBBF24"/>
+
+    <!-- 高举挥舞的金黄五角星 -->
+    <g id="star-prop">
+      <!-- 经典五角星 -->
+      <polygon points="0,-12 1.8,-6.5 7.5,-6.5 3.0,-2.5 4.8,3.2 0,-0.2 -4.8,3.2 -3.0,-2.5 -7.5,-6.5 -1.8,-6.5"
+               fill="url(#star-grad)" stroke="#D97706" stroke-width="0.75" stroke-linejoin="round"/>
+    </g>
+
+    <!-- 四散闪烁星芒 -->
+    <g id="star-sparks">
+      <path d="M -9,-10 L -12,-11 M 9,-10 L 12,-11 M 0,-15 L 0,-18" stroke="#F59E0B" stroke-width="0.9" stroke-linecap="round"/>
+      <circle cx="-8" cy="-14" r="0.6" fill="#FEF08A"/>
+      <circle cx="8" cy="-14" r="0.6" fill="#FEF08A"/>
     </g>
   </g>
 </svg>

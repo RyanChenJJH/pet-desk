@@ -39,6 +39,30 @@
 4. **漫步方向约定**：
    - 漫步动画（`roam.svg`）中的角色造型必须统一**面朝右侧 (Facing Right)**。Clawd-on-desk 向左巡逻时会在运行时自动进行水平镜像翻转。
 
+### 2.1 桌宠标准固定尺寸规范（Fixed Size Baseline）
+为保证所有角色在桌面端具有统一、舒适的视觉比例，避免“过大遮挡屏幕”或“过小细节丢失”，全局严格约定以下**固定尺寸基线**：
+
+1. **统一画布视口（Canvas ViewBox）**：
+   - 采用标准居中视口：`viewBox="-25 -25 50 50"` 或 `-20 -25 50 50"`（统一逻辑空间 50×50，脚底接触线 `baselineY = 18`）。
+2. **可视包围盒尺寸（contentBox）**：
+   - 角色主体可视宽度：`width: 22 ~ 26`（占视口 44%~52%）。
+   - 角色主体可视高度：`height: 24 ~ 28`（占视口 48%~56%）。
+3. **桌面窗口占比硬性红线（visibleHeightRatio）**：
+   - **固定标准区间：`0.38 ~ 0.44`**（严禁超过 `0.48`，默认基准推荐 `0.40 ~ 0.42`）。
+   - `visibleHeightRatio` 过大（如 >0.50）会导致桌面宠物异常庞大遮挡用户工作区。
+   - `baselineBottomRatio: 0.05`（确保角色稳定贴合在窗口底部）。
+
+### 2.2 深度依托 `pet-forge` 开源项目进行设计与开发
+本项目动画设计与工程实现**必须深度依托并严格遵守 `pet-forge` 开源项目**（位于 `pet-forge/`）：
+1. **约定体系（Conventions）**：
+   - 遵循 `source-to-animation-master.md`：必须忠实提取原图特征，严禁凭空脱离参考图臆造矢量结构。概念图定义“角色是谁”，初始母版解决“像不像”，分层母版解决“能不能动”。
+   - 遵循 `layered-master.md`：必须建立分层矢量母版，母版是唯一真实源（Single Source of Truth），所有状态动画均派生自母版。
+   - 遵循 `head-motion-axis.md`、`body-motion-axis.md`、`limb-rig-points.md` 与 `expression-mouth-system.md` 等关节骨骼与表情轴心规范。
+   - 遵循 `loop-states.md` 与 `validation-runbook.md` 闭环与验证规范。
+2. **工具链与模板（Tools & Templates）**：
+   - 充分参考与利用 `routes/svg/templates/hello-idle.svg.html` 调参沙盒架构。
+   - 充分利用 `routes/svg/tools/png2svg/` 矢量提取逻辑与预设风格定义。
+
 ---
 
 ## 3. 文档命名与版本生命周期规范
