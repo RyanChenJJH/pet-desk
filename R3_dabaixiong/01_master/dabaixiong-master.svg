@@ -1,5 +1,6 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <!-- 棉花糖纯白微层次渐变 -->
     <linearGradient id="fur-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="85%" stop-color="#FCFCFD"/>
@@ -17,94 +18,108 @@
     </radialGradient>
   </defs>
 
-  <!-- 1. 地面柔和投影层 (对标 Clawd #shadow-js) -->
+  <!-- 1. 地面柔影层 (对接 Clawd #shadow-js) -->
   <g id="shadow-js" style="transform-origin: 0px 18px">
     <ellipse cx="0" cy="18" rx="11.5" ry="2.2" fill="rgba(0,0,0,0.11)"/>
   </g>
 
-  <!-- 2. 角色本体整合层 (对标 Clawd #body-js) -->
+  <!-- 2. 角色主体整合层 (对接 Clawd #body-js) -->
   <g id="body-js" style="transform-origin: 0px 16px">
-    <!-- 2.1 脚丫 (Feet) -->
+
+    <!-- 2.1 萌系小白爪 (Feet) -->
     <g id="feet">
-      <ellipse id="foot-left" cx="-5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
-      <ellipse id="foot-right" cx="5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+      <ellipse id="foot-left" cx="-5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <ellipse id="foot-right" cx="5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 2.2 大白熊直筒柱状躯干 (100% 还原原画轮廓) -->
+    <!-- 2.2 大白熊手绘直筒柱身 (1:1 还原原图轮廓) -->
     <g id="torso">
       <path id="body-shape" d="
-        M -11,16
-        C -13,15 -12,2 -11.5,-6
-        C -11.2,-13 -10.5,-18 -7,-20
-        C -3,-21 3,-21 7,-20
-        C 10.5,-18 11.2,-13 11.5,-6
-        C 12,2 13,15 11,16
-        C 7,18 -7,18 -11,16 Z"
-        fill="url(#fur-grad)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
+        M -11.5,16
+        C -13.0,14 -12.5,4 -12.2,-5
+        C -12.0,-11 -11.2,-15.2 -8.5,-16.8
+        C -5.0,-17.5 5.0,-17.5 8.5,-16.8
+        C 11.2,-15.2 12.0,-11 12.2,-5
+        C 12.5,4 13.0,14 11.5,16
+        C 7.5,17.8 -7.5,17.8 -11.5,16 Z"
+        fill="url(#fur-grad)" stroke="#262422" stroke-width="1.05" stroke-linejoin="round"/>
     </g>
 
-    <!-- 2.3 浅天蓝双肩带 (原图蓝背带) -->
+    <!-- 2.3 浅天蓝双肩背带 (原图蓝背带) -->
     <g id="straps">
-      <path d="M -11,10 C -11,1 -9.5,-12 -8,-16 L -6,-15 C -7.5,-11 -9,1 -9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
-      <path d="M 11,10 C 11,1 9.5,-12 8,-16 L 6,-15 C 7.5,-11 9,1 9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
+      <path d="M -11.8,11 C -11.8,2 -10.2,-10 -8.5,-14.2 L -6.5,-13.5 C -8.2,-9.5 -9.8,2 -9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
+      <path d="M 11.8,11 C 11.8,2 10.2,-10 8.5,-14.2 L 6.5,-13.5 C 8.2,-9.5 9.8,2 9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
     </g>
 
-    <!-- 2.4 头顶角耳与杂毛 (原图耳簇与头顶毛) -->
+    <!-- 2.4 头顶小尖耳与散乱杂毛 (1:1 原画耳簇) -->
     <g id="ears-and-spikes">
-      <path d="M -10,-17 C -13,-20 -11,-22 -7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
-      <line x1="-11.2" y1="-17.5" x2="-12.8" y2="-17.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <path d="M 10,-17 C 13,-20 11,-22 7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
-      <line x1="11.2" y1="-17.5" x2="12.8" y2="-17.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <path d="M -3,-20.5 Q -4,-23 -2.5,-22.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M -1,-21 Q 0,-23.5 1,-21" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M 2.5,-20.5 Q 4,-23 4.5,-21" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <!-- 左尖耳耳簇 -->
+      <path d="M -10.5,-14.5 C -13.6,-16.8 -12.5,-18.5 -8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="-12.2" y1="-16.0" x2="-13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- 右尖耳耳簇 -->
+      <path d="M 10.5,-14.5 C 13.6,-16.8 12.5,-18.5 8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="12.2" y1="-16.0" x2="13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- 4 根头顶散落呆毛 -->
+      <path d="M -3.5,-17.2 Q -4.8,-19.5 -3.0,-19.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M -1.2,-17.5 Q -1.5,-20.0 0,-18.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 1.8,-17.5 Q 2.5,-19.8 3.5,-18.2" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
-    <!-- 2.5 额前 3 绺垂落刘海与困惑小汗滴 (原图核心特征) -->
+    <!-- 2.5 额前 3 绺手绘刘海与困惑小汗滴 (原图核心灵魂) -->
     <g id="forehead-bangs">
-      <path d="M -6.5,-16 C -5.5,-12 -3.5,-10 -5,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M -2.5,-16 C -2,-13 -1.5,-11 -2,-7.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M 3.5,-17 C 5,-13 4.5,-10 3,-6.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <line x1="-5.2" y1="-13.5" x2="-5" y2="-12" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
-      <line x1="4.2" y1="-13" x2="4.5" y2="-11.5" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+      <!-- 左刘海：向右斜微弯 -->
+      <path d="M -5.2,-14.2 C -4.2,-10.8 -2.8,-9.0 -4.0,-6.0" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <!-- 中刘海：垂直下垂带手绘轻颤 -->
+      <path d="M -1.5,-14.5 C -1.2,-11.5 -1.0,-9.5 -1.5,-6.5" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <!-- 右刘海：长弧向左微收 -->
+      <path d="M 2.8,-15.0 C 4.2,-11.2 3.8,-8.5 2.2,-5.2" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <!-- 左右两滴困惑微汗 -->
+      <path d="M -5.0,-11.5 Q -4.2,-10.2 -4.8,-9.5" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
+      <path d="M 3.2,-10.8 Q 3.8,-9.6 3.4,-8.8" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
     </g>
 
-    <!-- 2.6 极宽小圆点双眼 (对标 Clawd #eyes-js) -->
-    <g id="eyes-js" style="transform-origin: 0px -1px">
-      <circle id="eye-left" cx="-7.5" cy="-1" r="0.75" fill="#1E1B18"/>
-      <circle id="eye-right" cx="7.5" cy="-1" r="0.75" fill="#1E1B18"/>
+    <!-- 2.6 极宽小圆点双眼 (对接 Clawd #eyes-js，神态放空) -->
+    <g id="eyes-js" style="transform-origin: 0px -1.5px">
+      <!-- 极宽 13px 间距，极细小黑点 -->
+      <circle id="eye-left" cx="-6.5" cy="-1.8" r="0.75" fill="#262422"/>
+      <circle id="eye-right" cx="6.5" cy="-1.3" r="0.75" fill="#262422"/>
     </g>
 
-    <!-- 2.7 面部嘴鼻图腾 (100% 还原原图) -->
+    <!-- 2.7 标志性面部嘴鼻图腾 (100% 还原原图) -->
     <g id="face-features">
-      <line x1="-10.5" y1="1" x2="-16" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="-10.5" y1="3.2" x2="-15.5" y2="3.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="1" x2="16" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="3.2" x2="15.5" y2="3.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <!-- 脸颊水平细胡须 (左右各 2 根) -->
+      <line x1="-9.8" y1="-0.8" x2="-14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="-9.8" y1="1.4" x2="-14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="-0.8" x2="14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="1.4" x2="14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
 
-      <!-- 粉色倒三角小鼻子 -->
-      <path d="M -1.5,0.2 L 1.5,0.2 Q 0,2.0 -1.5,0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.85" stroke-linejoin="round"/>
-      <!-- 垂直人中线 -->
-      <line x1="0" y1="1.8" x2="0" y2="3.8" stroke="#1E1B18" stroke-width="0.85"/>
+      <!-- 粉色倒三角小鼻头 -->
+      <path d="M -1.3,-1.2 L 1.3,-1.2 Q 0,0.5 -1.3,-1.2 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.8" stroke-linejoin="round"/>
+      <!-- 垂直细人中线 -->
+      <line x1="0" y1="0.3" x2="0" y2="1.5" stroke="#262422" stroke-width="0.8"/>
 
-      <!-- 嘴部图腾：倒V粉嘴 + 两侧黑三角标记 + 底部小黑倒三角点 -->
-      <path d="M -1.8,5.2 L 0,3.8 L 1.8,5.2 Q 0,5.8 -1.8,5.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.75" stroke-linejoin="round"/>
-      <polygon points="-2.6,3.6 -1.8,5.0 -2.9,5.2" fill="#1E1B18"/>
-      <polygon points="2.6,3.6 1.8,5.0 2.9,5.2" fill="#1E1B18"/>
-      <polygon points="-0.35,6.0 0.35,6.0 0,6.7" fill="#1E1B18"/>
+      <!-- 嘴部核心图腾：倒V微张粉嘴 + 左右黑小三角 ▲ + 嘴底小黑倒三角 ▼ -->
+      <path d="M -1.6,2.6 L 0,1.4 L 1.6,2.6 Q 0,3.2 -1.6,2.6 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.75" stroke-linejoin="round"/>
+      <!-- 左黑三角 ▲ -->
+      <polygon points="-2.2,1.5 -1.5,2.5 -2.4,2.7" fill="#262422"/>
+      <!-- 右黑三角 ▲ -->
+      <polygon points="2.2,1.5 1.5,2.5 2.4,2.7" fill="#262422"/>
+      <!-- 嘴底正中小倒三角点 ▼ -->
+      <polygon points="-0.3,3.3 0.3,3.3 0,3.9" fill="#262422"/>
 
-      <!-- 双下巴弧线折痕 -->
-      <path d="M -3.2,9.8 Q 0,11.2 3.2,9.8" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+      <!-- 微胖双下巴肉褶弧线 -->
+      <path d="M -3.2,9.6 Q 0,10.5 3.2,9.6" fill="none" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
     </g>
 
-    <!-- 2.8 小白手臂 (Arms) -->
+    <!-- 2.8 软萌小白爪 (Arms) -->
     <g id="arms">
       <g id="arm-left" style="transform-origin: -10px 8px">
-        <path d="M -10,8 Q -13,11 -11.5,14.5 Q -9,15 -8.5,12" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.05"/>
+        <path d="M -10.5,7.5 Q -13.0,10.5 -11.5,13.5 Q -9.5,14.0 -9.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
       </g>
       <g id="arm-right" style="transform-origin: 10px 8px">
-        <path d="M 10,8 Q 13,11 11.5,14.5 Q 9,15 8.5,12" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.05"/>
+        <path d="M 10.5,7.5 Q 13.0,10.5 11.5,13.5 Q 9.5,14.0 9.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
       </g>
     </g>
+
   </g>
 </svg>

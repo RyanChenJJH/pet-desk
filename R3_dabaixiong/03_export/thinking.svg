@@ -7,171 +7,174 @@
     </linearGradient>
   </defs>
   <style>
-    #body-think {
-      animation: think-tilt 2.8s ease-in-out infinite;
+    #shadow-js {
+      animation: think-shadow 3.6s ease-in-out infinite;
       transform-origin: 0px 18px;
     }
-    #paw-scratch {
-      animation: paw-scratch-head 0.4s ease-in-out infinite alternate;
-      transform-origin: 6px -4px;
+    #body-js {
+      animation: think-tilt 3.6s ease-in-out infinite;
+      transform-origin: 0px 16px;
     }
-    #eye-l {
-      animation: cross-eye-left 2.8s ease-in-out infinite;
+    #arm-scratch {
+      animation: paw-scratch 3.6s ease-in-out infinite;
+      transform-origin: 9px 5px;
     }
-    #eye-r {
-      animation: cross-eye-right 2.8s ease-in-out infinite;
+    #eyes-cross {
+      animation: eyes-crosseyed 3.6s ease-in-out infinite;
+      transform-origin: 0px -1.5px;
     }
-    #bubble-q {
-      animation: bubble-float 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      transform-origin: 5px -18px;
+    #mouth-skew {
+      animation: mouth-pout 3.6s ease-in-out infinite;
+      transform-origin: 0px 2.5px;
     }
-    #steam-left {
-      animation: steam-rise-l 2.8s ease-out infinite;
+    #question-mark {
+      animation: qmark-pop 3.6s ease-in-out infinite;
+      transform-origin: 7px -20px;
     }
-    #steam-right {
-      animation: steam-rise-r 2.8s ease-out infinite;
-      animation-delay: 1.4s;
+    #smoke-steam {
+      animation: cpu-smoke 3.6s ease-in-out infinite;
+      transform-origin: 0px -18px;
     }
-    #shadow-think {
-      animation: shadow-tilt 2.8s ease-in-out infinite;
-      transform-origin: 0px 18px;
-    }
-
     @keyframes think-tilt {
-      0%, 100% { transform: rotate(0deg) translateY(0px); }
-      30%, 70% { transform: rotate(-3.5deg) translateY(-0.6px); }
+      0%, 100% { transform: rotate(0deg); }
+      20%, 55% { transform: rotate(4deg) translateY(-0.5px); }
+      65%, 90% { transform: rotate(-2deg) translateY(0.2px); }
     }
-    @keyframes shadow-tilt {
-      0%, 100% { transform: scale(1); }
-      30%, 70% { transform: scale(0.96) translateX(-0.5px); }
+    @keyframes think-shadow {
+      0%, 100% { transform: scale(1, 1); opacity: 0.11; }
+      50% { transform: scale(0.96, 0.96); opacity: 0.13; }
     }
-    @keyframes paw-scratch-head {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-1.5px) rotate(8deg); }
+    @keyframes paw-scratch {
+      0%, 15%, 85%, 100% { transform: rotate(0deg) translate(0, 0); }
+      22%, 30%, 38%, 46% { transform: rotate(-65deg) translate(-2px, -8px); }
+      26%, 34%, 42%, 50% { transform: rotate(-55deg) translate(-2px, -9.5px); }
+      55%, 80% { transform: rotate(-30deg) translate(0px, -4px); }
     }
-    @keyframes cross-eye-left {
-      0%, 15%, 85%, 100% { transform: translateX(0px); }
-      30%, 70% { transform: translateX(1.8px) translateY(0.4px); }
+    @keyframes eyes-crosseyed {
+      0%, 15%, 85%, 100% { transform: translate(0, 0); }
+      25%, 75% { transform: scale(1.1) translate(0, 0); }
     }
-    @keyframes cross-eye-right {
-      0%, 15%, 85%, 100% { transform: translateX(0px); }
-      30%, 70% { transform: translateX(-1.8px) translateY(0.4px); }
+    #eye-left-cross {
+      animation: eye-left-shift 3.6s ease-in-out infinite;
     }
-    @keyframes bubble-float {
-      0%, 15% { transform: translate(0px, 4px) scale(0); opacity: 0; }
-      25% { transform: translate(0px, 0px) scale(1.1); opacity: 1; }
-      30%, 65% { transform: translate(1px, -3px) scale(1); opacity: 0.95; }
-      75% { transform: translate(2px, -6px) scale(1.15); opacity: 0; }
-      100% { transform: translate(0px, 4px) scale(0); opacity: 0; }
+    #eye-right-cross {
+      animation: eye-right-shift 3.6s ease-in-out infinite;
     }
-    @keyframes steam-rise-l {
-      0%, 25% { transform: translate(0px, 0px) scale(0.4); opacity: 0; }
-      40% { transform: translate(-1px, -3px) scale(0.9); opacity: 0.85; }
-      60% { transform: translate(-3px, -7px) scale(1.3); opacity: 0; }
-      100% { transform: translate(0px, 0px) scale(0.4); opacity: 0; }
+    @keyframes eye-left-shift {
+      0%, 15%, 85%, 100% { transform: translate(0, 0); }
+      25%, 75% { transform: translate(3.8px, 0.4px); }
     }
-    @keyframes steam-rise-r {
-      0%, 25% { transform: translate(0px, 0px) scale(0.4); opacity: 0; }
-      40% { transform: translate(1px, -3px) scale(0.9); opacity: 0.85; }
-      60% { transform: translate(3px, -7px) scale(1.3); opacity: 0; }
-      100% { transform: translate(0px, 0px) scale(0.4); opacity: 0; }
+    @keyframes eye-right-shift {
+      0%, 15%, 85%, 100% { transform: translate(0, 0); }
+      25%, 75% { transform: translate(-3.8px, 0.4px); }
+    }
+    @keyframes mouth-pout {
+      0%, 15%, 85%, 100% { transform: rotate(0deg) scale(1); }
+      25%, 75% { transform: rotate(-8deg) translate(1px, -0.5px) scale(0.85); }
+    }
+    @keyframes qmark-pop {
+      0%, 10% { opacity: 0; transform: scale(0) translateY(4px); }
+      20%, 45% { opacity: 1; transform: scale(1) translateY(0); }
+      48% { opacity: 1; transform: scale(1.3) translateY(-2px); }
+      52%, 100% { opacity: 0; transform: scale(0); }
+    }
+    @keyframes cpu-smoke {
+      0%, 50% { opacity: 0; transform: scale(0) translateY(0); }
+      55% { opacity: 0.9; transform: scale(0.6) translateY(-2px); }
+      75% { opacity: 0.7; transform: scale(1.1) translateY(-6px); }
+      90%, 100% { opacity: 0; transform: scale(1.3) translateY(-10px); }
     }
   </style>
 
-  <!-- 地面阴影 -->
-  <g id="shadow-think">
-    <ellipse cx="0" cy="18" rx="11" ry="2.2" fill="rgba(0,0,0,0.11)"/>
+  <g id="shadow-js">
+    <ellipse cx="0" cy="18" rx="11.5" ry="2.2" fill="#000000"/>
   </g>
 
-  <!-- 蒸气冒出 (CPU过载冒白烟) -->
-  <g id="steam-left">
-    <circle cx="-9" cy="-21" r="1.5" fill="#E2E8F0" opacity="0.8"/>
-    <circle cx="-10.5" cy="-22" r="1.1" fill="#FFFFFF" opacity="0.8"/>
-  </g>
-  <g id="steam-right">
-    <circle cx="9" cy="-21" r="1.5" fill="#E2E8F0" opacity="0.8"/>
-    <circle cx="10.5" cy="-22" r="1.1" fill="#FFFFFF" opacity="0.8"/>
-  </g>
-
-  <!-- 身体与头部 -->
-  <g id="body-think">
+  <g id="body-js">
     <g id="feet">
-      <ellipse cx="-5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
-      <ellipse cx="5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+      <ellipse id="foot-left" cx="-5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <ellipse id="foot-right" cx="5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 直筒柱身 -->
-    <path d="
-      M -11,16
-      C -13,15 -12,2 -11.5,-6
-      C -11.2,-13 -10.5,-18 -7,-20
-      C -3,-21 3,-21 7,-20
-      C 10.5,-18 11.2,-13 11.5,-6
-      C 12,2 13,15 11,16
-      C 7,18 -7,18 -11,16 Z"
-      fill="url(#fur-grad)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
+    <g id="torso">
+      <path id="body-shape" d="
+        M -11.5,16
+        C -13.0,14 -12.5,4 -12.2,-5
+        C -12.0,-11 -11.2,-15.2 -8.5,-16.8
+        C -5.0,-17.5 5.0,-17.5 8.5,-16.8
+        C 11.2,-15.2 12.0,-11 12.2,-5
+        C 12.5,4 13.0,14 11.5,16
+        C 7.5,17.8 -7.5,17.8 -11.5,16 Z"
+        fill="url(#fur-grad)" stroke="#262422" stroke-width="1.05" stroke-linejoin="round"/>
+    </g>
 
-    <!-- 浅蓝肩带 -->
     <g id="straps">
-      <path d="M -11,10 C -11,1 -9.5,-12 -8,-16 L -6,-15 C -7.5,-11 -9,1 -9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
-      <path d="M 11,10 C 11,1 9.5,-12 8,-16 L 6,-15 C 7.5,-11 9,1 9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
+      <path d="M -11.8,11 C -11.8,2 -10.2,-10 -8.5,-14.2 L -6.5,-13.5 C -8.2,-9.5 -9.8,2 -9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
+      <path d="M 11.8,11 C 11.8,2 10.2,-10 8.5,-14.2 L 6.5,-13.5 C 8.2,-9.5 9.8,2 9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
     </g>
 
-    <!-- 头顶尖耳与杂毛 -->
     <g id="ears-and-spikes">
-      <path d="M -10,-17 C -13,-20 -11,-22 -7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M 10,-17 C 13,-20 11,-22 7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M -1,-21 Q 0,-23.5 1,-21" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -10.5,-14.5 C -13.6,-16.8 -12.5,-18.5 -8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="-12.2" y1="-16.0" x2="-13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M 10.5,-14.5 C 13.6,-16.8 12.5,-18.5 8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="12.2" y1="-16.0" x2="13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -3.5,-17.2 Q -4.8,-19.5 -3.0,-19.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M -1.2,-17.5 Q -1.5,-20.0 0,-18.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 1.8,-17.5 Q 2.5,-19.8 3.5,-18.2" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
-    <!-- 额前刘海与汗滴 -->
     <g id="forehead-bangs">
-      <path d="M -6.5,-16 C -5.5,-12 -3.5,-10 -5,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M -2.5,-16 C -2,-13 -1.5,-11 -2,-7.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M 3.5,-17 C 5,-13 4.5,-10 3,-6.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <line x1="-5.2" y1="-13.5" x2="-5" y2="-12" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
-      <line x1="4.2" y1="-13" x2="4.5" y2="-11.5" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -5.2,-14.2 C -4.2,-10.8 -2.8,-9.0 -4.0,-6.0" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -1.5,-14.5 C -1.2,-11.5 -1.0,-9.5 -1.5,-6.5" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M 2.8,-15.0 C 4.2,-11.2 3.8,-8.5 2.2,-5.2" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -5.0,-11.5 Q -4.2,-10.2 -4.8,-9.5" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
+      <path d="M 3.2,-10.8 Q 3.8,-9.6 3.4,-8.8" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
     </g>
 
-    <!-- 斗鸡眼 (对眼聚焦) -->
-    <g id="eye-l">
-      <circle cx="-7.5" cy="-0.5" r="0.75" fill="#1E1B18"/>
-    </g>
-    <g id="eye-r">
-      <circle cx="7.5" cy="-0.5" r="0.75" fill="#1E1B18"/>
+    <!-- 斗鸡眼动画组 -->
+    <g id="eyes-cross">
+      <circle id="eye-left-cross" cx="-6.5" cy="-1.8" r="0.75" fill="#262422"/>
+      <circle id="eye-right-cross" cx="6.5" cy="-1.3" r="0.75" fill="#262422"/>
     </g>
 
-    <!-- 面部胡须与粉鼻 -->
     <g id="face-features">
-      <line x1="-10.5" y1="1" x2="-16" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="-10.5" y1="3.2" x2="-15.5" y2="3.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="1" x2="16" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="3.2" x2="15.5" y2="3.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <path d="M -1.5,0.2 L 1.5,0.2 Q 0,2.0 -1.5,0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.85"/>
-      <line x1="0" y1="1.8" x2="0" y2="3.8" stroke="#1E1B18" stroke-width="0.85"/>
-      <g id="mouth-totem">
-        <path d="M -1.8,5.2 L 0,3.8 L 1.8,5.2 Q 0,5.8 -1.8,5.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.75"/>
-        <polygon points="-2.6,3.6 -1.8,5.0 -2.9,5.2" fill="#1E1B18"/>
-        <polygon points="2.6,3.6 1.8,5.0 2.9,5.2" fill="#1E1B18"/>
-        <polygon points="-0.35,6.0 0.35,6.0 0,6.7" fill="#1E1B18"/>
+      <line x1="-9.8" y1="-0.8" x2="-14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="-9.8" y1="1.4" x2="-14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="-0.8" x2="14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="1.4" x2="14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+
+      <path d="M -1.3,-1.2 L 1.3,-1.2 Q 0,0.5 -1.3,-1.2 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.8" stroke-linejoin="round"/>
+      <line x1="0" y1="0.3" x2="0" y2="1.5" stroke="#262422" stroke-width="0.8"/>
+
+      <g id="mouth-skew">
+        <path d="M -1.6,2.6 L 0,1.4 L 1.6,2.6 Q 0,3.2 -1.6,2.6 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.75" stroke-linejoin="round"/>
+        <polygon points="-2.2,1.5 -1.5,2.5 -2.4,2.7" fill="#262422"/>
+        <polygon points="2.2,1.5 1.5,2.5 2.4,2.7" fill="#262422"/>
+        <polygon points="-0.3,3.3 0.3,3.3 0,3.9" fill="#262422"/>
       </g>
-      <path d="M -3.2,9.8 Q 0,11.2 3.2,9.8" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+
+      <path d="M -3.2,9.6 Q 0,10.5 3.2,9.6" fill="none" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
     </g>
 
-    <!-- 左手垂在腹侧 -->
-    <ellipse cx="-8.5" cy="8.5" rx="1.8" ry="2.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" transform="rotate(15 -8.5 8.5)"/>
+    <!-- 左手臂垂放 -->
+    <path d="M -10.5,7.5 Q -13.0,10.5 -11.5,13.5 Q -9.5,14.0 -9.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
 
-    <!-- 右爪抬起挠刘海 -->
-    <g id="paw-scratch">
-      <path d="M 6,-1 C 7.5,-4 7.5,-7 4,-9 C 2.5,-8 3.5,-5 4.5,-2 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" stroke-linejoin="round"/>
-      <circle cx="3.5" cy="-8.5" r="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95"/>
+    <!-- 右手臂挠头动画 -->
+    <g id="arm-scratch">
+      <path d="M 10.5,7.5 Q 13.0,10.5 11.5,13.5 Q 9.5,14.0 9.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 思考问号气泡 -->
-    <g id="bubble-q">
-      <ellipse cx="6" cy="-21" rx="4.5" ry="3.5" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.85"/>
-      <path d="M 3.8,-18.2 L 2,-16.5 L 4.5,-17.5 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.75"/>
-      <text x="6" y="-19.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="4.2" font-weight="bold" fill="#0284C7" text-anchor="middle">?</text>
+    <!-- 问号气泡 -->
+    <g id="question-mark">
+      <ellipse cx="8" cy="-21" rx="4" ry="3.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.8"/>
+      <path d="M 6.5,-22.2 C 6.5,-23.5 9.5,-23.5 9.5,-22.0 C 9.5,-21.0 8.0,-20.5 8.0,-19.5" fill="none" stroke="#3B82F6" stroke-width="1.0" stroke-linecap="round"/>
+      <circle cx="8" cy="-18.2" r="0.4" fill="#3B82F6"/>
+    </g>
+
+    <!-- CPU 干烧冒烟蒸汽 -->
+    <g id="smoke-steam">
+      <path d="M -2,-19 C -4,-21.5 -1,-23 -3,-25" fill="none" stroke="rgba(156,163,175,0.85)" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M 2,-19 C 0,-22 3,-23.5 1.5,-25.5" fill="none" stroke="rgba(156,163,175,0.85)" stroke-width="1.1" stroke-linecap="round"/>
     </g>
   </g>
 </svg>

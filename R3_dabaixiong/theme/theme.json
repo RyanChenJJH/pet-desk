@@ -3,7 +3,7 @@
   "name": "Dabaixiong",
   "author": "Antigravity & User",
   "version": "1.1.0",
-  "description": "Faithful to original art: cylindrical white bear with wide-set bead eyes, drooping bangs, shoulder straps, typing with sparks and snot bubble sleep.",
+  "description": "Authentic fluffy white bear/creature faithfully restored from original drawing, with upright cylindrical body, drooping 3 bangs, wide-set dot eyes, iconic triangle-flanked mouth totem, and waddling duck-step animations.",
   "viewBox": {
     "x": -25,
     "y": -25,
@@ -29,8 +29,8 @@
     ],
     "eyeRatioX": 0.45,
     "eyeRatioY": 0.45,
-    "maxOffset": 2.2,
-    "bodyScale": 0.18,
+    "maxOffset": 2.0,
+    "bodyScale": 0.16,
     "shadowStretch": 0.12,
     "shadowShift": 0.2,
     "ids": {
@@ -83,13 +83,13 @@
       "x": -13,
       "y": -16,
       "w": 26,
-      "h": 34
+      "h": 28
     },
     "sleeping": {
       "x": -13,
-      "y": -8,
+      "y": -4,
       "w": 26,
-      "h": 26
+      "h": 22
     }
   }
 }

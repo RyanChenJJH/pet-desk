@@ -1,124 +1,153 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="fur-grad-roam" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="fur-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="85%" stop-color="#FCFCFD"/>
       <stop offset="100%" stop-color="#EFF2F5"/>
     </linearGradient>
   </defs>
   <style>
-    #shadow-roam {
-      animation: shadow-waddle 0.9s ease-in-out infinite alternate;
-      transform-origin: 1px 18px;
-    }
-    #bear-body-roam {
-      animation: waddle-body 0.9s ease-in-out infinite alternate;
+    #shadow-js {
+      animation: roam-shadow 0.8s ease-in-out infinite;
       transform-origin: 0px 18px;
     }
-    #leg-left {
-      animation: step-feet-l 0.9s ease-in-out infinite;
-      transform-origin: -4px 15px;
+    #body-js {
+      animation: roam-waddle 0.8s ease-in-out infinite;
+      transform-origin: 0px 18px;
     }
-    #leg-right {
-      animation: step-feet-r 0.9s ease-in-out infinite;
-      transform-origin: 5px 15px;
+    #foot-left {
+      animation: step-left 0.8s ease-in-out infinite;
+      transform-origin: -4px 17px;
     }
-    #arm-swing-left {
-      animation: arm-swing-l 0.9s ease-in-out infinite;
-      transform-origin: -6px 8px;
+    #foot-right {
+      animation: step-right 0.8s ease-in-out infinite;
+      transform-origin: 6px 17px;
     }
-    #arm-swing-right {
-      animation: arm-swing-r 0.9s ease-in-out infinite;
-      transform-origin: 6px 8px;
+    #forehead-bangs {
+      animation: bangs-bounce 0.8s ease-in-out infinite;
+      transform-origin: 2px -14px;
     }
-    #bangs-bounce {
-      animation: bangs-bob 0.45s ease-in-out infinite alternate;
-      transform-origin: 4px -14px;
+    #ears-and-spikes {
+      animation: ears-bounce 0.8s ease-in-out infinite;
+      transform-origin: 2px -15px;
     }
-    @keyframes waddle-body {
-      0% { transform: rotate(-4deg) translateY(-0.6px); }
-      100% { transform: rotate(4deg) translateY(0.6px); }
+    @keyframes roam-waddle {
+      0%, 100% { transform: translateY(0px) rotate(-3.5deg); }
+      25% { transform: translateY(-1.2px) rotate(0deg); }
+      50% { transform: translateY(0px) rotate(3.5deg); }
+      75% { transform: translateY(-1.2px) rotate(0deg); }
     }
-    @keyframes shadow-waddle {
-      0% { transform: scale(0.96, 1) translateX(-0.8px); }
-      100% { transform: scale(1.04, 1) translateX(0.8px); }
+    @keyframes roam-shadow {
+      0%, 50%, 100% { transform: scale(1, 1); opacity: 0.12; }
+      25%, 75% { transform: scale(0.9, 0.9); opacity: 0.08; }
     }
-    @keyframes step-feet-l {
-      0%, 100% { transform: rotate(14deg) translateY(-1.2px); }
-      50% { transform: rotate(-14deg) translateY(0.4px); }
+    @keyframes step-left {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      25% { transform: translateY(-2.2px) rotate(6deg); }
+      50% { transform: translateY(0) rotate(0deg); }
+      75% { transform: translateY(0) rotate(-2deg); }
     }
-    @keyframes step-feet-r {
-      0%, 100% { transform: rotate(-14deg) translateY(0.4px); }
-      50% { transform: rotate(14deg) translateY(-1.2px); }
+    @keyframes step-right {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(0) rotate(-4deg); }
+      75% { transform: translateY(-2.2px) rotate(6deg); }
     }
-    @keyframes arm-swing-l {
-      0%, 100% { transform: rotate(-20deg); }
-      50% { transform: rotate(20deg); }
+    @keyframes bangs-bounce {
+      0%, 50%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-0.6px) rotate(-1.5deg); }
+      75% { transform: translateY(-0.6px) rotate(1.5deg); }
     }
-    @keyframes arm-swing-r {
-      0%, 100% { transform: rotate(20deg); }
-      50% { transform: rotate(-20deg); }
-    }
-    @keyframes bangs-bob {
-      0% { transform: rotate(-4deg); }
-      100% { transform: rotate(4deg) translateY(-0.5px); }
+    @keyframes ears-bounce {
+      0%, 50%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-0.8px) rotate(-2deg); }
+      75% { transform: translateY(-0.8px) rotate(2deg); }
     }
   </style>
 
-  <g id="shadow-roam">
-    <ellipse cx="1" cy="18" rx="11" ry="2.2" fill="rgba(0,0,0,0.11)"/>
+  <!-- 地面投影 (roam-shadow) -->
+  <g id="shadow-js">
+    <ellipse cx="1" cy="18" rx="11" ry="2.2" fill="#000000"/>
   </g>
 
-  <g id="bear-body-roam">
-    <g id="leg-left">
-      <ellipse cx="-4" cy="17" rx="3.0" ry="1.6" fill="#EFF2F5" stroke="#1E1B18" stroke-width="0.95"/>
-    </g>
-    <g id="arm-swing-left">
-      <path d="M -6,8 Q -9,11 -7.5,14 Q -5,15 -5,12" fill="#EFF2F5" stroke="#1E1B18" stroke-width="0.95"/>
-    </g>
-
-    <!-- 直筒柱状侧面轮廓 (朝右) -->
-    <path d="
-      M -9,16
-      C -11,14 -10,-4 -8.5,-12
-      C -7.5,-17 0,-20 5,-19
-      C 9,-18 11.5,-13 11.8,-6
-      C 12.2,2 12.5,14 9,16
-      C 5,18 -5,18 -9,16 Z"
-      fill="url(#fur-grad-roam)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
-
-    <!-- 侧面肩带 -->
-    <path d="M -3,6 L 2,12 L 4,11 L -1,5 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
-
-    <!-- 顶角耳簇与杂毛 -->
-    <g id="ears-roam">
-      <path d="M -5,-18 C -7,-21 -3,-22 -2,-18" fill="none" stroke="#1E1B18" stroke-width="1.05" stroke-linecap="round"/>
-      <path d="M 5,-18 C 7,-22 10,-21 8,-17" fill="none" stroke="#1E1B18" stroke-width="1.1" stroke-linecap="round"/>
-      <path d="M 0,-20 Q 1,-22 2,-20.5" fill="none" stroke="#1E1B18" stroke-width="0.9" stroke-linecap="round"/>
+  <!-- 漫步主体 (面朝右侧 Facing Right，整体略微右偏) -->
+  <g id="body-js">
+    <!-- 双脚 (步频左右交替) -->
+    <g id="feet">
+      <ellipse id="foot-left" cx="-4.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <ellipse id="foot-right" cx="6.5" cy="17.2" rx="3.2" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 侧面刘海波浪 -->
-    <g id="bangs-bounce">
-      <path d="M 2,-16 C 4,-12 5,-10 3,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <line x1="4.5" y1="-12" x2="4.8" y2="-10.5" stroke="#1E1B18" stroke-width="0.75" stroke-linecap="round"/>
+    <!-- 直筒躯干 (面朝右微倾) -->
+    <g id="torso">
+      <path id="body-shape" d="
+        M -10.5,16
+        C -12.5,14 -12.0,4 -11.5,-5
+        C -11.2,-11 -10.5,-15.2 -7.5,-16.8
+        C -4.0,-17.5 6.0,-17.5 9.5,-16.8
+        C 12.2,-15.2 13.0,-11 13.2,-5
+        C 13.5,4 13.8,14 12.2,16
+        C 8.2,17.8 -6.5,17.8 -10.5,16 Z"
+        fill="url(#fur-grad)" stroke="#262422" stroke-width="1.05" stroke-linejoin="round"/>
     </g>
 
-    <!-- 侧视面部五官 (朝右注视) -->
-    <g id="face-roam">
-      <circle cx="7.5" cy="-1.5" r="0.75" fill="#1E1B18"/>
-      <line x1="9" y1="1" x2="14" y2="1.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="9" y1="3" x2="13.5" y2="3.4" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <path d="M 9.5,-0.2 L 11.5,-0.2 Q 10.5,1.2 9.5,-0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.8"/>
-      <path d="M 9,4.2 L 10.5,3.6 L 10.2,4.8 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.7"/>
-      <polygon points="10.8,3.5 10.2,4.5 11.0,4.6" fill="#1E1B18"/>
-      <path d="M 5,9 Q 7.5,10.2 10,9.2" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+    <!-- 浅天蓝双肩背带 (右视透视) -->
+    <g id="straps">
+      <path d="M -11.0,11 C -11.0,2 -9.5,-10 -7.8,-14.2 L -5.8,-13.5 C -7.5,-9.5 -9.0,2 -9.0,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
+      <path d="M 11.2,11 C 11.2,2 9.8,-10 8.0,-14.2 L 6.0,-13.5 C 7.8,-9.5 9.2,2 9.2,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
     </g>
 
-    <g id="leg-right">
-      <ellipse cx="5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+    <!-- 头顶尖耳与杂毛 (面朝右侧透视) -->
+    <g id="ears-and-spikes">
+      <path d="M -9.5,-14.5 C -12.6,-16.8 -11.5,-18.5 -7.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="-11.2" y1="-16.0" x2="-12.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M 11.2,-14.5 C 14.5,-16.8 13.2,-18.5 9.0,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="13.0" y1="-16.0" x2="14.5" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -2.5,-17.2 Q -3.8,-19.5 -2.0,-19.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 0,-17.5 Q -0.5,-20.0 1.2,-18.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 3.0,-17.5 Q 3.8,-19.8 4.8,-18.2" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
     </g>
-    <g id="arm-swing-right">
-      <path d="M 6,8 Q 9,11 7.5,14 Q 5,15 5,12" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.05"/>
+
+    <!-- 额前 3 绺刘海与小汗珠 (随步颤动) -->
+    <g id="forehead-bangs">
+      <path d="M -4.2,-14.2 C -3.2,-10.8 -1.8,-9.0 -3.0,-6.0" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -0.5,-14.5 C -0.2,-11.5 0,-9.5 -0.5,-6.5" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M 3.8,-15.0 C 5.2,-11.2 4.8,-8.5 3.2,-5.2" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -4.0,-11.5 Q -3.2,-10.2 -3.8,-9.5" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
+      <path d="M 4.2,-10.8 Q 4.8,-9.6 4.4,-8.8" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
+    </g>
+
+    <!-- 双眼 (面朝右侧视线：右移 +1.2px) -->
+    <g id="eyes">
+      <circle cx="-5.3" cy="-1.8" r="0.75" fill="#262422"/>
+      <circle cx="7.7" cy="-1.3" r="0.75" fill="#262422"/>
+    </g>
+
+    <!-- 面部五官与图腾 (右视透视) -->
+    <g id="face-features">
+      <line x1="-8.8" y1="-0.8" x2="-13.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="-8.8" y1="1.4" x2="-13.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="10.8" y1="-0.8" x2="15.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="10.8" y1="1.4" x2="15.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+
+      <!-- 粉鼻与人中 (右偏 1px) -->
+      <path d="M -0.3,-1.2 L 2.3,-1.2 Q 1.0,0.5 -0.3,-1.2 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.8" stroke-linejoin="round"/>
+      <line x1="1.0" y1="0.3" x2="1.0" y2="1.5" stroke="#262422" stroke-width="0.8"/>
+
+      <!-- 嘴部核心图腾 (右偏 1px) -->
+      <path d="M -0.6,2.6 L 1.0,1.4 L 2.6,2.6 Q 1.0,3.2 -0.6,2.6 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.75" stroke-linejoin="round"/>
+      <polygon points="-1.2,1.5 -0.5,2.5 -1.4,2.7" fill="#262422"/>
+      <polygon points="3.2,1.5 2.5,2.5 3.4,2.7" fill="#262422"/>
+      <polygon points="0.7,3.3 1.3,3.3 1.0,3.9" fill="#262422"/>
+
+      <!-- 双下巴弧线 -->
+      <path d="M -2.2,9.6 Q 1.0,10.5 4.2,9.6" fill="none" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+    </g>
+
+    <!-- 双臂 (前后轻微摆动) -->
+    <g id="arms">
+      <path d="M -9.5,7.5 Q -12.0,10.5 -10.5,13.5 Q -8.5,14.0 -8.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <path d="M 11.5,7.5 Q 14.0,10.5 12.5,13.5 Q 10.5,14.0 10.0,11.2" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
   </g>
 </svg>

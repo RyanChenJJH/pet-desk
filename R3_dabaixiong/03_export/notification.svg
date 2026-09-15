@@ -6,151 +6,156 @@
       <stop offset="100%" stop-color="#EFF2F5"/>
     </linearGradient>
     <linearGradient id="star-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FEF08A"/>
-      <stop offset="50%" stop-color="#FCD34D"/>
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="40%" stop-color="#FDE047"/>
       <stop offset="100%" stop-color="#F59E0B"/>
     </linearGradient>
   </defs>
   <style>
-    #body-notify {
-      animation: jump-shock 1.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+    #shadow-js {
+      animation: notif-shadow 2.6s ease-in-out infinite;
       transform-origin: 0px 18px;
     }
-    #shadow-notify {
-      animation: shadow-shock 1.6s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
-      transform-origin: 0px 18px;
+    #body-js {
+      animation: notif-bounce 2.6s ease-in-out infinite;
+      transform-origin: 0px 16px;
     }
-    #star-prop {
-      animation: star-swing 0.8s ease-in-out infinite alternate;
-      transform-origin: 0px -7px;
+    #star-trophy {
+      animation: star-present 2.6s ease-in-out infinite;
+      transform-origin: 0px 0px;
     }
-    #star-sparks {
-      animation: sparks-pulse 0.8s ease-in-out infinite alternate;
+    #ears-and-spikes {
+      animation: notif-ears 2.6s ease-in-out infinite;
+      transform-origin: 0px -15px;
     }
-    #ears-perk {
-      animation: ears-alert 0.8s ease-in-out infinite alternate;
-      transform-origin: 0px -20px;
+    #mouth-surprise {
+      animation: notif-mouth 2.6s ease-in-out infinite;
+      transform-origin: 0px 2.5px;
     }
-
-    @keyframes jump-shock {
-      0%, 100% { transform: translateY(0px) scale(1, 1); }
-      15% { transform: translateY(1.2px) scale(1.06, 0.94); }
-      35% { transform: translateY(-4.5px) scale(0.95, 1.05); }
-      55% { transform: translateY(0px) scale(1.08, 0.92); }
-      70% { transform: translateY(-1.2px) scale(0.98, 1.02); }
-      85% { transform: translateY(0px) scale(1, 1); }
+    @keyframes notif-bounce {
+      0%, 100% { transform: translateY(0) scale(1, 1); }
+      12% { transform: translateY(1.5px) scale(1.08, 0.92); }
+      22% { transform: translateY(-4.5px) scale(0.94, 1.06); }
+      32% { transform: translateY(-3.5px) scale(1.0, 1.0); }
+      40% { transform: translateY(0.5px) scale(1.04, 0.96); }
+      46% { transform: translateY(-0.8px); }
+      52%, 92% { transform: translateY(0); }
     }
-    @keyframes shadow-shock {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      15% { transform: scale(1.08); opacity: 1; }
-      35% { transform: scale(0.68); opacity: 0.45; }
-      55% { transform: scale(1.16); opacity: 1; }
-      70% { transform: scale(0.92); opacity: 0.75; }
-      85% { transform: scale(1); opacity: 0.9; }
+    @keyframes notif-shadow {
+      0%, 100% { transform: scale(1, 1); opacity: 0.12; }
+      12% { transform: scale(1.15, 1.15); opacity: 0.15; }
+      22% { transform: scale(0.65, 0.65); opacity: 0.05; }
+      32% { transform: scale(0.75, 0.75); opacity: 0.07; }
+      40% { transform: scale(1.08, 1.08); opacity: 0.14; }
+      52%, 92% { transform: scale(1, 1); opacity: 0.12; }
     }
-    @keyframes star-swing {
-      0% { transform: rotate(-14deg) scale(1); }
-      100% { transform: rotate(14deg) scale(1.1); }
+    @keyframes notif-ears {
+      0%, 100% { transform: scale(1); }
+      15%, 35% { transform: scale(1.18) rotate(3deg); }
+      25% { transform: scale(1.22) rotate(-3deg); }
+      45%, 90% { transform: scale(1); }
     }
-    @keyframes sparks-pulse {
-      0% { opacity: 0.3; transform: scale(0.85); }
-      100% { opacity: 1; transform: scale(1.15); }
+    @keyframes notif-mouth {
+      0%, 100% { transform: scale(1); }
+      18%, 45% { transform: scale(1.4, 1.6) translateY(0.4px); }
+      50%, 90% { transform: scale(1.1, 1.1); }
     }
-    @keyframes ears-alert {
-      0% { transform: scaleY(1); }
-      100% { transform: scaleY(1.12); }
+    @keyframes star-present {
+      0%, 15%, 100% { opacity: 0; transform: scale(0) translateY(10px) rotate(-30deg); }
+      28% { opacity: 1; transform: scale(1.15) translateY(-14px) rotate(10deg); }
+      36% { transform: scale(1) translateY(-12px) rotate(-8deg); }
+      44%, 78% { opacity: 1; transform: scale(1.05) translateY(-13px) rotate(6deg); }
+      52%, 86% { opacity: 1; transform: scale(1.02) translateY(-12.5px) rotate(-4deg); }
+      92% { opacity: 0; transform: scale(0.2) translateY(5px); }
     }
   </style>
 
-  <!-- 地面阴影 -->
-  <g id="shadow-notify">
-    <ellipse cx="0" cy="18" rx="11" ry="2.2" fill="rgba(0,0,0,0.12)"/>
+  <g id="shadow-js">
+    <ellipse cx="0" cy="18" rx="11.5" ry="2.2" fill="#000000"/>
   </g>
 
-  <!-- 身体与装饰 -->
-  <g id="body-notify">
+  <g id="body-js">
     <g id="feet">
-      <ellipse cx="-5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
-      <ellipse cx="5.5" cy="17.5" rx="3.2" ry="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="1.0"/>
+      <ellipse id="foot-left" cx="-5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <ellipse id="foot-right" cx="5.2" cy="17.2" rx="3.0" ry="1.5" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 直筒柱身 -->
-    <path d="
-      M -11,16
-      C -13,15 -12,2 -11.5,-6
-      C -11.2,-13 -10.5,-18 -7,-20
-      C -3,-21 3,-21 7,-20
-      C 10.5,-18 11.2,-13 11.5,-6
-      C 12,2 13,15 11,16
-      C 7,18 -7,18 -11,16 Z"
-      fill="url(#fur-grad)" stroke="#1E1B18" stroke-width="1.15" stroke-linejoin="round"/>
+    <g id="torso">
+      <path id="body-shape" d="
+        M -11.5,16
+        C -13.0,14 -12.5,4 -12.2,-5
+        C -12.0,-11 -11.2,-15.2 -8.5,-16.8
+        C -5.0,-17.5 5.0,-17.5 8.5,-16.8
+        C 11.2,-15.2 12.0,-11 12.2,-5
+        C 12.5,4 13.0,14 11.5,16
+        C 7.5,17.8 -7.5,17.8 -11.5,16 Z"
+        fill="url(#fur-grad)" stroke="#262422" stroke-width="1.05" stroke-linejoin="round"/>
+    </g>
 
-    <!-- 浅蓝肩带 -->
     <g id="straps">
-      <path d="M -11,10 C -11,1 -9.5,-12 -8,-16 L -6,-15 C -7.5,-11 -9,1 -9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
-      <path d="M 11,10 C 11,1 9.5,-12 8,-16 L 6,-15 C 7.5,-11 9,1 9,10 Z" fill="#95BEE6" stroke="#1E1B18" stroke-width="0.85"/>
+      <path d="M -11.8,11 C -11.8,2 -10.2,-10 -8.5,-14.2 L -6.5,-13.5 C -8.2,-9.5 -9.8,2 -9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
+      <path d="M 11.8,11 C 11.8,2 10.2,-10 8.5,-14.2 L 6.5,-13.5 C 8.2,-9.5 9.8,2 9.8,11 Z" fill="#98BEDE" stroke="#262422" stroke-width="0.8"/>
     </g>
 
-    <!-- 头顶尖耳与杂毛 (惊喜欢呼竖耳) -->
-    <g id="ears-perk">
-      <path d="M -10,-17 C -13.5,-21 -11.5,-23 -7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.15" stroke-linecap="round"/>
-      <path d="M 10,-17 C 13.5,-21 11.5,-23 7.5,-20" fill="none" stroke="#1E1B18" stroke-width="1.15" stroke-linecap="round"/>
-      <path d="M -1,-21 Q 0,-24.5 1,-21" fill="none" stroke="#1E1B18" stroke-width="1.0" stroke-linecap="round"/>
+    <g id="ears-and-spikes">
+      <path d="M -10.5,-14.5 C -13.6,-16.8 -12.5,-18.5 -8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="-12.2" y1="-16.0" x2="-13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M 10.5,-14.5 C 13.6,-16.8 12.5,-18.5 8.2,-16.8" fill="none" stroke="#262422" stroke-width="1.05" stroke-linecap="round"/>
+      <line x1="12.2" y1="-16.0" x2="13.8" y2="-15.5" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -3.5,-17.2 Q -4.8,-19.5 -3.0,-19.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M -1.2,-17.5 Q -1.5,-20.0 0,-18.0" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
+      <path d="M 1.8,-17.5 Q 2.5,-19.8 3.5,-18.2" fill="none" stroke="#262422" stroke-width="0.85" stroke-linecap="round"/>
     </g>
 
-    <!-- 额前刘海与汗滴 -->
     <g id="forehead-bangs">
-      <path d="M -6.5,-16 C -5.5,-12 -3.5,-10 -5,-7" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M -2.5,-16 C -2,-13 -1.5,-11 -2,-7.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <path d="M 3.5,-17 C 5,-13 4.5,-10 3,-6.5" fill="none" stroke="#1E1B18" stroke-width="0.95" stroke-linecap="round"/>
-      <line x1="-5.2" y1="-13.5" x2="-5" y2="-12" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
-      <line x1="4.2" y1="-13" x2="4.5" y2="-11.5" stroke="#1E1B18" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -5.2,-14.2 C -4.2,-10.8 -2.8,-9.0 -4.0,-6.0" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -1.5,-14.5 C -1.2,-11.5 -1.0,-9.5 -1.5,-6.5" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M 2.8,-15.0 C 4.2,-11.2 3.8,-8.5 2.2,-5.2" fill="none" stroke="#262422" stroke-width="0.95" stroke-linecap="round"/>
+      <path d="M -5.0,-11.5 Q -4.2,-10.2 -4.8,-9.5" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
+      <path d="M 3.2,-10.8 Q 3.8,-9.6 3.4,-8.8" fill="none" stroke="#262422" stroke-width="0.75" stroke-linecap="round"/>
     </g>
 
-    <!-- 惊喜大眼睛 -->
-    <circle cx="-7.5" cy="-0.5" r="0.9" fill="#1E1B18"/>
-    <circle cx="7.5" cy="-0.5" r="0.9" fill="#1E1B18"/>
+    <g id="eyes">
+      <circle cx="-6.5" cy="-1.8" r="0.85" fill="#262422"/>
+      <circle cx="6.5" cy="-1.3" r="0.85" fill="#262422"/>
+    </g>
 
-    <!-- 面部胡须与粉鼻 -->
     <g id="face-features">
-      <line x1="-10.5" y1="1" x2="-16" y2="0.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="-10.5" y1="3.2" x2="-15.5" y2="4.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="1" x2="16" y2="0.8" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <line x1="10.5" y1="3.2" x2="15.5" y2="4.2" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
-      <path d="M -1.5,0.2 L 1.5,0.2 Q 0,2.0 -1.5,0.2 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.85"/>
-      <line x1="0" y1="1.8" x2="0" y2="3.8" stroke="#1E1B18" stroke-width="0.85"/>
-      
-      <!-- 惊喜微张粉口与图腾三角 -->
-      <g id="mouth-totem">
-        <path d="M -2.0,5.0 L 0,3.5 L 2.0,5.0 Q 0,6.5 -2.0,5.0 Z" fill="#F4A3B4" stroke="#1E1B18" stroke-width="0.8"/>
-        <polygon points="-2.7,3.6 -1.8,5.0 -3.0,5.4" fill="#1E1B18"/>
-        <polygon points="2.7,3.6 1.8,5.0 3.0,5.4" fill="#1E1B18"/>
-        <polygon points="-0.4,6.2 0.4,6.2 0,7.0" fill="#1E1B18"/>
+      <line x1="-9.8" y1="-0.8" x2="-14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="-9.8" y1="1.4" x2="-14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="-0.8" x2="14.5" y2="-0.8" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="9.8" y1="1.4" x2="14.0" y2="2.0" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
+
+      <path d="M -1.3,-1.2 L 1.3,-1.2 Q 0,0.5 -1.3,-1.2 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.8" stroke-linejoin="round"/>
+      <line x1="0" y1="0.3" x2="0" y2="1.5" stroke="#262422" stroke-width="0.8"/>
+
+      <g id="mouth-surprise">
+        <path d="M -1.6,2.6 L 0,1.4 L 1.6,2.6 Q 0,3.2 -1.6,2.6 Z" fill="#E9B4BE" stroke="#262422" stroke-width="0.75" stroke-linejoin="round"/>
+        <polygon points="-2.2,1.5 -1.5,2.5 -2.4,2.7" fill="#262422"/>
+        <polygon points="2.2,1.5 1.5,2.5 2.4,2.7" fill="#262422"/>
+        <polygon points="-0.3,3.3 0.3,3.3 0,3.9" fill="#262422"/>
       </g>
-      <path d="M -3.2,10.0 Q 0,11.5 3.2,10.0" fill="none" stroke="#1E1B18" stroke-width="0.85" stroke-linecap="round"/>
+
+      <path d="M -3.2,9.6 Q 0,10.5 3.2,9.6" fill="none" stroke="#262422" stroke-width="0.8" stroke-linecap="round"/>
     </g>
 
-    <!-- 双爪高举捧星 -->
-    <g id="arms-raised">
-      <path d="M -9,7 C -12,4 -11,-2 -6,-3 C -4,-1 -6,4 -7,8 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" stroke-linejoin="round"/>
-      <circle cx="-5" cy="-3.5" r="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95"/>
-
-      <path d="M 9,7 C 12,4 11,-2 6,-3 C 4,-1 6,4 7,8 Z" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95" stroke-linejoin="round"/>
-      <circle cx="5" cy="-3.5" r="1.6" fill="#FFFFFF" stroke="#1E1B18" stroke-width="0.95"/>
+    <!-- 双爪高举 -->
+    <g id="arms">
+      <path d="M -10,7.5 Q -14,5 -12,2 Q -9.5,4 -8.5,8" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
+      <path d="M 10,7.5 Q 14,5 12,2 Q 9.5,4 8.5,8" fill="#FFFFFF" stroke="#262422" stroke-width="0.95"/>
     </g>
 
-    <!-- 高举挥舞的金黄五角星 -->
-    <g id="star-prop">
-      <!-- 经典五角星 -->
-      <polygon points="0,-12 1.8,-6.5 7.5,-6.5 3.0,-2.5 4.8,3.2 0,-0.2 -4.8,3.2 -3.0,-2.5 -7.5,-6.5 -1.8,-6.5"
-               fill="url(#star-grad)" stroke="#D97706" stroke-width="0.75" stroke-linejoin="round"/>
-    </g>
-
-    <!-- 四散闪烁星芒 -->
-    <g id="star-sparks">
-      <path d="M -9,-10 L -12,-11 M 9,-10 L 12,-11 M 0,-15 L 0,-18" stroke="#F59E0B" stroke-width="0.9" stroke-linecap="round"/>
-      <circle cx="-8" cy="-14" r="0.6" fill="#FEF08A"/>
-      <circle cx="8" cy="-14" r="0.6" fill="#FEF08A"/>
+    <!-- 发光大星星饼干 (变出并高举摇晃) -->
+    <g id="star-trophy">
+      <!-- 闪耀金色外光晕 -->
+      <polygon points="0,-18 3.5,-11 11,-10 5.5,-5 7.5,2 0,-2 -7.5,2 -5.5,-5 -11,-10 -3.5,-11"
+        fill="rgba(254, 240, 138, 0.55)" stroke="#F59E0B" stroke-width="0.8" stroke-linejoin="round"/>
+      <polygon points="0,-17 3.0,-11.5 9.5,-10.8 4.8,-6.5 6.5,-0.5 0,-4 -6.5,-0.5 -4.8,-6.5 -9.5,-10.8 -3.0,-11.5"
+        fill="url(#star-grad)" stroke="#B45309" stroke-width="0.9" stroke-linejoin="round"/>
+      <!-- 星星可爱笑脸点缀 -->
+      <circle cx="-1.8" cy="-9.5" r="0.45" fill="#78350F"/>
+      <circle cx="1.8" cy="-9.5" r="0.45" fill="#78350F"/>
+      <path d="M -1.0,-7.8 Q 0,-6.8 1.0,-7.8" fill="none" stroke="#78350F" stroke-width="0.4" stroke-linecap="round"/>
     </g>
   </g>
 </svg>
