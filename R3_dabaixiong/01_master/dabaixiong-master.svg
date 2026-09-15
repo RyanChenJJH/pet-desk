@@ -1,0 +1,109 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="80%" stop-color="#FDFAF7"/>
+      <stop offset="100%" stop-color="#ECE7E1"/>
+    </linearGradient>
+    <linearGradient id="cookie-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="bubble-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.85)"/>
+      <stop offset="40%" stop-color="rgba(186,230,253,0.55)"/>
+      <stop offset="100%" stop-color="rgba(125,211,252,0.75)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 1. 地面投影层 (对标 Clawd #shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 0px 18px">
+    <ellipse cx="0" cy="18" rx="13" ry="2.8" fill="rgba(0,0,0,0.12)"/>
+  </g>
+
+  <!-- 2. 角色本体整体整合层 (对标 Clawd #body-js) -->
+  <g id="body-js" style="transform-origin: 0px 16px">
+    
+    <!-- 2.1 脚丫 (Feet) -->
+    <g id="feet">
+      <ellipse id="foot-left" cx="-6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <ellipse id="foot-right" cx="6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    </g>
+
+    <!-- 2.2 大白熊肥美主躯干 (Torso & Head) -->
+    <g id="torso">
+      <path id="body-shape" d="
+        M -12,16 
+        C -16,15 -14,-4 -12,-12
+        C -11,-17 -6,-20 0,-20
+        C 6,-20 11,-17 12,-12
+        C 14,-4 16,15 12,16
+        C 8,18.5 -8,18.5 -12,16 Z"
+        fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+    </g>
+
+    <!-- 2.3 经典浅天蓝背带裤 (方案 A) -->
+    <g id="overalls">
+      <path d="M -12.5,13.5 C -13,16 -7,18 0,18 C 7,18 13,16 12.5,13.5 C 12,10 9,10 0,10 C -9,10 -12,10 -12.5,13.5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
+      <path d="M -9,4 L -7,11 L -5,11 L -7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="-6" cy="10.5" r="0.75" fill="#2563EB"/>
+      <path d="M 9,4 L 7,11 L 5,11 L 7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="6" cy="10.5" r="0.75" fill="#2563EB"/>
+    </g>
+
+    <!-- 2.4 双耳 (Ears) -->
+    <g id="ears">
+      <g id="ear-left" style="transform-origin: -10px -18px">
+        <path d="M -12,-16 C -14,-21 -8,-22 -7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+        <path d="M -11,-17 C -12,-19.5 -9,-20 -8.5,-17.5" fill="#ECE7E1"/>
+      </g>
+      <g id="ear-right" style="transform-origin: 10px -18px">
+        <path d="M 12,-16 C 14,-21 8,-22 7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+        <path d="M 11,-17 C 12,-19.5 9,-20 8.5,-17.5" fill="#ECE7E1"/>
+      </g>
+    </g>
+
+    <!-- 2.5 头顶呆毛与额头小汗珠 -->
+    <g id="head-tufts">
+      <path d="M -2,-20 Q -4,-23 -3,-24 Q -1,-22 -0.5,-20" fill="none" stroke="#2B2523" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M 0.5,-20 Q 2,-23.5 3,-23 Q 2.5,-21 1.5,-20" fill="none" stroke="#2B2523" stroke-width="1.1" stroke-linecap="round"/>
+      <circle cx="-4" cy="-14" r="0.4" fill="#60A5FA"/>
+      <circle cx="5" cy="-13" r="0.4" fill="#60A5FA"/>
+    </g>
+
+    <!-- 2.6 呆萌小点眼系统 (对标 Clawd #eyes-js) -->
+    <g id="eyes-js" style="transform-origin: 0px -2.5px">
+      <circle id="eye-left" cx="-7.5" cy="-2.5" r="0.9" fill="#1C1917"/>
+      <circle id="eye-right" cx="7.5" cy="-2.5" r="0.9" fill="#1C1917"/>
+    </g>
+
+    <!-- 2.7 面部细节：胡须、三角鼻、嘴巴与双下巴褶 -->
+    <g id="face-details">
+      <line x1="-12" y1="-1" x2="-17" y2="-1.5" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="-12" y1="1.5" x2="-16.5" y2="2" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="12" y1="-1" x2="17" y2="-1.5" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+      <line x1="12" y1="1.5" x2="16.5" y2="2" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+
+      <path id="nose" d="M -1.8,-0.5 L 1.8,-0.5 Q 0,1.8 -1.8,-0.5 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9" stroke-linejoin="round"/>
+      <line x1="0" y1="1.2" x2="0" y2="3.2" stroke="#2B2523" stroke-width="0.9"/>
+      <path id="mouth" d="M -2,4.8 Q 0,3.2 2,4.8 Q 0,5.6 -2,4.8 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.8"/>
+      <line x1="-2.8" y1="3.2" x2="-1.8" y2="4.5" stroke="#2B2523" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="2.8" y1="3.2" x2="1.8" y2="4.5" stroke="#2B2523" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="0" y1="6.0" x2="0" y2="6.6" stroke="#2B2523" stroke-width="0.7"/>
+
+      <path id="double-chin" d="M -3.5,9.5 Q 0,11 3.5,9.5" fill="none" stroke="#2B2523" stroke-width="0.85" stroke-linecap="round"/>
+    </g>
+
+    <!-- 2.8 肉肉手臂 -->
+    <g id="arms">
+      <g id="arm-left" style="transform-origin: -11px 9px">
+        <path d="M -11,9 Q -15,12 -13,15 Q -10,16 -9.5,13" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      </g>
+      <g id="arm-right" style="transform-origin: 11px 9px">
+        <path d="M 11,9 Q 15,12 13,15 Q 10,16 9.5,13" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      </g>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,216 @@
+﻿<svg viewBox="-20 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clock-case-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAD285"/>
+      <stop offset="35%" stop-color="#E29D42"/>
+      <stop offset="100%" stop-color="#B87326"/>
+    </linearGradient>
+    <radialGradient id="bell-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="60%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </radialGradient>
+    <style>
+      @keyframes sleep-body {
+        0%, 100% {
+          transform: rotate(12deg) translateY(0) scale(1);
+        }
+        50% {
+          transform: rotate(12deg) translateY(0.4px) scale(1.02, 0.98);
+        }
+      }
+      @keyframes sleep-shadow {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 0.15;
+        }
+        50% {
+          transform: scale(1.04, 0.96);
+          opacity: 0.18;
+        }
+      }
+      @keyframes sleep-eyes-breathe {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(0.3px) scale(1.02, 0.95);
+        }
+      }
+      @keyframes zzz-drift {
+        0% {
+          opacity: 0;
+          transform: translate(0px, 0px) scale(0.7);
+        }
+        20% {
+          opacity: 0.65;
+        }
+        50% {
+          opacity: 0.85;
+          transform: translate(4px, -6px) scale(1.0);
+        }
+        80% {
+          opacity: 0.55;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(8px, -12px) scale(1.25);
+        }
+      }
+      @keyframes hand-droop-minute {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(2deg); }
+      }
+      @keyframes hand-droop-hour {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(1deg); }
+      }
+      @keyframes arm-droop-left {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-1.5deg) translateY(0.2px); }
+      }
+      @keyframes arm-droop-right {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(1.5deg) translateY(0.2px); }
+      }
+      @keyframes hammer-droop {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-1.2deg); }
+      }
+
+      #body-js { animation: sleep-body 4.0s ease-in-out infinite; transform-origin: 5px 18px; }
+      #shadow-js { animation: sleep-shadow 4.0s ease-in-out infinite; transform-origin: 5px 18px; }
+      #windup-key { animation: sleep-body 4.0s ease-in-out infinite; transform-origin: 5px 18px; }
+      #eyes-js { animation: sleep-eyes-breathe 4.0s ease-in-out infinite; transform-origin: 5px 2px; }
+      #hour-hand { animation: hand-droop-hour 4.0s ease-in-out infinite; transform-origin: 5px 2px; }
+      #minute-hand { animation: hand-droop-minute 4.0s ease-in-out infinite; transform-origin: 5px 2px; }
+      #arm-left { animation: arm-droop-left 4.0s ease-in-out infinite; transform-origin: -7px 3px; }
+      #arm-right { animation: arm-droop-right 4.0s ease-in-out infinite; transform-origin: 17px 3px; }
+      #alarm-hammer { animation: hammer-droop 4.0s ease-in-out infinite; transform-origin: 5px -5px; }
+      #zzz-1 { animation: zzz-drift 3.6s ease-in-out infinite 0s; transform-origin: 12.5px -2.5px; }
+      #zzz-2 { animation: zzz-drift 3.6s ease-in-out infinite -1.2s; transform-origin: 12.5px -2.5px; }
+      #zzz-3 { animation: zzz-drift 3.6s ease-in-out infinite -2.4s; transform-origin: 12.5px -2.5px; }
+    </style>
+  </defs>
+
+  <!-- 1. 投影层 (#shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 5px 18px">
+    <ellipse cx="6" cy="18" rx="10.5" ry="2.3" fill="rgba(0,0,0,0.15)"/>
+  </g>
+
+  <!-- 2. 背后发条钥匙层 (#windup-key) -->
+  <g id="windup-key" style="transform-origin: 5px 18px">
+    <path d="M -7 2 L -11 2" stroke="#4B5563" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="-12" cy="2" r="2.2" fill="none" stroke="#4B5563" stroke-width="1.2"/>
+  </g>
+
+  <!-- 3. 机械躯干与底盘整合层 (#body-js) -->
+  <g id="body-js">
+    <!-- 3.1 机械足部 (#feet) -->
+    <g id="feet">
+      <g id="leg-left" style="transform-origin: 1px 12.5px">
+        <path d="M 1 12.5 Q -1.8 15.5 0 18.5" stroke="#374151" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="0" cy="18.5" rx="2.5" ry="1.1" fill="#1F2937"/>
+      </g>
+      <g id="leg-right" style="transform-origin: 9px 12.5px">
+        <path d="M 9 12.5 Q 11.8 14.5 10.3 16.5" stroke="#374151" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="10.3" cy="16.5" rx="2.5" ry="1.1" fill="#1F2937"/>
+      </g>
+    </g>
+
+    <!-- 3.2 钟体外壳 (#clock-shell) -->
+    <g id="clock-shell">
+      <circle cx="5" cy="2" r="12" fill="url(#clock-case-grad)" stroke="#1F2937" stroke-width="1.2"/>
+      <!-- 外壳底部左右固定支架小支角 -->
+      <polygon points=" -4,11 -6,14 -3,13 " fill="#B87326" stroke="#1F2937" stroke-width="0.8"/>
+      <polygon points=" 14,11 16,14 13,13 " fill="#B87326" stroke="#1F2937" stroke-width="0.8"/>
+    </g>
+
+    <!-- 3.3 机械手臂 (#arms) -->
+    <g id="arms">
+      <g id="arm-left" style="transform-origin: -7px 3px">
+        <path d="M -7 3 Q -9.5 8 -8 13.5" stroke="#374151" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="-8" cy="14" r="1.4" fill="#E29D42" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+      <g id="arm-right" style="transform-origin: 17px 3px">
+        <path d="M 17 3 Q 19.2 8 18 13" stroke="#374151" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="18" cy="13.5" r="1.4" fill="#E29D42" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+    </g>
+
+    <!-- 3.4 钟面表盘与刻度 (#dial-group) -->
+    <g id="dial-group">
+      <circle cx="5" cy="2" r="9.2" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="0.8"/>
+      <circle cx="5" cy="-6" r="0.6" fill="#64748B"/>
+      <circle cx="13" cy="2" r="0.6" fill="#64748B"/>
+      <circle cx="5" cy="10" r="0.6" fill="#64748B"/>
+      <circle cx="-3" cy="2" r="0.6" fill="#64748B"/>
+    </g>
+
+    <!-- 3.5 指针系统 (#clock-hands) -->
+    <g id="clock-hands" style="transform-origin: 5px 2px">
+      <!-- 时针：无力垂向约 5:00 方向 -->
+      <line id="hour-hand" x1="5" y1="2" x2="7.3" y2="5.8" stroke="#1E293B" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- 分针：无力垂向约 5:30 方向 -->
+      <line id="minute-hand" x1="5" y1="2" x2="6.2" y2="7.8" stroke="#1E293B" stroke-width="1.0" stroke-linecap="round"/>
+      <!-- 轴心红点 -->
+      <circle cx="5" cy="2" r="1.1" fill="#EF4444" stroke="#1F2937" stroke-width="0.6"/>
+    </g>
+
+    <!-- 3.6 拟人大眼睛闭目休眠态 (#eyes-js) -->
+    <g id="eyes-js" style="transform-origin: 5px 2px">
+      <!-- 左眼闭目弧线 -->
+      <g id="eye-left">
+        <path d="M 0.2 0.8 Q 2 2.7 3.8 0.8" stroke="#0F172A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <line x1="0.4" y1="1.1" x2="-0.3" y2="1.8" stroke="#0F172A" stroke-width="0.9" stroke-linecap="round"/>
+        <line x1="3.6" y1="1.1" x2="4.3" y2="1.8" stroke="#0F172A" stroke-width="0.9" stroke-linecap="round"/>
+        <!-- 睡颜粉扑红晕 -->
+        <ellipse cx="0.8" cy="3.2" rx="1.5" ry="0.8" fill="#FCA5A5" opacity="0.6"/>
+      </g>
+      <!-- 右眼闭目弧线 -->
+      <g id="eye-right">
+        <path d="M 6.2 0.8 Q 8 2.7 9.8 0.8" stroke="#0F172A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <line x1="6.4" y1="1.1" x2="5.7" y2="1.8" stroke="#0F172A" stroke-width="0.9" stroke-linecap="round"/>
+        <line x1="9.6" y1="1.1" x2="10.3" y2="1.8" stroke="#0F172A" stroke-width="0.9" stroke-linecap="round"/>
+        <!-- 睡颜粉扑红晕 -->
+        <ellipse cx="9.2" cy="3.2" rx="1.5" ry="0.8" fill="#FCA5A5" opacity="0.6"/>
+      </g>
+    </g>
+
+    <!-- 3.7 头顶双耳铜铃与摇摆小锤 (#bell-rig) -->
+    <g id="bell-rig">
+      <g id="bell-left" style="transform-origin: -3px -7px">
+        <path d="M -7 -6 C -7 -11 -1 -11 -1 -6 Z" fill="url(#bell-grad)" stroke="#1F2937" stroke-width="1"/>
+      </g>
+      <g id="bell-right" style="transform-origin: 13px -7px">
+        <path d="M 11 -6 C 11 -11 17 -11 17 -6 Z" fill="url(#bell-grad)" stroke="#1F2937" stroke-width="1"/>
+      </g>
+      <g id="alarm-hammer" style="transform-origin: 5px -5px">
+        <line x1="5" y1="-5" x2="6.8" y2="-9.2" stroke="#4B5563" stroke-width="1.2"/>
+        <circle cx="6.8" cy="-9.2" r="1.2" fill="#1F2937"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 4. 休眠 Zzz 气泡群 (#zzz-bubbles) -->
+  <g id="zzz-bubbles">
+    <!-- 气泡 1 (初始小 z，近身处) -->
+    <g id="zzz-1">
+      <circle cx="12.5" cy="-2.5" r="2.6" fill="#EEF2FF" fill-opacity="0.45" stroke="#818CF8" stroke-width="0.75"/>
+      <path d="M 11.4 -3.6 L 13.6 -3.6 L 11.4 -1.4 L 13.6 -1.4" stroke="#4F46E5" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="11.8" cy="-3.2" r="0.5" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+    <!-- 气泡 2 (漂移中 z) -->
+    <g id="zzz-2">
+      <circle cx="12.5" cy="-2.5" r="3.2" fill="#EEF2FF" fill-opacity="0.45" stroke="#818CF8" stroke-width="0.8"/>
+      <path d="M 11.2 -3.8 L 13.8 -3.8 L 11.2 -1.2 L 13.8 -1.2" stroke="#4F46E5" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="11.6" cy="-3.3" r="0.6" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+    <!-- 气泡 3 (升空大 Z) -->
+    <g id="zzz-3">
+      <circle cx="12.5" cy="-2.5" r="3.9" fill="#EEF2FF" fill-opacity="0.45" stroke="#818CF8" stroke-width="0.85"/>
+      <path d="M 10.9 -4.2 L 14.1 -4.2 L 10.9 -0.8 L 14.1 -0.8" stroke="#4338CA" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="11.5" cy="-3.5" r="0.7" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+  </g>
+</svg>

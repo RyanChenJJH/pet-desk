@@ -1,0 +1,121 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="80%" stop-color="#FDFAF7"/>
+      <stop offset="100%" stop-color="#ECE7E1"/>
+    </linearGradient>
+  </defs>
+  <style>
+    #arm-scratch {
+      animation: paw-scratch 1.6s ease-in-out infinite;
+      transform-origin: 10px -10px;
+    }
+    #question-bubble {
+      animation: bubble-fade 3.2s ease-in-out infinite;
+      transform-origin: -10px -22px;
+    }
+    #steam-left {
+      animation: steam-rise 2.4s ease-out infinite;
+      transform-origin: -4px -21px;
+    }
+    #steam-right {
+      animation: steam-rise 2.4s ease-out 0.8s infinite;
+      transform-origin: 4px -21px;
+    }
+    #eyes-cross {
+      animation: cross-drift 3.2s ease-in-out infinite;
+    }
+    @keyframes paw-scratch {
+      0%, 100% { transform: rotate(0deg); }
+      30% { transform: rotate(-16deg); }
+      50% { transform: rotate(-5deg); }
+      70% { transform: rotate(-18deg); }
+    }
+    @keyframes bubble-fade {
+      0%, 100% { opacity: 0; transform: scale(0.6) translateY(2px); }
+      20%, 50% { opacity: 1; transform: scale(1) translateY(0); }
+      60% { opacity: 0; transform: scale(1.1) translateY(-2px); }
+    }
+    @keyframes steam-rise {
+      0% { opacity: 0; transform: translateY(0) scale(0.6); }
+      30% { opacity: 0.85; }
+      80% { opacity: 0.3; transform: translateY(-7px) scale(1.2); }
+      100% { opacity: 0; transform: translateY(-10px) scale(1.4); }
+    }
+    @keyframes cross-drift {
+      0%, 100% { transform: translateX(0); }
+      40%, 60% { transform: translateX(1px); }
+    }
+  </style>
+
+  <g id="shadow-think">
+    <ellipse cx="0" cy="18" rx="13" ry="2.8" fill="rgba(0,0,0,0.12)"/>
+  </g>
+
+  <g id="body-think">
+    <g id="feet">
+      <ellipse cx="-6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <ellipse cx="6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    </g>
+    <path d="M -12,16 C -16,15 -14,-4 -12,-12 C -11,-17 -6,-20 0,-20 C 6,-20 11,-17 12,-12 C 14,-4 16,15 12,16 C 8,18.5 -8,18.5 -12,16 Z" fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+    
+    <g id="overalls">
+      <path d="M -12.5,13.5 C -13,16 -7,18 0,18 C 7,18 13,16 12.5,13.5 C 12,10 9,10 0,10 C -9,10 -12,10 -12.5,13.5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
+      <path d="M -9,4 L -7,11 L -5,11 L -7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="-6" cy="10.5" r="0.75" fill="#2563EB"/>
+      <path d="M 9,4 L 7,11 L 5,11 L 7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="6" cy="10.5" r="0.75" fill="#2563EB"/>
+    </g>
+
+    <g id="ears">
+      <path d="M -12,-16 C -14,-21 -8,-22 -7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+      <path d="M 12,-16 C 14,-21 8,-22 7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+    </g>
+
+    <!-- 呆毛 -->
+    <path d="M -2,-20 Q -4,-23 -3,-24 Q -1,-22 -0.5,-20" fill="none" stroke="#2B2523" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="M 0.5,-20 Q 2,-23.5 3,-23 Q 2.5,-21 1.5,-20" fill="none" stroke="#2B2523" stroke-width="1.1" stroke-linecap="round"/>
+
+    <!-- 斗鸡眼 (两眼向鼻梁靠拢) -->
+    <g id="eyes-cross">
+      <circle cx="-5.5" cy="-2.5" r="0.9" fill="#1C1917"/>
+      <circle cx="5.5" cy="-2.5" r="0.9" fill="#1C1917"/>
+    </g>
+
+    <!-- 面部表情 (嘴巴歪向左侧) -->
+    <g id="face-think">
+      <path d="M -1.8,-0.5 L 1.8,-0.5 Q 0,1.8 -1.8,-0.5 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9"/>
+      <line x1="0" y1="1.2" x2="-1" y2="3.2" stroke="#2B2523" stroke-width="0.9"/>
+      <path d="M -3.5,4.6 Q -1,3.5 0.5,5" fill="none" stroke="#2B2523" stroke-width="0.9"/>
+      <path d="M -3.5,9.5 Q 0,11 3.5,9.5" fill="none" stroke="#2B2523" stroke-width="0.85" stroke-linecap="round"/>
+    </g>
+
+    <!-- 左手托腮下巴 -->
+    <g id="arm-left-rest">
+      <path d="M -11,9 Q -12,13 -6,11" fill="none" stroke="#FDFAF7" stroke-width="2.6" stroke-linecap="round"/>
+      <ellipse cx="-5.5" cy="10.8" rx="1.6" ry="1.2" fill="#FDFAF7" stroke="#2B2523" stroke-width="0.9"/>
+    </g>
+
+    <!-- 右手弯曲举到头顶挠耳挠毛 -->
+    <g id="arm-scratch">
+      <path d="M 11,9 Q 15,3 10,-12 Q 7,-16 5,-14" fill="none" stroke="#FDFAF7" stroke-width="2.4" stroke-linecap="round"/>
+      <ellipse cx="5" cy="-14.5" rx="1.6" ry="1.4" fill="#FDFAF7" stroke="#2B2523" stroke-width="0.9"/>
+    </g>
+
+    <!-- 疑问气泡 "?" -->
+    <g id="question-bubble">
+      <ellipse cx="-11" cy="-23" rx="3.5" ry="3.0" fill="#FFFFFF" stroke="#64748B" stroke-width="0.8"/>
+      <path d="M -9.5,-21 L -8,-20" stroke="#64748B" stroke-width="0.8"/>
+      <text x="-12.8" y="-21.2" font-family="sans-serif" font-size="3.6" font-weight="bold" fill="#3B82F6">?</text>
+    </g>
+
+    <!-- CPU干烧冒出的两缕白色蒸汽烟圈 -->
+    <g id="steam-left">
+      <path d="M -4,-21 C -6,-24 -2,-25 -4,-28 C -6,-30 -3,-32 -4,-34" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    <g id="steam-right">
+      <path d="M 4,-21 C 2,-24 6,-25 4,-28 C 2,-30 5,-32 4,-34" fill="none" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,156 @@
+<svg viewBox="-20 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="clock-case-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAD285"/>
+      <stop offset="35%" stop-color="#E29D42"/>
+      <stop offset="100%" stop-color="#B87326"/>
+    </linearGradient>
+    <radialGradient id="bell-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="60%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </radialGradient>
+    <style>
+      @keyframes walk-leg-left {
+        0%, 100% { transform: rotate(-15deg); }
+        50% { transform: rotate(15deg); }
+      }
+      @keyframes walk-leg-right {
+        0%, 100% { transform: rotate(15deg); }
+        50% { transform: rotate(-15deg); }
+      }
+      @keyframes body-walk-bob {
+        0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+        50% { transform: translateY(-0.8px) rotate(1.5deg); }
+      }
+      @keyframes shadow-walk {
+        0%, 100% { transform: scale(1); opacity: 0.16; }
+        50% { transform: scale(0.92); opacity: 0.12; }
+      }
+      @keyframes key-turn {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes bells-jiggle {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(2deg); }
+        75% { transform: rotate(-2deg); }
+      }
+      @keyframes arm-walk-left {
+        0%, 100% { transform: rotate(12deg); }
+        50% { transform: rotate(-12deg); }
+      }
+      @keyframes arm-walk-right {
+        0%, 100% { transform: rotate(-12deg); }
+        50% { transform: rotate(12deg); }
+      }
+      @keyframes walk-blink {
+        0%, 90%, 96%, 100% { transform: scaleY(1); }
+        93% { transform: scaleY(0.08); }
+      }
+      @keyframes minute-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      #body-js { animation: body-walk-bob 0.4s ease-in-out infinite; transform-origin: 5px 18px; }
+      #shadow-js { animation: shadow-walk 0.4s ease-in-out infinite; transform-origin: 5px 18px; }
+      #leg-left { animation: walk-leg-left 0.8s ease-in-out infinite; transform-origin: 1px 13px; }
+      #leg-right { animation: walk-leg-right 0.8s ease-in-out infinite; transform-origin: 9px 13px; }
+      #windup-key { animation: key-turn 2.0s linear infinite; transform-origin: -7px 2px; }
+      #bell-rig { animation: bells-jiggle 0.4s ease-in-out infinite; transform-origin: 5px -5px; }
+      #arm-left { animation: arm-walk-left 0.8s ease-in-out infinite; transform-origin: -7px 3px; }
+      #arm-right { animation: arm-walk-right 0.8s ease-in-out infinite; transform-origin: 17px 3px; }
+      #eyes-js { animation: walk-blink 3.8s infinite; transform-origin: 5px 2px; }
+      #minute-hand { animation: minute-slow 30s linear infinite; transform-origin: 5px 2px; }
+    </style>
+  </defs>
+
+  <!-- 1. Shadow layer (#shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 5px 18px">
+    <ellipse cx="5" cy="18" rx="9.5" ry="2.2" fill="rgba(0,0,0,0.15)"/>
+  </g>
+
+  <!-- 2. Windup key layer (#windup-key) -->
+  <g id="windup-key" style="transform-origin: -7px 2px">
+    <path d="M -7 2 L -11 2" stroke="#4B5563" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="-12" cy="2" r="2.2" fill="none" stroke="#4B5563" stroke-width="1.2"/>
+  </g>
+
+  <!-- 3. Mechanical body & chassis (#body-js) -->
+  <g id="body-js">
+    <!-- 3.1 Mechanical feet (#feet) -->
+    <g id="feet">
+      <g id="leg-left" style="transform-origin: 1px 13px">
+        <line x1="1" y1="13" x2="0" y2="17.5" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="0" cy="17.5" rx="2.5" ry="1.2" fill="#1F2937"/>
+      </g>
+      <g id="leg-right" style="transform-origin: 9px 13px">
+        <line x1="9" y1="13" x2="10" y2="17.5" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="10" cy="17.5" rx="2.5" ry="1.2" fill="#1F2937"/>
+      </g>
+    </g>
+
+    <!-- 3.2 Clock shell (#clock-shell) -->
+    <g id="clock-shell">
+      <circle cx="5" cy="2" r="12" fill="url(#clock-case-grad)" stroke="#1F2937" stroke-width="1.2"/>
+      <!-- Bottom brackets -->
+      <polygon points=" -4,11 -6,14 -3,13 " fill="#B87326" stroke="#1F2937" stroke-width="0.8"/>
+      <polygon points=" 14,11 16,14 13,13 " fill="#B87326" stroke="#1F2937" stroke-width="0.8"/>
+    </g>
+
+    <!-- 3.3 Mechanical arms (#arms) -->
+    <g id="arms">
+      <g id="arm-left" style="transform-origin: -7px 3px">
+        <path d="M -7 3 Q -10 5 -9 9" stroke="#374151" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="-9" cy="9.5" r="1.4" fill="#E29D42" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+      <g id="arm-right" style="transform-origin: 17px 3px">
+        <path d="M 17 3 Q 20 5 19 9" stroke="#374151" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="19" cy="9.5" r="1.4" fill="#E29D42" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+    </g>
+
+    <!-- 3.4 Dial & ticks (#dial-group) -->
+    <g id="dial-group">
+      <circle cx="5" cy="2" r="9.2" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="0.8"/>
+      <circle cx="5" cy="-6" r="0.6" fill="#64748B"/>
+      <circle cx="13" cy="2" r="0.6" fill="#64748B"/>
+      <circle cx="5" cy="10" r="0.6" fill="#64748B"/>
+      <circle cx="-3" cy="2" r="0.6" fill="#64748B"/>
+    </g>
+
+    <!-- 3.5 Hands (#clock-hands) -->
+    <g id="clock-hands" style="transform-origin: 5px 2px">
+      <line id="hour-hand" x1="5" y1="2" x2="5" y2="-2.5" stroke="#1E293B" stroke-width="1.4" stroke-linecap="round"/>
+      <line id="minute-hand" x1="5" y1="2" x2="9" y2="2" stroke="#1E293B" stroke-width="1.0" stroke-linecap="round"/>
+      <circle cx="5" cy="2" r="1.1" fill="#EF4444" stroke="#1F2937" stroke-width="0.6"/>
+    </g>
+
+    <!-- 3.6 Eyes facing right (#eyes-js) -->
+    <g id="eyes-js" style="transform-origin: 5px 2px">
+      <g id="eye-left">
+        <ellipse cx="2.8" cy="0.5" rx="2.2" ry="2.8" fill="#0F172A"/>
+        <circle cx="3.5" cy="-0.6" r="0.8" fill="#FFFFFF"/>
+      </g>
+      <g id="eye-right">
+        <ellipse cx="8.8" cy="0.5" rx="2.2" ry="2.8" fill="#0F172A"/>
+        <circle cx="9.5" cy="-0.6" r="0.8" fill="#FFFFFF"/>
+      </g>
+    </g>
+
+    <!-- 3.7 Twin bells & hammer (#bell-rig) -->
+    <g id="bell-rig">
+      <g id="bell-left" style="transform-origin: -3px -7px">
+        <path d="M -7 -6 C -7 -11 -1 -11 -1 -6 Z" fill="url(#bell-grad)" stroke="#1F2937" stroke-width="1"/>
+      </g>
+      <g id="bell-right" style="transform-origin: 13px -7px">
+        <path d="M 11 -6 C 11 -11 17 -11 17 -6 Z" fill="url(#bell-grad)" stroke="#1F2937" stroke-width="1"/>
+      </g>
+      <g id="alarm-hammer" style="transform-origin: 5px -5px">
+        <line x1="5" y1="-5" x2="5" y2="-9.5" stroke="#4B5563" stroke-width="1.2"/>
+        <circle cx="5" cy="-9.5" r="1.2" fill="#1F2937"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>机器猫 (Doraemon) · 完整全状态预览 (R1 + R2)</title>
+  <style>
+    :root {
+      --bg: #0F172A;
+      --card-bg: #1E293B;
+      --card-border: #334155;
+      --text: #F8FAFC;
+      --subtext: #94A3B8;
+      --accent: #38BDF8;
+      --dorablue: #0096E6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px 20px;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    header h1 {
+      font-size: 28px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    header p {
+      color: var(--subtext);
+      font-size: 14px;
+    }
+    .section-title {
+      max-width: 1200px;
+      margin: 36px auto 16px auto;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--card-border);
+      color: var(--accent);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .stage {
+      width: 180px;
+      height: 180px;
+      margin: 14px 0 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 70%);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .stage object, .stage svg {
+      width: 150px;
+      height: 150px;
+      pointer-events: none;
+    }
+    .info {
+      width: 100%;
+      text-align: center;
+    }
+    .info h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .info p {
+      font-size: 12px;
+      color: var(--subtext);
+      line-height: 1.4;
+    }
+    .tracker-box {
+      border: 1px dashed var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+      cursor: crosshair;
+    }
+    .tracker-hint {
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>机器猫 (Doraemon) · 完整动画全览 (R1 + R2)</h1>
+    <p>全 SVG 矢量动画 · 20+ 状态 · 支持 Clawd-on-desk 鼠标眼球追踪、自由漫步、道具交互与全生命周期</p>
+  </header>
+
+  <!-- Section 1: 核心基础状态 (R1) -->
+  <h2 class="section-title">🌟 核心基础状态 (R1 MVP)</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Loop (A) + Tracking</span>
+      <div class="stage tracker-box" id="tracker-stage" title="在方框内移动鼠标测试眼球跟随">
+        <object id="idle-svg-obj" type="image/svg+xml" data="../theme/assets/idle-follow.svg"></object>
+      </div>
+      <div class="info">
+        <h3>1. 待机呼吸与凝望 (idle)</h3>
+        <p>呼吸起伏、眨眼、铃铛微摆。<br><span class="tracker-hint">💡 框内滑动鼠标测试眼珠跟随！</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/thinking.svg"></object>
+      </div>
+      <div class="info">
+        <h3>2. 沉思摸下巴 (thinking)</h3>
+        <p>托腮沉思，眼珠上翻，浮动金色问号。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/typing.svg"></object>
+      </div>
+      <div class="info">
+        <h3>3. 飞速敲键盘 (working)</h3>
+        <p>0.14s 高频双圆手交替击键，眼神专注。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/sleeping.svg"></object>
+      </div>
+      <div class="info">
+        <h3>4. 侧卧冒鼻涕泡 (sleeping)</h3>
+        <p>横卧大睡，浅蓝鼻涕泡周期膨胀破裂。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">One-shot (B)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/happy.svg"></object>
+      </div>
+      <div class="info">
+        <h3>5. 铜锣烧欢庆 (happy)</h3>
+        <p>捧出美味铜锣烧开怀笑，原地弹跳冒心。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/error.svg"></object>
+      </div>
+      <div class="info">
+        <h3>6. 见鼠惊慌 (error)</h3>
+        <p>蚊香眼高速旋转，悬空战栗，小老鼠跑过。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: 自由漫步与鼠标交互 (R2) -->
+  <h2 class="section-title">🚶 自由漫步与鼠标交互反应 (R2)</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Loop (A) · Walk</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/roam.svg"></object>
+      </div>
+      <div class="info">
+        <h3>7. 自由漫步迈步 (roam)</h3>
+        <p>面朝右侧，白脚前后交替，双臂自然摆动。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A) · Reaction</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/react-drag.svg"></object>
+      </div>
+      <div class="info">
+        <h3>8. 抓取悬空扑腾 (react-drag)</h3>
+        <p>拖拽桌宠时触发，双脚空中乱蹬，双臂划水。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">One-shot (B)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/react-left.svg"></object>
+      </div>
+      <div class="info">
+        <h3>9. 戳左脸颊害羞 (react-left)</h3>
+        <p>左颊凹陷，浮现粉红腮红，俏皮吐舌眨眼。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">One-shot (B)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/react-right.svg"></object>
+      </div>
+      <div class="info">
+        <h3>10. 戳右脸颊捂嘴笑 (react-right)</h3>
+        <p>右颊被戳，双只小圆手捂嘴发出偷笑颤动。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">One-shot (B) · Gadget</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/react-double.svg"></object>
+      </div>
+      <div class="info">
+        <h3>11. 双击竹蜻蜓升空 (react-double)</h3>
+        <p>头插黄色竹蜻蜓旋转升空，周身星光闪烁。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: 闲置道具彩蛋 (R2) -->
+  <h2 class="section-title">🎁 闲置道具彩蛋 (R2 idleAnimations)</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Easter Egg</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/idle-dorayaki.svg"></object>
+      </div>
+      <div class="info">
+        <h3>12. 偷吃铜锣烧 (idle-dorayaki)</h3>
+        <p>趁人不备大嚼铜锣烧，腮帮子一鼓一缩咀嚼。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Easter Egg</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/idle-pocket.svg"></object>
+      </div>
+      <div class="info">
+        <h3>13. 疯狂翻口袋 (idle-pocket)</h3>
+        <p>急躁翻找，向外飞出闹钟与记忆面包，流汗。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: 完整睡眠链 (R2) -->
+  <h2 class="section-title">💤 完整睡眠生命周期 (R2 Sleep Cycle)</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">One-shot (B)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/yawning.svg"></object>
+      </div>
+      <div class="info">
+        <h3>14. 大哈欠伸懒腰 (yawning)</h3>
+        <p>嘴巴大张打长哈欠，双手高举，眼泛泪花。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Loop (A)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/dozing.svg"></object>
+      </div>
+      <div class="info">
+        <h3>15. 小鸡啄米打盹 (dozing)</h3>
+        <p>坐姿眼皮下沉，脑袋缓慢垂下后猛地一激灵。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Transition (C)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/collapsing.svg"></object>
+      </div>
+      <div class="info">
+        <h3>16. 侧歪倒头入睡 (collapsing)</h3>
+        <p>身体向侧面一歪，顺势滑倒平铺进入熟睡。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Transition (C)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/waking.svg"></object>
+      </div>
+      <div class="info">
+        <h3>17. 揉眼苏醒坐起 (waking)</h3>
+        <p>双手揉眼眨动，深吸口气恢复清醒待机。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5: Agent 专属事件与多梯队工作 (R2) -->
+  <h2 class="section-title">⚡ Agent 专属事件与多任务 (R2)</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Alert Event</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/notification.svg"></object>
+      </div>
+      <div class="info">
+        <h3>18. 感叹号惊觉 (notification)</h3>
+        <p>权限/弹窗提醒，头顶红色感叹号弹出，警觉。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Clean Event</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/sweeping.svg"></object>
+      </div>
+      <div class="info">
+        <h3>19. 扫把清理上下文 (sweeping)</h3>
+        <p>手持竹扫把左右扫尘，扬起白色小灰尘云。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Heavy Event</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/carrying.svg"></object>
+      </div>
+      <div class="info">
+        <h3>20. 搬运时间包袱 (carrying)</h3>
+        <p>创建分支时头顶粉色时钟包袱皮，小跑搬运。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Multi-Session (2)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/juggling.svg"></object>
+      </div>
+      <div class="info">
+        <h3>21. 子代理杂耍抛球 (juggling)</h3>
+        <p>双手在半空熟练循环抛接红黄蓝 3 颗道具球。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Heavy Multi (3+)</span>
+      <div class="stage">
+        <object type="image/svg+xml" data="../theme/assets/building.svg"></object>
+      </div>
+      <div class="info">
+        <h3>22. 戴安全帽修零件 (building)</h3>
+        <p>高并发构建，手持铁锤飞速敲击修理，火星四溅。</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const trackerStage = document.getElementById('tracker-stage');
+    const svgObj = document.getElementById('idle-svg-obj');
+
+    trackerStage.addEventListener('mousemove', (e) => {
+      try {
+        const svgDoc = svgObj.contentDocument;
+        if (!svgDoc) return;
+        const eyesTarget = svgDoc.getElementById('eyes-js');
+        const bodyTarget = svgDoc.getElementById('body-js');
+        const shadowTarget = svgDoc.getElementById('shadow-js');
+
+        const rect = trackerStage.getBoundingClientRect();
+        const normX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+        const normY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+
+        const maxOffset = 2.2;
+        const dx = (normX * maxOffset).toFixed(2);
+        const dy = (normY * maxOffset).toFixed(2);
+
+        if (eyesTarget) eyesTarget.setAttribute('transform', `translate(${dx}, ${dy})`);
+        if (bodyTarget) bodyTarget.setAttribute('transform', `translate(${(dx * 0.25).toFixed(2)}, ${(dy * 0.25).toFixed(2)})`);
+        if (shadowTarget) shadowTarget.setAttribute('transform', `translate(${(dx * 0.25).toFixed(2)}, 0)`);
+      } catch (err) {}
+    });
+
+    trackerStage.addEventListener('mouseleave', () => {
+      try {
+        const svgDoc = svgObj.contentDocument;
+        if (!svgDoc) return;
+        const eyesTarget = svgDoc.getElementById('eyes-js');
+        const bodyTarget = svgDoc.getElementById('body-js');
+        const shadowTarget = svgDoc.getElementById('shadow-js');
+        if (eyesTarget) eyesTarget.setAttribute('transform', 'translate(0, 0)');
+        if (bodyTarget) bodyTarget.setAttribute('transform', 'translate(0, 0)');
+        if (shadowTarget) shadowTarget.setAttribute('transform', 'translate(0, 0)');
+      } catch (err) {}
+    });
+  </script>
+</body>
+</html>

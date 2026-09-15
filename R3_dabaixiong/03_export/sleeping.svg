@@ -1,0 +1,119 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="80%" stop-color="#FDFAF7"/>
+      <stop offset="100%" stop-color="#ECE7E1"/>
+    </linearGradient>
+    <radialGradient id="bubble-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="40%" stop-color="rgba(186,230,253,0.6)"/>
+      <stop offset="100%" stop-color="rgba(56,189,248,0.7)"/>
+    </radialGradient>
+  </defs>
+  <style>
+    #shadow-sleep {
+      animation: shadow-snore 3.6s ease-in-out infinite;
+      transform-origin: 0px 18px;
+    }
+    #marshmallow-body {
+      animation: marshmallow-snore 3.6s ease-in-out infinite;
+      transform-origin: 0px 18px;
+    }
+    #snot-bubble {
+      animation: bubble-blow-pop 3.6s ease-in infinite;
+      transform-origin: 1.5px 1.5px;
+    }
+    #zzz-1 {
+      animation: zzz-float 3.6s ease-in-out infinite;
+    }
+    #zzz-2 {
+      animation: zzz-float 3.6s ease-in-out 1.2s infinite;
+    }
+    @keyframes marshmallow-snore {
+      0%, 100% { transform: scale(1.06, 0.94) translateY(1.2px); }
+      50% { transform: scale(0.98, 1.02) translateY(0); }
+    }
+    @keyframes shadow-snore {
+      0%, 100% { transform: scale(1.1, 1.1); opacity: 0.16; }
+      50% { transform: scale(0.95, 0.95); opacity: 0.11; }
+    }
+    @keyframes bubble-blow-pop {
+      0% { transform: scale(0.1); opacity: 0; }
+      20% { transform: scale(0.5); opacity: 0.8; }
+      70% { transform: scale(2.2); opacity: 0.95; }
+      78% { transform: scale(2.5); opacity: 1; }
+      80% { transform: scale(2.8); opacity: 0; }
+      100% { transform: scale(0.1); opacity: 0; }
+    }
+    @keyframes zzz-float {
+      0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+      30% { opacity: 0.85; }
+      80% { opacity: 0.4; transform: translate(6px, -12px) scale(1.2); }
+      100% { opacity: 0; transform: translate(9px, -16px) scale(1.4); }
+    }
+  </style>
+
+  <g id="shadow-sleep">
+    <ellipse cx="0" cy="18" rx="14.5" ry="3.0" fill="rgba(0,0,0,0.12)"/>
+  </g>
+
+  <g id="marshmallow-body">
+    <g id="feet-sprawl">
+      <ellipse cx="-9" cy="17" rx="3.8" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <ellipse cx="9" cy="17" rx="3.8" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    </g>
+
+    <path d="
+      M -14,16 
+      C -18,15 -15,-2 -13,-10
+      C -11,-15 -6,-18 0,-18
+      C 6,-18 11,-15 13,-10
+      C 15,-2 18,15 14,16
+      C 9,19 -9,19 -14,16 Z"
+      fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+
+    <g id="overalls-sleep">
+      <path d="M -13.5,14 C -14,16.5 -7,18.5 0,18.5 C 7,18.5 14,16.5 13.5,14 C 13,11 9,11 0,11 C -9,11 -13,11 -13.5,14 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
+      <path d="M -9,5 L -7,12 L -5,12 L -7,5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="-6" cy="11.5" r="0.75" fill="#2563EB"/>
+      <path d="M 9,5 L 7,12 L 5,12 L 7,5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="6" cy="11.5" r="0.75" fill="#2563EB"/>
+    </g>
+
+    <g id="ears-sleep">
+      <path d="M -13,-14 C -15,-18 -9,-19 -8,-15 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <path d="M 13,-14 C 15,-18 9,-19 8,-15 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    </g>
+
+    <g id="eyes-closed">
+      <path d="M -9,-2 Q -7.5,0.5 -6,-2" fill="none" stroke="#2B2523" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 6,-2 Q 7.5,0.5 9,-2" fill="none" stroke="#2B2523" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+
+    <g id="face-sleep">
+      <path d="M -1.8,-0.2 L 1.8,-0.2 Q 0,2.0 -1.8,-0.2 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9"/>
+      <line x1="0" y1="1.5" x2="0" y2="3.2" stroke="#2B2523" stroke-width="0.9"/>
+      <ellipse cx="0" cy="4.5" rx="1.5" ry="1.0" fill="#F49DAE" stroke="#2B2523" stroke-width="0.8"/>
+      <path d="M -4,9 Q 0,11 4,9" fill="none" stroke="#2B2523" stroke-width="0.9" stroke-linecap="round"/>
+    </g>
+
+    <!-- 吹大的淡蓝半透明鼻涕泡泡 -->
+    <g id="snot-bubble">
+      <circle cx="2" cy="1.5" r="3.2" fill="url(#bubble-grad)" stroke="rgba(56,189,248,0.8)" stroke-width="0.6"/>
+      <circle cx="1.2" cy="0.6" r="0.7" fill="#FFFFFF"/>
+    </g>
+
+    <g id="arms-sleep">
+      <ellipse cx="-11" cy="12" rx="2.5" ry="1.6" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
+      <ellipse cx="11" cy="12" rx="2.5" ry="1.6" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
+    </g>
+
+    <g id="zzz-1" transform="translate(6, -16)">
+      <text font-family="sans-serif" font-size="4.2" font-weight="bold" fill="#60A5FA">Z</text>
+    </g>
+    <g id="zzz-2" transform="translate(10, -21)">
+      <text font-family="sans-serif" font-size="3.2" font-weight="bold" fill="#93C5FD">z</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,132 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="body-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="80%" stop-color="#FDFAF7"/>
+      <stop offset="100%" stop-color="#ECE7E1"/>
+    </linearGradient>
+    <linearGradient id="cookie-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <style>
+    #body-work {
+      animation: work-shake 0.15s ease-in-out infinite alternate;
+      transform-origin: 0px 18px;
+    }
+    #paw-l {
+      animation: paws-fast-type 0.12s ease-in-out infinite alternate;
+      transform-origin: -7px 11px;
+    }
+    #paw-r {
+      animation: paws-fast-type 0.12s ease-in-out infinite alternate-reverse;
+      transform-origin: 7px 11px;
+    }
+    #sparks {
+      animation: spark-flash 0.24s steps(2) infinite;
+    }
+    #cookie-prop {
+      animation: cookie-sneak-eat 3.6s ease-in-out infinite;
+      transform-origin: 0px 5px;
+    }
+    #mouth-chew {
+      animation: cheek-chew 3.6s ease-in-out infinite;
+      transform-origin: 0px 5px;
+    }
+    @keyframes work-shake {
+      0% { transform: translateY(0px) rotate(-0.5deg); }
+      100% { transform: translateY(-0.6px) rotate(0.5deg); }
+    }
+    @keyframes paws-fast-type {
+      0% { transform: translateY(-2.5px) rotate(15deg); }
+      100% { transform: translateY(1.5px) rotate(-8deg); }
+    }
+    @keyframes spark-flash {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    @keyframes cookie-sneak-eat {
+      0%, 65%, 100% { transform: translateY(20px) scale(0); opacity: 0; }
+      70% { transform: translateY(8px) scale(1); opacity: 1; }
+      75%, 85% { transform: translate(1px, 4px) scale(0.9); opacity: 1; }
+      90% { transform: translate(1px, 4px) scale(0); opacity: 0; }
+    }
+    @keyframes cheek-chew {
+      0%, 74%, 100% { transform: scale(1, 1); }
+      76%, 80%, 84%, 88% { transform: scale(1.15, 0.9); }
+      78%, 82%, 86% { transform: scale(0.95, 1.1); }
+    }
+  </style>
+
+  <g id="shadow-work">
+    <ellipse cx="0" cy="18" rx="13" ry="2.8" fill="rgba(0,0,0,0.12)"/>
+  </g>
+
+  <g id="body-work">
+    <g id="feet">
+      <ellipse cx="-6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+      <ellipse cx="6" cy="17.5" rx="3.5" ry="2" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.1"/>
+    </g>
+    <path d="M -12,16 C -16,15 -14,-4 -12,-12 C -11,-17 -6,-20 0,-20 C 6,-20 11,-17 12,-12 C 14,-4 16,15 12,16 C 8,18.5 -8,18.5 -12,16 Z" fill="url(#body-grad)" stroke="#2B2523" stroke-width="1.2" stroke-linejoin="round"/>
+    
+    <g id="overalls">
+      <path d="M -12.5,13.5 C -13,16 -7,18 0,18 C 7,18 13,16 12.5,13.5 C 12,10 9,10 0,10 C -9,10 -12,10 -12.5,13.5 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="1.0"/>
+      <path d="M -9,4 L -7,11 L -5,11 L -7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="-6" cy="10.5" r="0.75" fill="#2563EB"/>
+      <path d="M 9,4 L 7,11 L 5,11 L 7,4 Z" fill="#93C5FD" stroke="#2B2523" stroke-width="0.9"/>
+      <circle cx="6" cy="10.5" r="0.75" fill="#2563EB"/>
+    </g>
+
+    <g id="ears">
+      <path d="M -12,-16 C -14,-21 -8,-22 -7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+      <path d="M 12,-16 C 14,-21 8,-22 7,-17 Z" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.2"/>
+    </g>
+
+    <!-- 专注微汗 -->
+    <circle cx="-4" cy="-14" r="0.5" fill="#60A5FA"/>
+    <circle cx="5" cy="-13" r="0.6" fill="#60A5FA"/>
+
+    <!-- 专注眼神 (紧盯键盘) -->
+    <circle cx="-7.5" cy="-1.5" r="0.9" fill="#1C1917"/>
+    <circle cx="7.5" cy="-1.5" r="0.9" fill="#1C1917"/>
+
+    <g id="face-details">
+      <path d="M -1.8,-0.5 L 1.8,-0.5 Q 0,1.8 -1.8,-0.5 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.9"/>
+      <line x1="0" y1="1.2" x2="0" y2="3.2" stroke="#2B2523" stroke-width="0.9"/>
+      <g id="mouth-chew">
+        <path d="M -2,4.8 Q 0,3.2 2,4.8 Q 0,5.6 -2,4.8 Z" fill="#F49DAE" stroke="#2B2523" stroke-width="0.8"/>
+      </g>
+      <path d="M -3.5,9.5 Q 0,11 3.5,9.5" fill="none" stroke="#2B2523" stroke-width="0.85" stroke-linecap="round"/>
+    </g>
+
+    <!-- 偷吃的小金黄曲奇饼干 -->
+    <g id="cookie-prop">
+      <circle cx="1" cy="4.5" r="2.2" fill="url(#cookie-grad)" stroke="#D97706" stroke-width="0.6"/>
+      <circle cx="0.2" cy="4.0" r="0.4" fill="#78350F"/>
+      <circle cx="1.6" cy="4.8" r="0.4" fill="#78350F"/>
+    </g>
+
+    <!-- 狂暴打字残影双爪 -->
+    <g id="paw-l">
+      <ellipse cx="-5" cy="12" rx="3.2" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
+    </g>
+    <g id="paw-r">
+      <ellipse cx="5" cy="12" rx="3.2" ry="1.8" fill="#FDFAF7" stroke="#2B2523" stroke-width="1.0"/>
+    </g>
+
+    <!-- 迷你极简机械键盘 -->
+    <g id="keyboard">
+      <rect x="-10" y="13" width="20" height="4.2" rx="1.2" fill="#334155" stroke="#1E293B" stroke-width="0.8"/>
+      <line x1="-8" y1="14.5" x2="8" y2="14.5" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="1.2 0.8"/>
+      <line x1="-8" y1="16" x2="8" y2="16" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="1.2 0.8"/>
+    </g>
+
+    <!-- 打字火花 / 代码符号 -->
+    <g id="sparks">
+      <path d="M -8,11 L -10,9 M -9,12 L -11,13" stroke="#F59E0B" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M 8,11 L 10,9 M 9,12 L 11,13" stroke="#F59E0B" stroke-width="0.8" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

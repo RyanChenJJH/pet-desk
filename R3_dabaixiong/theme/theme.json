@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "name": "Dabaixiong",
+  "author": "Antigravity & User",
+  "version": "1.0.0",
+  "description": "Adorable fluffy white bear with wide-set bead eyes, double chin, waddling walk, furious typing with cookie nibbles, and snot-bubble snores.",
+  "viewBox": {
+    "x": -25,
+    "y": -25,
+    "width": 50,
+    "height": 50
+  },
+  "layout": {
+    "contentBox": {
+      "x": -15,
+      "y": -18,
+      "width": 30,
+      "height": 36
+    },
+    "centerX": 0,
+    "baselineY": 18,
+    "visibleHeightRatio": 0.62,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": true,
+    "states": [
+      "idle"
+    ],
+    "eyeRatioX": 0.45,
+    "eyeRatioY": 0.45,
+    "maxOffset": 2.2,
+    "bodyScale": 0.18,
+    "shadowStretch": 0.12,
+    "shadowShift": 0.2,
+    "ids": {
+      "eyes": "eyes-js",
+      "body": "body-js",
+      "shadow": "shadow-js"
+    },
+    "shadowOrigin": "0px 18px"
+  },
+  "states": {
+    "idle": [
+      "idle-follow.svg"
+    ],
+    "roam": [
+      "roam.svg"
+    ],
+    "thinking": [
+      "thinking.svg"
+    ],
+    "working": [
+      "working.svg"
+    ],
+    "notification": [
+      "notification.svg"
+    ],
+    "sleeping": [
+      "sleeping.svg"
+    ],
+    "attention": {
+      "fallbackTo": "notification"
+    },
+    "error": {
+      "fallbackTo": "thinking"
+    },
+    "sweeping": {
+      "fallbackTo": "working"
+    },
+    "carrying": {
+      "fallbackTo": "roam"
+    },
+    "waking": [
+      "idle-follow.svg"
+    ]
+  },
+  "sleepSequence": {
+    "mode": "direct"
+  },
+  "hitBoxes": {
+    "default": {
+      "x": -14,
+      "y": -16,
+      "w": 28,
+      "h": 34
+    },
+    "sleeping": {
+      "x": -14,
+      "y": -4,
+      "w": 28,
+      "h": 22
+    }
+  }
+}
