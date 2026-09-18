@@ -1,0 +1,146 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 1. 深度睡眠腹部与身体起伏呼吸 (3.2s 舒缓周期) */
+    @keyframes sleep-breath {
+      0%, 100% {
+        transform: translateY(0px) scale(1, 1);
+      }
+      50% {
+        transform: translateY(-0.7px) scale(1.02, 1.03);
+      }
+    }
+
+    /* 2. 地面投影同步舒缓伸缩 */
+    @keyframes sleep-shadow {
+      0%, 100% {
+        transform: scale(1, 1);
+        opacity: 0.14;
+      }
+      50% {
+        transform: scale(1.06, 0.94);
+        opacity: 0.10;
+      }
+    }
+
+    /* 3. 睡梦中“Zzz”气泡缓缓飘起并渐隐 (3.2s 严格闭环) */
+    @keyframes zzz-drift {
+      0% {
+        transform: translate(0px, 0px) scale(0.6);
+        opacity: 0;
+      }
+      30% {
+        opacity: 0.9;
+      }
+      70% {
+        transform: translate(3px, -6px) scale(1.05);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translate(6px, -12px) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    /* 4. 招牌波浪粗眉随梦境微颤 */
+    @keyframes sleep-brow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(0.4px); }
+    }
+
+    #body-js {
+      animation: sleep-breath 3.2s ease-in-out infinite;
+    }
+    #shadow-js {
+      animation: sleep-shadow 3.2s ease-in-out infinite;
+    }
+    #eyebrows {
+      animation: sleep-brow 3.2s ease-in-out infinite;
+    }
+    #zzz-group {
+      animation: zzz-drift 3.2s ease-out infinite;
+    }
+  </style>
+
+  <!-- 地面水平长椭圆投影 -->
+  <g id="shadow-js" style="transform-origin: 0px 16.5px">
+    <ellipse cx="0" cy="16.5" rx="14" ry="2.6" fill="rgba(0,0,0,0.14)"/>
+  </g>
+
+  <!-- 角色趴地安睡驱动层 (身体侧躺顺应地面) -->
+  <g id="body-js" style="transform-origin: 0px 16px">
+    <!-- 蜷缩的双腿与鞋子 (平放于地面左侧) -->
+    <g id="legs">
+      <!-- 左腿侧放 -->
+      <g id="leg-left">
+        <rect x="-14" y="12" width="6" height="4" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="-14" cy="14" rx="2.5" ry="1.8" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+      </g>
+      <!-- 右腿微屈叠在上方 -->
+      <g id="leg-right">
+        <rect x="-11" y="10.5" width="6" height="4" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="-11" cy="12.5" rx="2.5" ry="1.8" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+      </g>
+    </g>
+
+    <!-- 躯干 (横向黄色短裤与红色 T 恤) -->
+    <g id="torso">
+      <!-- 黄色短裤 -->
+      <path id="shorts" d="M -9 9 L -3 9 L -2 15 L -9 15 Z" fill="#FACC15" stroke="#1F2937" stroke-width="1" stroke-linejoin="round"/>
+      <!-- 红色 T 恤 (圆圆的小肚腩向上微微隆起) -->
+      <path id="shirt" d="M -4 8.5 C -4 5 1 5 3 8 L 4 14.5 C 1 15.5 -4 15.5 -4 14.5 Z" fill="#EF4444" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+    </g>
+
+    <!-- 安睡放松的双臂 -->
+    <g id="arms">
+      <!-- 左手垫在下颌旁 -->
+      <g id="arm-left">
+        <path d="M 0 11 L 3 13 L 5 14" stroke="#FED7AA" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <circle cx="5.2" cy="14" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+      <!-- 右手搭在肚子上 -->
+      <g id="arm-right">
+        <path d="M 1 9.5 Q -1 12 0.5 13" stroke="#FED7AA" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <circle cx="0.8" cy="13.2" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+    </g>
+
+    <!-- 头部组件 (枕在右侧地面安睡) -->
+    <g id="head" style="transform-origin: 8px 10px">
+      <!-- 平头短发 -->
+      <path id="hair" d="M 3 6 C 2 0 14 0 15 6 C 16 9 14 13 12 14 C 9 14.5 4 14 3 6 Z" fill="#1E293B"/>
+      <!-- 凸腮帮脸蛋侧贴地面 -->
+      <path id="face" d="M 2 8 C 2 4 12 3 14 7 C 16.5 9 16 13 13 15 C 10 16.5 5 16 3 14 Z" fill="#FED7AA" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      
+      <!-- 耳朵 -->
+      <ellipse cx="6" cy="5.5" rx="1.6" ry="1.9" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+
+      <!-- 睡得通红的小腮红 -->
+      <ellipse id="blush-right" cx="10" cy="13.5" rx="2" ry="1.3" fill="#FB7185" opacity="0.65"/>
+
+      <!-- 甜美微张的小睡嘴 (微呼气泡) -->
+      <ellipse cx="11.5" cy="15" rx="1.0" ry="0.7" fill="#BE123C" stroke="#1F2937" stroke-width="0.6"/>
+
+      <!-- 标志性波浪粗眉 (沉睡放松状态) -->
+      <g id="eyebrows">
+        <path id="brow-left" d="M 5 6.5 C 6.5 5 8.5 6 9.5 6.8" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path id="brow-right" d="M 11 7.2 C 12 6.2 14 7 14.8 8" stroke="#1E293B" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- 幸福微笑月牙睡眼 (︶ ︶) -->
+      <g id="eyes-sleeping">
+        <path d="M 6.5 9.5 Q 8 11.2 9.5 9.5" stroke="#1E293B" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path d="M 11.8 10.2 Q 13.2 11.8 14.5 10.2" stroke="#1E293B" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- 飘起的 Zzz 梦境气泡 (位于头部上方) -->
+    <g id="zzz-group" style="transform-origin: 12px 2px">
+      <!-- 迷你 Z -->
+      <text x="10" y="3" font-size="3.8" font-weight="bold" fill="#38BDF8" font-family="Arial, sans-serif">z</text>
+      <!-- 中等 Z -->
+      <text x="13" y="-1" font-size="5" font-weight="bold" fill="#60A5FA" font-family="Arial, sans-serif">Z</text>
+      <!-- 大 Z -->
+      <text x="16" y="-6" font-size="6.5" font-weight="bold" fill="#818CF8" font-family="Arial, sans-serif">Z</text>
+    </g>
+  </g>
+</svg>

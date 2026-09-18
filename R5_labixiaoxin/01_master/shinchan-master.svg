@@ -1,0 +1,103 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1. 地面投影层 (对标 Clawd #shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 0px 16.5px">
+    <ellipse cx="0" cy="16.5" rx="9.5" ry="2.2" fill="rgba(0,0,0,0.14)"/>
+  </g>
+
+  <!-- 2. 角色主体驱动层 (对标 Clawd #body-js) -->
+  <g id="body-js" style="transform-origin: 0px 12px">
+    <!-- 2.1 足部与小蓝鞋 (Legs & Shoes) -->
+    <g id="legs">
+      <!-- 左腿 -->
+      <g id="leg-left" style="transform-origin: -4px 10px">
+        <rect x="-6" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <!-- 蓝鞋 -->
+        <ellipse cx="-4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+        <path d="M -6.5 15.2 Q -4 14.2 -1.5 15.2" stroke="#FFFFFF" stroke-width="0.6" fill="none" opacity="0.8"/>
+      </g>
+      <!-- 右腿 -->
+      <g id="leg-right" style="transform-origin: 4px 10px">
+        <rect x="2" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <!-- 蓝鞋 -->
+        <ellipse cx="4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+        <path d="M 1.5 15.2 Q 4 14.2 6.5 15.2" stroke="#FFFFFF" stroke-width="0.6" fill="none" opacity="0.8"/>
+      </g>
+    </g>
+
+    <!-- 2.2 躯干与服饰 (Torso, Shorts & Red T-Shirt) -->
+    <g id="torso">
+      <!-- 黄色短裤 -->
+      <path id="shorts" d="M -7.5 8 L 7.5 8 L 6.5 12.8 L 1 12.8 L 0 9.8 L -1 12.8 L -6.5 12.8 Z" fill="#FACC15" stroke="#1F2937" stroke-width="1" stroke-linejoin="round"/>
+      
+      <!-- 红色 T 恤 (圆肚子微凸) -->
+      <path id="shirt" d="M -8 1 C -8.5 4.5 -7.8 8.5 -7 8.5 L 7 8.5 C 7.8 8.5 8.5 4.5 8 1 C 8 -1.5 -8 -1.5 -8 1 Z" fill="#EF4444" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      <!-- T 恤领口微折痕 -->
+      <path d="M -3 0.8 Q 0 2.6 3 0.8" stroke="#DC2626" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 2.3 双臂 (Arms) -->
+    <g id="arms">
+      <!-- 左臂 -->
+      <g id="arm-left" style="transform-origin: -7px 2px">
+        <path d="M -7.5 1.5 L -10 3.5 L -8.5 6 L -6.5 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M -9 4.5 Q -11.5 7 -9 9.5" stroke="#FED7AA" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <circle cx="-9" cy="9.8" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+      <!-- 右臂 -->
+      <g id="arm-right" style="transform-origin: 7px 2px">
+        <path d="M 7.5 1.5 L 10 3.5 L 8.5 6 L 6.5 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M 9 4.5 Q 11.5 7 9 9.5" stroke="#FED7AA" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <circle cx="9" cy="9.8" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+    </g>
+
+    <!-- 2.4 头部组件 (Head, Hair, Cheeks, Brows) -->
+    <g id="head" style="transform-origin: 0px 1px">
+      <!-- 短平头短发底色 -->
+      <path id="hair" d="M -10.5 -6 C -10.5 -15 8 -15 10.5 -6 C 11 -2.5 9.8 0.5 8 1.5 C 5 2.5 -7 2.5 -10.5 -6 Z" fill="#1E293B"/>
+      
+      <!-- 经典凸脸颊与脸蛋轮廓 (右侧肉嘟嘟小腮帮) -->
+      <path id="face" d="M -8.5 -6.5 C -9.5 -2.5 -9 1 -7 4.5 C -5 6 0 6.2 4 5.8 C 7.5 5.5 10 4.2 12.2 1.5 C 13.5 -0.8 12.8 -4 10.5 -5.8 C 8.5 -7.2 0 -7.8 -8.5 -6.5 Z" fill="#FED7AA" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      
+      <!-- 耳朵 -->
+      <g id="ear-left">
+        <ellipse cx="-9.2" cy="-1.8" rx="1.6" ry="2.1" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M -9.3 -2.8 Q -8.4 -1.8 -9.3 -0.8" stroke="#FDBA74" stroke-width="0.6" fill="none"/>
+      </g>
+      <g id="ear-right">
+        <ellipse cx="11.2" cy="-1.8" rx="1.4" ry="1.8" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+
+      <!-- 腮红 -->
+      <ellipse id="blush-left" cx="-5.5" cy="1.2" rx="2" ry="1.2" fill="#FB7185" opacity="0.6"/>
+      <ellipse id="blush-right" cx="7.2" cy="1.2" rx="2.2" ry="1.3" fill="#FB7185" opacity="0.6"/>
+
+      <!-- 嘴巴 (俏皮小微笑) -->
+      <path id="mouth" d="M -0.8 3.2 Q 1.5 4.6 4 3.2" stroke="#1F2937" stroke-width="1.0" fill="none" stroke-linecap="round"/>
+
+      <!-- 标志性波浪粗眉 (Eyebrows) -->
+      <g id="eyebrows" style="transform-origin: 0px -7px">
+        <!-- 左眉 -->
+        <path id="brow-left" d="M -7.8 -7.2 C -5.8 -10.8 -3.2 -7.8 -2 -6.8" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <!-- 右眉 -->
+        <path id="brow-right" d="M 1.8 -6.8 C 3.2 -7.8 5.8 -10.8 8.2 -7" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- 2.5 眼睛光标跟随层 (对标 Clawd #eyes-js) -->
+      <g id="eyes-js" style="transform-origin: 0px -2.5px">
+        <!-- 左眼 -->
+        <g id="eye-left">
+          <ellipse cx="-4.5" cy="-2.5" rx="2.5" ry="3.0" fill="#0F172A"/>
+          <circle cx="-5.3" cy="-3.6" r="1.0" fill="#FFFFFF"/>
+          <circle cx="-3.9" cy="-1.6" r="0.45" fill="#FFFFFF"/>
+        </g>
+        <!-- 右眼 -->
+        <g id="eye-right">
+          <ellipse cx="4.5" cy="-2.5" rx="2.5" ry="3.0" fill="#0F172A"/>
+          <circle cx="3.7" cy="-3.6" r="1.0" fill="#FFFFFF"/>
+          <circle cx="5.1" cy="-1.6" r="0.45" fill="#FFFFFF"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

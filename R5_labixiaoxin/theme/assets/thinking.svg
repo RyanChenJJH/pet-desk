@@ -1,0 +1,161 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 1. 头部倾斜思考慢摆 (2.4s) */
+    @keyframes think-head-tilt {
+      0%, 100% {
+        transform: rotate(5deg) translateY(0px);
+      }
+      50% {
+        transform: rotate(9deg) translateY(-0.5px);
+      }
+    }
+
+    /* 2. 右手摸后脑勺轻微挠头 (1.2s) */
+    @keyframes think-scratch {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    /* 3. 粗眉波浪浮动 */
+    @keyframes think-brow-wave {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-0.8px) rotate(-2deg);
+      }
+    }
+
+    /* 4. 思考气泡冉冉上升与呼吸渐变 (2.4s 严格闭环) */
+    @keyframes think-bubble-float {
+      0% {
+        transform: translateY(2px) scale(0.7);
+        opacity: 0;
+      }
+      35% {
+        opacity: 0.95;
+      }
+      70% {
+        transform: translateY(-4px) scale(1.05);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-8px) scale(0.85);
+        opacity: 0;
+      }
+    }
+
+    /* 5. 身体微弱呼吸起伏 */
+    @keyframes think-body {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-0.4px); }
+    }
+
+    #body-js {
+      animation: think-body 2.4s ease-in-out infinite;
+    }
+    #head {
+      animation: think-head-tilt 2.4s ease-in-out infinite;
+    }
+    #arm-right {
+      animation: think-scratch 1.2s ease-in-out infinite;
+    }
+    #eyebrows {
+      animation: think-brow-wave 2.4s ease-in-out infinite;
+    }
+    #thought-bubble {
+      animation: think-bubble-float 2.4s ease-out infinite;
+    }
+  </style>
+
+  <!-- 地面投影 -->
+  <g id="shadow-js" style="transform-origin: 0px 16.5px">
+    <ellipse cx="0" cy="16.5" rx="9.5" ry="2.2" fill="rgba(0,0,0,0.14)"/>
+  </g>
+
+  <!-- 角色主体驱动层 -->
+  <g id="body-js" style="transform-origin: 0px 15px">
+    <!-- 足部与小蓝鞋 -->
+    <g id="legs">
+      <g id="leg-left">
+        <rect x="-6" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="-4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+      </g>
+      <g id="leg-right">
+        <rect x="2" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+      </g>
+    </g>
+
+    <!-- 躯干与服饰 -->
+    <g id="torso">
+      <path id="shorts" d="M -7.5 8 L 7.5 8 L 6.5 12.8 L 1 12.8 L 0 9.8 L -1 12.8 L -6.5 12.8 Z" fill="#FACC15" stroke="#1F2937" stroke-width="1" stroke-linejoin="round"/>
+      <path id="shirt" d="M -8 1 C -8.5 4.5 -7.8 8.5 -7 8.5 L 7 8.5 C 7.8 8.5 8.5 4.5 8 1 C 8 -1.5 -8 -1.5 -8 1 Z" fill="#EF4444" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+    </g>
+
+    <!-- 左臂 (叉腰) -->
+    <g id="arm-left" style="transform-origin: -7px 2px">
+      <path d="M -7.5 1.5 L -9.5 3.5 L -8 6 L -6 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+      <!-- 弯折到腰间 -->
+      <path d="M -8 4 Q -12 7 -8 9" stroke="#FED7AA" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+      <circle cx="-7.5" cy="9" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+    </g>
+
+    <!-- 头部组件 -->
+    <g id="head" style="transform-origin: 0px 2px">
+      <path id="hair" d="M -10.5 -6 C -10.5 -15 8 -15 10.5 -6 C 11 -2.5 9.8 0.5 8 1.5 C 5 2.5 -7 2.5 -10.5 -6 Z" fill="#1E293B"/>
+      <path id="face" d="M -8.5 -6.5 C -9.5 -2.5 -9 1 -7 4.5 C -5 6 0 6.2 4 5.8 C 7.5 5.5 10 4.2 12.2 1.5 C 13.5 -0.8 12.8 -4 10.5 -5.8 C 8.5 -7.2 0 -7.8 -8.5 -6.5 Z" fill="#FED7AA" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      
+      <ellipse cx="-9.2" cy="-1.8" rx="1.6" ry="2.1" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+      <ellipse cx="11.2" cy="-1.8" rx="1.4" ry="1.8" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+
+      <ellipse id="blush-left" cx="-5.5" cy="1.2" rx="2" ry="1.2" fill="#FB7185" opacity="0.6"/>
+      <ellipse id="blush-right" cx="7.2" cy="1.2" rx="2.2" ry="1.3" fill="#FB7185" opacity="0.6"/>
+
+      <!-- 迷茫/好奇歪嘴笑 -->
+      <path id="mouth" d="M 0 3.5 Q 2.5 4.8 4.2 2.8" stroke="#1F2937" stroke-width="1.0" fill="none" stroke-linecap="round"/>
+
+      <!-- 标志性一高一低波浪粗眉 (左高右低) -->
+      <g id="eyebrows" style="transform-origin: 0px -7px">
+        <path id="brow-left" d="M -7.8 -8.5 C -5.8 -12 -3 -9.2 -1.8 -8" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path id="brow-right" d="M 2 -6 C 3.5 -6.8 6 -8.8 8.2 -5.5" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- 眼睛斜视右上方 -->
+      <g id="eyes">
+        <g id="eye-left">
+          <ellipse cx="-3.8" cy="-3.6" rx="2.4" ry="2.8" fill="#0F172A"/>
+          <circle cx="-3.2" cy="-4.5" r="0.9" fill="#FFFFFF"/>
+        </g>
+        <g id="eye-right">
+          <ellipse cx="5.2" cy="-3.6" rx="2.4" ry="2.8" fill="#0F172A"/>
+          <circle cx="5.8" cy="-4.5" r="0.9" fill="#FFFFFF"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- 右臂 (高举摸后脑勺) -->
+    <g id="arm-right" style="transform-origin: 7.5px 2px">
+      <path d="M 7.5 1.5 L 9.5 3.5 L 8 6 L 6 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+      <!-- 抬起弯曲向上摸后脑 -->
+      <path d="M 8 4 Q 13 0 9 -5" stroke="#FED7AA" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <circle cx="8.5" cy="-5.5" r="1.5" fill="#FED7AA" stroke="#1F2937" stroke-width="0.7"/>
+    </g>
+
+    <!-- 头顶缓缓升起的问号灵感气泡 -->
+    <g id="thought-bubble" style="transform-origin: 10px -15px">
+      <!-- 迷你小泡 -->
+      <circle cx="7" cy="-11" r="1" fill="#38BDF8" opacity="0.6"/>
+      <!-- 居中小泡 -->
+      <circle cx="9" cy="-14" r="1.6" fill="#38BDF8" opacity="0.75"/>
+      <!-- 大云朵气泡 -->
+      <ellipse cx="12.5" cy="-18.5" rx="5.5" ry="4" fill="#F8FAFC" stroke="#38BDF8" stroke-width="0.8"/>
+      <!-- 问号字符 -->
+      <text x="12.5" y="-16.8" font-size="6" font-weight="bold" fill="#0284C7" text-anchor="middle" font-family="Arial, sans-serif">?</text>
+    </g>
+  </g>
+</svg>

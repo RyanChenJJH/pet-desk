@@ -1,0 +1,185 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* 1. 身体微起伏呼吸 (3.2s) */
+    @keyframes shin-breathe {
+      0%, 100% {
+        transform: translateY(0px) scale(1, 1);
+      }
+      50% {
+        transform: translateY(-0.4px) scale(1.015, 1.02);
+      }
+    }
+
+    /* 2. 地面投影随呼吸微缩放 */
+    @keyframes shin-shadow-breath {
+      0%, 100% {
+        transform: scale(1, 1);
+        opacity: 0.14;
+      }
+      50% {
+        transform: scale(1.05, 0.95);
+        opacity: 0.11;
+      }
+    }
+
+    /* 3. 蜡笔小新招牌粗眉俏皮挑动 (4s) */
+    @keyframes shin-brow-twitch {
+      0%, 65%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      72% {
+        transform: translateY(-1.2px) rotate(2deg);
+      }
+      80% {
+        transform: translateY(0.3px) rotate(-1deg);
+      }
+      88% {
+        transform: translateY(-0.4px) rotate(1deg);
+      }
+      94% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+
+    /* 4. 自然双眨眼 (4.5s 周期) */
+    @keyframes shin-blink {
+      0%, 82%, 100% {
+        transform: scaleY(1);
+      }
+      85% {
+        transform: scaleY(0.08);
+      }
+      88% {
+        transform: scaleY(1);
+      }
+      91% {
+        transform: scaleY(0.08);
+      }
+      94% {
+        transform: scaleY(1);
+      }
+    }
+
+    /* 5. 双手随呼吸微摆 */
+    @keyframes shin-arm-left {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-2.5deg); }
+    }
+    @keyframes shin-arm-right {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+
+    #shadow-js {
+      animation: shin-shadow-breath 3.2s ease-in-out infinite;
+    }
+    #body-js {
+      animation: shin-breathe 3.2s ease-in-out infinite;
+    }
+    #eyebrows {
+      animation: shin-brow-twitch 4s ease-in-out infinite;
+    }
+    #eyes-js {
+      animation: shin-blink 4.5s ease-in-out infinite;
+    }
+    #arm-left {
+      animation: shin-arm-left 3.2s ease-in-out infinite;
+    }
+    #arm-right {
+      animation: shin-arm-right 3.2s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- 地面投影 (Clawd #shadow-js 挂点) -->
+  <g id="shadow-js" style="transform-origin: 0px 16.5px">
+    <ellipse cx="0" cy="16.5" rx="9.5" ry="2.2" fill="#000000"/>
+  </g>
+
+  <!-- 角色主体驱动层 (Clawd #body-js 挂点) -->
+  <g id="body-js" style="transform-origin: 0px 15px">
+    <!-- 足部与小蓝鞋 -->
+    <g id="legs">
+      <!-- 左腿 -->
+      <g id="leg-left" style="transform-origin: -4px 10px">
+        <rect x="-6" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="-4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+        <path d="M -6.5 15.2 Q -4 14.2 -1.5 15.2" stroke="#FFFFFF" stroke-width="0.6" fill="none" opacity="0.8"/>
+      </g>
+      <!-- 右腿 -->
+      <g id="leg-right" style="transform-origin: 4px 10px">
+        <rect x="2" y="9.5" width="4" height="5.5" rx="2" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <ellipse cx="4" cy="15.2" rx="3.2" ry="1.7" fill="#38BDF8" stroke="#1F2937" stroke-width="0.9"/>
+        <path d="M 1.5 15.2 Q 4 14.2 6.5 15.2" stroke="#FFFFFF" stroke-width="0.6" fill="none" opacity="0.8"/>
+      </g>
+    </g>
+
+    <!-- 躯干与服饰 -->
+    <g id="torso">
+      <!-- 黄色短裤 -->
+      <path id="shorts" d="M -7.5 8 L 7.5 8 L 6.5 12.8 L 1 12.8 L 0 9.8 L -1 12.8 L -6.5 12.8 Z" fill="#FACC15" stroke="#1F2937" stroke-width="1" stroke-linejoin="round"/>
+      
+      <!-- 红色 T 恤 (微肚腩) -->
+      <path id="shirt" d="M -8 1 C -8.5 4.5 -7.8 8.5 -7 8.5 L 7 8.5 C 7.8 8.5 8.5 4.5 8 1 C 8 -1.5 -8 -1.5 -8 1 Z" fill="#EF4444" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      <path d="M -3 0.8 Q 0 2.6 3 0.8" stroke="#DC2626" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 双臂 -->
+    <g id="arms">
+      <g id="arm-left" style="transform-origin: -7px 2px">
+        <path d="M -7.5 1.5 L -10 3.5 L -8.5 6 L -6.5 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M -9 4.5 Q -11.5 7 -9 9.5" stroke="#FED7AA" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <circle cx="-9" cy="9.8" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+      <g id="arm-right" style="transform-origin: 7px 2px">
+        <path d="M 7.5 1.5 L 10 3.5 L 8.5 6 L 6.5 4.5 Z" fill="#DC2626" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M 9 4.5 Q 11.5 7 9 9.5" stroke="#FED7AA" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        <circle cx="9" cy="9.8" r="1.3" fill="#FED7AA" stroke="#1F2937" stroke-width="0.6"/>
+      </g>
+    </g>
+
+    <!-- 头部组件 -->
+    <g id="head" style="transform-origin: 0px 1px">
+      <!-- 平头短发 -->
+      <path id="hair" d="M -10.5 -6 C -10.5 -15 8 -15 10.5 -6 C 11 -2.5 9.8 0.5 8 1.5 C 5 2.5 -7 2.5 -10.5 -6 Z" fill="#1E293B"/>
+      
+      <!-- 凸脸颊与脸蛋轮廓 -->
+      <path id="face" d="M -8.5 -6.5 C -9.5 -2.5 -9 1 -7 4.5 C -5 6 0 6.2 4 5.8 C 7.5 5.5 10 4.2 12.2 1.5 C 13.5 -0.8 12.8 -4 10.5 -5.8 C 8.5 -7.2 0 -7.8 -8.5 -6.5 Z" fill="#FED7AA" stroke="#1F2937" stroke-width="1.1" stroke-linejoin="round"/>
+      
+      <!-- 耳朵 -->
+      <g id="ear-left">
+        <ellipse cx="-9.2" cy="-1.8" rx="1.6" ry="2.1" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+        <path d="M -9.3 -2.8 Q -8.4 -1.8 -9.3 -0.8" stroke="#FDBA74" stroke-width="0.6" fill="none"/>
+      </g>
+      <g id="ear-right">
+        <ellipse cx="11.2" cy="-1.8" rx="1.4" ry="1.8" fill="#FED7AA" stroke="#1F2937" stroke-width="0.8"/>
+      </g>
+
+      <!-- 腮红 -->
+      <ellipse id="blush-left" cx="-5.5" cy="1.2" rx="2" ry="1.2" fill="#FB7185" opacity="0.6"/>
+      <ellipse id="blush-right" cx="7.2" cy="1.2" rx="2.2" ry="1.3" fill="#FB7185" opacity="0.6"/>
+
+      <!-- 嘴巴 -->
+      <path id="mouth" d="M -0.8 3.2 Q 1.5 4.6 4 3.2" stroke="#1F2937" stroke-width="1.0" fill="none" stroke-linecap="round"/>
+
+      <!-- 标志性粗眉 -->
+      <g id="eyebrows" style="transform-origin: 0px -7px">
+        <path id="brow-left" d="M -7.8 -7.2 C -5.8 -10.8 -3.2 -7.8 -2 -6.8" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path id="brow-right" d="M 1.8 -6.8 C 3.2 -7.8 5.8 -10.8 8.2 -7" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- 眼睛光标跟随挂点 (Clawd #eyes-js) -->
+      <g id="eyes-js" style="transform-origin: 0px -2.5px">
+        <g id="eye-left">
+          <ellipse cx="-4.5" cy="-2.5" rx="2.5" ry="3.0" fill="#0F172A"/>
+          <circle cx="-5.3" cy="-3.6" r="1.0" fill="#FFFFFF"/>
+          <circle cx="-3.9" cy="-1.6" r="0.45" fill="#FFFFFF"/>
+        </g>
+        <g id="eye-right">
+          <ellipse cx="4.5" cy="-2.5" rx="2.5" ry="3.0" fill="#0F172A"/>
+          <circle cx="3.7" cy="-3.6" r="1.0" fill="#FFFFFF"/>
+          <circle cx="5.1" cy="-1.6" r="0.45" fill="#FFFFFF"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

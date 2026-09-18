@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "name": "ShinChan",
+  "author": "Antigravity & User",
+  "version": "1.0.0",
+  "description": "Crayon Shin-chan (野原新之助) desktop pet with eye-tracking, waddling walk, action beam notifications, and cozy sleep.",
+  "viewBox": {
+    "x": -25,
+    "y": -25,
+    "width": 50,
+    "height": 50
+  },
+  "layout": {
+    "contentBox": {
+      "x": -12,
+      "y": -12,
+      "width": 24,
+      "height": 28
+    },
+    "centerX": 0,
+    "baselineY": 16,
+    "visibleHeightRatio": 0.42,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": true,
+    "states": [
+      "idle"
+    ],
+    "eyeRatioX": 0.4,
+    "eyeRatioY": 0.4,
+    "maxOffset": 2.2,
+    "bodyScale": 0.18,
+    "shadowStretch": 0.12,
+    "shadowShift": 0.18,
+    "ids": {
+      "eyes": "eyes-js",
+      "body": "body-js",
+      "shadow": "shadow-js"
+    },
+    "shadowOrigin": "0px 16.5px"
+  },
+  "states": {
+    "idle": [
+      "idle-follow.svg"
+    ],
+    "roam": [
+      "roam.svg"
+    ],
+    "working": [
+      "working.svg"
+    ],
+    "thinking": [
+      "thinking.svg"
+    ],
+    "notification": [
+      "notification.svg"
+    ],
+    "sleeping": [
+      "sleeping.svg"
+    ]
+  }
+}
