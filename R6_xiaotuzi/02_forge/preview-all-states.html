@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>小兔子 R6.0 全状态 APNG 动效矩阵预览</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { margin-bottom: 6px; font-size: 26px; color: var(--accent); }
+        p.subtitle { color: var(--text-sub); margin-top: 0; margin-bottom: 20px; font-size: 14px; }
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .btn.active, .btn:hover {
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1260px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .card-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        .state-name { font-size: 15px; font-weight: bold; color: #fff; }
+        .state-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: #0369a1;
+            color: #e0f2fe;
+        }
+        .preview-box {
+            width: 256px;
+            height: 256px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .checkerboard {
+            background-color: #ffffff;
+            background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+                              linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+                              linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .dark-bg { background: #020617; }
+        .light-bg { background: #f1f5f9; }
+        .card-desc {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-sub);
+            text-align: center;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>小兔子 R6.0 全状态 APNG 动效矩阵预览</h1>
+    <p class="subtitle">共 11 个高品质动作 | 12 FPS | 256×256 规范视口 | 适配 Clawd-on-desk 运行时</p>
+
+    <div class="controls">
+        <span style="font-size: 13px; display: flex; align-items: center; margin-right: 8px;">背景切换：</span>
+        <button class="btn active" onclick="setBg('checkerboard')">🏁 透明棋盘格</button>
+        <button class="btn" onclick="setBg('dark-bg')">🌙 深色桌面</button>
+        <button class="btn" onclick="setBg('light-bg')">☀️ 浅色桌面</button>
+    </div>
+
+    <div class="grid">
+        <!-- 1. idle -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">idle (待机呼吸)</span>
+                <span class="state-tag">常态循环</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/idle.apng" width="256" height="256" alt="idle">
+            </div>
+            <div class="card-desc">呼吸起伏、长耳微动、眨眼、尾巴轻晃</div>
+        </div>
+
+        <!-- 2. roam -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">roam (漫步巡逻)</span>
+                <span class="state-tag">常态循环</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/roam.apng" width="256" height="256" alt="roam">
+            </div>
+            <div class="card-desc">面朝右侧轻快踏步大走、长耳顺滑后摆</div>
+        </div>
+
+        <!-- 3. working -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">working (全息打字)</span>
+                <span class="state-tag">工作状态</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/working.apng" width="256" height="256" alt="working">
+            </div>
+            <div class="card-desc">微型全息发光键盘、双爪飞速狂敲、专注神情</div>
+        </div>
+
+        <!-- 4. thinking -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">thinking (歪头沉思)</span>
+                <span class="state-tag">思考状态</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/thinking.apng" width="256" height="256" alt="thinking">
+            </div>
+            <div class="card-desc">单手托下巴、双耳一立一折、眼珠灵活转动</div>
+        </div>
+
+        <!-- 5. sleeping -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">sleeping (香甜大睡)</span>
+                <span class="state-tag">睡眠状态</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/sleeping.apng" width="256" height="256" alt="sleeping">
+            </div>
+            <div class="card-desc">蜷缩大毛球、长耳当被子盖、平稳呼吸Zzz</div>
+        </div>
+
+        <!-- 6. attention -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">attention (兴奋庆祝)</span>
+                <span class="state-tag">通知/唤醒</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/attention.apng" width="256" height="256" alt="attention">
+            </div>
+            <div class="card-desc">欢呼跳跃、比剪刀手V、双耳挺直、笑容灿烂</div>
+        </div>
+
+        <!-- 7. juggling -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">juggling (抛三球杂耍)</span>
+                <span class="state-tag">多任务/并发</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/juggling.apng" width="256" height="256" alt="juggling">
+            </div>
+            <div class="card-desc">双手敏捷抛接三个发光小球、眼神紧跟小球轨迹</div>
+        </div>
+
+        <!-- 8. drag -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">drag (被拎起悬空)</span>
+                <span class="state-tag">拖拽反应</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/drag.apng" width="256" height="256" alt="drag">
+            </div>
+            <div class="card-desc">被鼠标拎在半空、双腿风火轮乱蹬、傲娇炸毛</div>
+        </div>
+
+        <!-- 9. sweeping -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">sweeping (大扫除扫地)</span>
+                <span class="state-tag">系统清理</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/sweeping.apng" width="256" height="256" alt="sweeping">
+            </div>
+            <div class="card-desc">双手握小竹扫帚利落扫地、勤劳专注左右摇摆</div>
+        </div>
+
+        <!-- 10. error -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">error (抱头抓狂)</span>
+                <span class="state-tag">报错状态</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/error.apng" width="256" height="256" alt="error">
+            </div>
+            <div class="card-desc">长耳朵在头顶打结、抱头跺脚、蚊香眼晕眩崩溃</div>
+        </div>
+
+        <!-- 11. kick -->
+        <div class="card">
+            <div class="card-header">
+                <span class="state-name">kick (功夫飞踢)</span>
+                <span class="state-tag">点击大招</span>
+            </div>
+            <div class="preview-box checkerboard">
+                <img src="../theme/assets/kick.apng" width="256" height="256" alt="kick">
+            </div>
+            <div class="card-desc">凌空侧旋踢、大耳如飘带飞舞、落地抹鼻尖酷帅微笑</div>
+        </div>
+    </div>
+
+    <script>
+        function setBg(cls) {
+            document.querySelectorAll('.preview-box').forEach(el => {
+                el.className = 'preview-box ' + cls;
+            });
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "name": "Xiaotuzi",
+  "author": "Antigravity & User",
+  "version": "1.0.0",
+  "description": "Furry rabbit martial-arts street fighter desktop pet with animated APNG assets.",
+  "viewBox": {
+    "x": 0,
+    "y": 0,
+    "width": 256,
+    "height": 256
+  },
+  "layout": {
+    "contentBox": {
+      "x": 38,
+      "y": 25,
+      "width": 180,
+      "height": 210
+    },
+    "centerX": 128,
+    "baselineY": 235,
+    "visibleHeightRatio": 0.42,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": false
+  },
+  "states": {
+    "idle": [
+      "idle.apng"
+    ],
+    "roam": [
+      "roam.apng"
+    ],
+    "working": [
+      "working.apng"
+    ],
+    "thinking": [
+      "thinking.apng"
+    ],
+    "sleeping": [
+      "sleeping.apng"
+    ],
+    "notification": [
+      "attention.apng"
+    ],
+    "attention": [
+      "attention.apng"
+    ],
+    "juggling": [
+      "juggling.apng"
+    ],
+    "sweeping": [
+      "sweeping.apng"
+    ],
+    "error": [
+      "error.apng"
+    ]
+  },
+  "sleepSequence": {
+    "mode": "direct"
+  },
+  "workingTiers": [
+    {
+      "minSessions": 3,
+      "file": "juggling.apng"
+    },
+    {
+      "minSessions": 1,
+      "file": "working.apng"
+    }
+  ],
+  "jugglingTiers": [
+    {
+      "minSessions": 1,
+      "file": "juggling.apng"
+    }
+  ],
+  "reactions": {
+    "drag": {
+      "file": "drag.apng"
+    },
+    "clickLeft": {
+      "file": "kick.apng",
+      "duration": 4000
+    },
+    "clickRight": {
+      "file": "kick.apng",
+      "duration": 4000
+    },
+    "double": {
+      "files": [
+        "attention.apng"
+      ],
+      "duration": 4000
+    }
+  },
+  "hitBoxes": {
+    "default": {
+      "x": 38,
+      "y": 25,
+      "w": 180,
+      "h": 210
+    },
+    "sleeping": {
+      "x": 38,
+      "y": 100,
+      "w": 180,
+      "h": 135
+    }
+  },
+  "sleepingHitboxFiles": [
+    "sleeping.apng"
+  ]
+}
