@@ -12,6 +12,8 @@ $RECYCLE.BIN/
 # Logs
 *.log
 
-# Scratch
+# Scratch & Frames Cache
 scratch/
+**/frames/
+**/test_frames/
 
