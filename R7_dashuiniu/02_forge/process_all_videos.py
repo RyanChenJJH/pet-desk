@@ -2,11 +2,12 @@ import os
 import glob
 import time
 import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from PIL import Image
 import numpy as np
 from rembg import remove, new_session
 
-def extract_frames_from_video(video_path, output_dir, step=2):
+def extract_frames_from_video(video_path, output_dir, fps=10):
     os.makedirs(output_dir, exist_ok=True)
     for f in glob.glob(os.path.join(output_dir, "*.png")):
         try:
@@ -14,37 +15,93 @@ def extract_frames_from_video(video_path, output_dir, step=2):
         except:
             pass
 
-    # Extract frames using ffmpeg at 24fps base, sampled by step=2 -> 12fps
     cmd = [
         "ffmpeg", "-y", "-i", video_path,
+        "-vf", f"fps={fps}",
         os.path.join(output_dir, "frame_%03d.png")
     ]
-    subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    all_frames = sorted(glob.glob(os.path.join(output_dir, "frame_*.png")))
-    selected = all_frames[::step]
-    return selected
+    subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    return sorted(glob.glob(os.path.join(output_dir, "frame_*.png")))
 
-def extract_frames_from_gif(gif_path, output_dir):
-    os.makedirs(output_dir, exist_ok=True)
-    for f in glob.glob(os.path.join(output_dir, "*.png")):
-        try:
-            os.remove(f)
-        except:
-            pass
+def process_single_frame(fpath, session):
+    img = Image.open(fpath)
+    nobg = remove(img, session=session)
 
-    im = Image.open(gif_path)
-    frames = []
-    idx = 0
-    try:
-        while True:
-            im.seek(idx)
-            frame_path = os.path.join(output_dir, f"frame_{idx:03d}.png")
-            im.convert("RGBA").save(frame_path)
-            frames.append(frame_path)
-            idx += 1
-    except EOFError:
-        pass
-    return frames
+    arr = np.array(nobg)
+    h, w = arr.shape[:2]
+
+    # Clean bottom-right watermark area (豆包AI生成 watermark)
+    arr[int(h * 0.93):, int(w * 0.82):, 3] = 0
+
+    # Alpha noise thresholding
+    alpha = arr[:, :, 3]
+    arr[alpha < 25, 3] = 0
+    cleaned = Image.fromarray(arr)
+
+    # Standard 256x256 resizing
+    resized = cleaned.resize((256, 256), Image.Resampling.LANCZOS)
+    return resized
+
+def process_state(file_path, session, output_dirs, fps=10):
+    state_name = os.path.splitext(os.path.basename(file_path))[0]
+    theme_assets_dir, export_dir, forge_dir, temp_frames_root = output_dirs
+    v_t0 = time.time()
+    print(f"\nProcessing state: {state_name} ({file_path})")
+
+    temp_dir = os.path.join(temp_frames_root, state_name)
+    frames = extract_frames_from_video(file_path, temp_dir, fps=fps)
+    print(f"  Extracted {len(frames)} frames at {fps} FPS.")
+
+    frame_duration_ms = int(1000 / fps)
+
+    # Multi-threaded rembg processing
+    processed_images = [None] * len(frames)
+    def worker(idx):
+        processed_images[idx] = process_single_frame(frames[idx], session)
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        list(executor.map(worker, range(len(frames))))
+
+    # 1. Save APNG to theme/assets/
+    theme_apng_path = os.path.join(theme_assets_dir, f"{state_name}.apng")
+    processed_images[0].save(
+        theme_apng_path,
+        format="PNG",
+        save_all=True,
+        append_images=processed_images[1:],
+        duration=frame_duration_ms,
+        loop=0
+    )
+    theme_kb = os.path.getsize(theme_apng_path) / 1024
+    print(f"  [APNG] Saved Theme Asset: {theme_apng_path} ({theme_kb:.1f} KB)")
+
+    # 2. Save APNG to 03_export/
+    export_apng_path = os.path.join(export_dir, f"{state_name}.apng")
+    processed_images[0].save(
+        export_apng_path,
+        format="PNG",
+        save_all=True,
+        append_images=processed_images[1:],
+        duration=frame_duration_ms,
+        loop=0
+    )
+
+    # 3. Save preview GIF to 02_forge/
+    forge_gif_path = os.path.join(forge_dir, f"{state_name}_preview.gif")
+    processed_images[0].save(
+        forge_gif_path,
+        format="GIF",
+        save_all=True,
+        append_images=processed_images[1:],
+        duration=frame_duration_ms,
+        loop=0,
+        transparency=0,
+        disposal=2
+    )
+
+    elapsed = time.time() - v_t0
+    print(f"  Completed {state_name} in {elapsed:.1f}s")
+    return state_name
 
 def main():
     base_dir = r"e:\Work2\AI_Work\tool\clawd-on-desk\pet-forge\work_space\R7_dashuiniu"
@@ -59,94 +116,26 @@ def main():
     os.makedirs(export_dir, exist_ok=True)
     os.makedirs(forge_dir, exist_ok=True)
 
-    # Scan for both MP4 and GIF files
-    raw_files = sorted(glob.glob(os.path.join(raw_dir, "*.mp4")) + glob.glob(os.path.join(raw_dir, "*.gif")))
+    output_dirs = (theme_assets_dir, export_dir, forge_dir, temp_frames_root)
+
+    raw_files = sorted(glob.glob(os.path.join(raw_dir, "*.mp4")))
     if not raw_files:
-        print(f"No .mp4 or .gif files found in {raw_dir}")
-        print("Please place the Doubao generated files in 01_raw_doubao/ first.")
+        print(f"No .mp4 files found in {raw_dir}")
         return
 
-    print(f"Found {len(raw_files)} animation files in {raw_dir}")
+    print(f"Found {len(raw_files)} videos in {raw_dir} to process.")
 
-    # Use isnet-anime or u2net
     session = new_session("isnet-anime")
-    frame_duration_ms = int(1000 / 12)  # 12 FPS (~83ms)
-
     total_start = time.time()
 
-    for v_idx, file_path in enumerate(raw_files):
-        state_name = os.path.splitext(os.path.basename(file_path))[0]
-        v_t0 = time.time()
-        print(f"\n[{v_idx + 1}/{len(raw_files)}] Processing state: {state_name} ({file_path})")
+    for idx, fpath in enumerate(raw_files):
+        print(f"\n==========================================")
+        print(f"Progress: [{idx + 1}/{len(raw_files)}]")
+        process_state(fpath, session, output_dirs, fps=10)
 
-        temp_dir = os.path.join(temp_frames_root, state_name)
-        if file_path.lower().endswith(".mp4"):
-            selected_frames = extract_frames_from_video(file_path, temp_dir, step=2)
-        else:
-            selected_frames = extract_frames_from_gif(file_path, temp_dir)
-
-        print(f"  Extracted {len(selected_frames)} frames.")
-        if not selected_frames:
-            print(f"  Warning: No frames extracted for {file_path}, skipping.")
-            continue
-
-        processed_images = []
-        for f_idx, fpath in enumerate(selected_frames):
-            img = Image.open(fpath)
-            nobg = remove(img, session=session)
-
-            # Alpha noise thresholding
-            arr = np.array(nobg)
-            alpha = arr[:, :, 3]
-            arr[alpha < 20, 3] = 0
-            cleaned = Image.fromarray(arr)
-
-            # Resize to standard 256x256 view
-            resized = cleaned.resize((256, 256), Image.Resampling.LANCZOS)
-            processed_images.append(resized)
-
-            if (f_idx + 1) % 15 == 0 or (f_idx + 1) == len(selected_frames):
-                print(f"  Processed {f_idx + 1}/{len(selected_frames)} frames ({time.time() - v_t0:.1f}s)...")
-
-        # Save APNG to theme/assets/
-        theme_apng_path = os.path.join(theme_assets_dir, f"{state_name}.apng")
-        processed_images[0].save(
-            theme_apng_path,
-            format="PNG",
-            save_all=True,
-            append_images=processed_images[1:],
-            duration=frame_duration_ms,
-            loop=0
-        )
-        print(f"  Saved Theme APNG: {theme_apng_path} ({os.path.getsize(theme_apng_path) / 1024:.1f} KB)")
-
-        # Save APNG to 03_export/
-        export_apng_path = os.path.join(export_dir, f"{state_name}.apng")
-        processed_images[0].save(
-            export_apng_path,
-            format="PNG",
-            save_all=True,
-            append_images=processed_images[1:],
-            duration=frame_duration_ms,
-            loop=0
-        )
-
-        # Save preview GIF to 02_forge/
-        forge_gif_path = os.path.join(forge_dir, f"{state_name}_preview.gif")
-        processed_images[0].save(
-            forge_gif_path,
-            format="GIF",
-            save_all=True,
-            append_images=processed_images[1:],
-            duration=frame_duration_ms,
-            loop=0,
-            transparency=0,
-            disposal=2
-        )
-
-        print(f"  Finished {state_name} in {time.time() - v_t0:.1f}s")
-
-    print(f"\nAll {len(raw_files)} animations successfully processed in {time.time() - total_start:.1f}s!")
+    total_elapsed = time.time() - total_start
+    print(f"\n==========================================")
+    print(f"SUCCESS: All {len(raw_files)} animations processed in {total_elapsed / 60:.1f} minutes!")
 
 if __name__ == "__main__":
     main()

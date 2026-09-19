@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>大水牛 R7.0 全状态 APNG 动效矩阵预览沙盒</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+            --checker-1: #242f3d;
+            --checker-2: #192231;
+        }
+        body.light-theme {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --accent: #0284c7;
+            --border: #cbd5e1;
+            --checker-1: #e2e8f0;
+            --checker-2: #f8fafc;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        h1 { margin-bottom: 6px; font-size: 26px; color: var(--accent); }
+        p.subtitle { color: var(--text-sub); margin-top: 0; margin-bottom: 20px; font-size: 14px; text-align: center; max-width: 800px; }
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .btn.active, .btn:hover {
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1360px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+            border-color: var(--accent);
+        }
+        .preview-box {
+            width: 100%;
+            height: 260px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--checker-1);
+            background-image: linear-gradient(45deg, var(--checker-2) 25%, transparent 25%),
+                              linear-gradient(-45deg, var(--checker-2) 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, var(--checker-2) 75%),
+                              linear-gradient(-45deg, transparent 75%, var(--checker-2) 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .preview-box img {
+            max-width: 240px;
+            max-height: 240px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+        }
+        .card-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: var(--card-bg);
+        }
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .state-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .desc {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐂 大水牛 R7.0 全状态 APNG 动效矩阵预览沙盒</h1>
+    <p class="subtitle">采用全自动 rembg 智能高精抠图与透明 Alpha 通道，专为 Clawd-on-Desk 打造的 3D 拟人化反差萌猛男水牛桌宠</p>
+
+    <div class="controls">
+        <button class="btn active" onclick="toggleTheme('dark')">🌙 暗黑棋盘格</button>
+        <button class="btn" onclick="toggleTheme('light')">☀️ 明亮棋盘格</button>
+        <button class="btn" onclick="togglePure('black')">⬛ 纯黑背景</button>
+        <button class="btn" onclick="togglePure('white')">⬜ 纯白背景</button>
+    </div>
+
+    <div class="grid" id="cardGrid"></div>
+
+    <script>
+        const states = [
+            { id: "working", name: "疯狂敲电脑 (核心反差萌)", desc: "鼻梁架着小老花镜，粗大手爪在微型键盘上敲出残影，鼻孔喷白汽", badge: "核心工作" },
+            { id: "idle", name: "沉稳待机观察", desc: "单手插兜挺拔站立，胸膛缓慢起伏呼吸，尾巴悠闲晃动，从容自信", badge: "核心待机" },
+            { id: "roam", name: "大佬巡场漫步 (面朝右)", desc: "孔武有力大步流星，双臂豪迈甩动，尾巴欢快摇摆，巡视主场", badge: "巡逻漫步" },
+            { id: "thinking", name: "摸角沉思", desc: "一手抱胸一手托腮，眼神往上瞟，粗壮食指轻敲大弯牛角尖", badge: "核心思考" },
+            { id: "sleeping", name: "趴桌大睡 (呼噜震天)", desc: "像小山丘般趴在桌上，双臂枕在头下，鼻孔呼出粉蓝Zzz睡眠泡泡", badge: "核心睡眠" },
+            { id: "notification", name: "牛气冲天 (点赞比V)", desc: "精神振奋竖起大拇指，整齐洁白大板牙，双眼闪亮星，金色小礼花", badge: "通知唤醒" },
+            { id: "error", name: "代码崩溃 (抱头抓狂)", desc: "蚊香圈眼，大手抱住大弯牛角绝望摇晃，鼻孔气喷白烟，头顶雷云", badge: "报错异常" },
+            { id: "react-drag", name: "被鼠标拎起 (悬空挣扎)", desc: "被无形大手捏住后颈皮悬空，双手双脚在空中无助乱蹬，极度反差萌", badge: "拖拽反应" },
+            { id: "react-poke", name: "被戳胸口 (拍击胸肌)", desc: "被戳后豪迈大笑，双手咚咚拍击坚硬胸肌，展示硬汉体魄", badge: "点击反应" },
+            { id: "react-double", name: "墨镜手枪 (双击互动)", desc: "单手推上酷炫复古黑超墨镜，双手比手枪开火手势挑眉放电", badge: "双击彩蛋" },
+            { id: "idle-coffee", name: "大马克杯热咖啡", desc: "大手温柔捧着特大号陶瓷马克杯吹热气，惬意轻啜，治愈安逸", badge: "待机彩蛋" },
+            { id: "idle-workout", name: "偷偷秀二头肌", desc: "左右看确认没人，原地大摆健美前双二头肌Pose，抖抖胸肌正正领口", badge: "待机彩蛋" },
+            { id: "welding", name: "硬核电焊修Bug", desc: "戴上重型工业电焊护目面罩，手持焊枪对着代码电路火花四溅焊接", badge: "多级工作" },
+            { id: "sweeping", name: "奋斗扫地牛牛", desc: "额头扎着必胜头巾，弯腰拿小扫帚撮箕清扫地面代码碎屑与垃圾", badge: "垃圾清理" },
+            { id: "carrying", name: "肩扛高科技服务器", desc: "右肩稳稳扛着蓝光服务器机箱，每一步都铿锵有力，团队绝对基石", badge: "负重前行" },
+            { id: "yawning", name: "伸懒腰大哈欠", desc: "张大嘴巴打震天大哈欠，双臂高举过头顶用力拉伸，眼角泛出泪花", badge: "睡眠序列" },
+            { id: "dozing", name: "小鸡啄米打瞌睡", desc: "坐在椅子上头一点一点下垂，突然脑袋一沉猛地惊醒，赶紧揉脸坐端正", badge: "浅睡序列" }
+        ];
+
+        const container = document.getElementById("cardGrid");
+        states.forEach(s => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <div class="preview-box">
+                    <img src="../theme/assets/${s.id}.apng" alt="${s.name}" onerror="this.onerror=null; this.src='${s.id}_preview.gif';">
+                </div>
+                <div class="card-info">
+                    <div class="title-row">
+                        <span class="state-name">${s.id}</span>
+                        <span class="badge">${s.badge}</span>
+                    </div>
+                    <div class="desc">${s.desc}</div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        function toggleTheme(mode) {
+            document.body.className = mode === 'light' ? 'light-theme' : '';
+            document.querySelectorAll('.preview-box').forEach(el => {
+                el.style.backgroundColor = '';
+                el.style.backgroundImage = '';
+            });
+            updateActive(event.target);
+        }
+
+        function togglePure(color) {
+            document.querySelectorAll('.preview-box').forEach(el => {
+                el.style.backgroundImage = 'none';
+                el.style.backgroundColor = color === 'black' ? '#000000' : '#ffffff';
+            });
+            updateActive(event.target);
+        }
+
+        function updateActive(btn) {
+            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

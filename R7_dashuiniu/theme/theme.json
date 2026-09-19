@@ -49,7 +49,58 @@
     ],
     "error": [
       "error.apng"
+    ],
+    "sweeping": [
+      "sweeping.apng"
+    ],
+    "carrying": [
+      "carrying.apng"
+    ],
+    "yawning": [
+      "yawning.apng"
+    ],
+    "dozing": [
+      "dozing.apng"
     ]
+  },
+  "workingTiers": [
+    {
+      "minSessions": 2,
+      "file": "welding.apng"
+    },
+    {
+      "minSessions": 1,
+      "file": "working.apng"
+    }
+  ],
+  "idleAnimations": [
+    {
+      "file": "idle-coffee.apng",
+      "duration": 4000
+    },
+    {
+      "file": "idle-workout.apng",
+      "duration": 4000
+    }
+  ],
+  "reactions": {
+    "drag": {
+      "file": "react-drag.apng"
+    },
+    "clickLeft": {
+      "file": "react-poke.apng",
+      "duration": 2500
+    },
+    "clickRight": {
+      "file": "react-poke.apng",
+      "duration": 2500
+    },
+    "double": {
+      "files": [
+        "react-double.apng"
+      ],
+      "duration": 3000
+    }
   },
   "sleepSequence": {
     "mode": "direct"
