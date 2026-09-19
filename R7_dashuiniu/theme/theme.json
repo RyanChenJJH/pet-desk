@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "name": "Dashuiniu",
+  "author": "Antigravity & User",
+  "version": "1.0.0",
+  "description": "Muscular anthropomorphic water buffalo desktop pet with animated APNG assets.",
+  "viewBox": {
+    "x": 0,
+    "y": 0,
+    "width": 256,
+    "height": 256
+  },
+  "layout": {
+    "contentBox": {
+      "x": 32,
+      "y": 20,
+      "width": 192,
+      "height": 215
+    },
+    "centerX": 128,
+    "baselineY": 235,
+    "visibleHeightRatio": 0.42,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": false
+  },
+  "states": {
+    "idle": [
+      "idle.apng"
+    ],
+    "roam": [
+      "roam.apng"
+    ],
+    "working": [
+      "working.apng"
+    ],
+    "thinking": [
+      "thinking.apng"
+    ],
+    "sleeping": [
+      "sleeping.apng"
+    ],
+    "notification": [
+      "notification.apng"
+    ],
+    "attention": [
+      "notification.apng"
+    ],
+    "error": [
+      "error.apng"
+    ]
+  },
+  "sleepSequence": {
+    "mode": "direct"
+  },
+  "hitBoxes": {
+    "default": {
+      "x": 32,
+      "y": 20,
+      "w": 192,
+      "h": 215
+    },
+    "sleeping": {
+      "x": 30,
+      "y": 80,
+      "w": 196,
+      "h": 155
+    }
+  },
+  "sleepingHitboxFiles": [
+    "sleeping.apng"
+  ]
+}
