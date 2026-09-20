@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "name": "WoodenFish",
+  "author": "Antigravity & User",
+  "version": "1.0.0",
+  "description": "Healing Chibi wooden fish desktop pet with pure SVG animations, cursor eye-tracking, and merit-accumulating knocking rhythms.",
+  "viewBox": {
+    "x": -25,
+    "y": -25,
+    "width": 50,
+    "height": 50
+  },
+  "layout": {
+    "contentBox": {
+      "x": -13,
+      "y": -10,
+      "width": 26,
+      "height": 28
+    },
+    "centerX": 0,
+    "baselineY": 18,
+    "visibleHeightRatio": 0.4,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": true,
+    "states": [
+      "idle"
+    ],
+    "eyeRatioX": 0.45,
+    "eyeRatioY": 0.45,
+    "maxOffset": 2.0,
+    "bodyScale": 0.25,
+    "shadowStretch": 0.12,
+    "shadowShift": 0.2,
+    "ids": {
+      "eyes": "eyes-js",
+      "body": "body-js",
+      "shadow": "shadow-js"
+    },
+    "shadowOrigin": "0px 18px"
+  },
+  "states": {
+    "idle": [
+      "idle-follow.svg"
+    ],
+    "roam": [
+      "roam.svg"
+    ],
+    "working": [
+      "working.svg"
+    ],
+    "thinking": [
+      "thinking.svg"
+    ],
+    "sleeping": [
+      "sleeping.svg"
+    ],
+    "notification": [
+      "notification.svg"
+    ],
+    "attention": {
+      "fallbackTo": "notification"
+    },
+    "error": [
+      "error.svg"
+    ],
+    "waking": [
+      "idle-follow.svg"
+    ]
+  },
+  "sleepSequence": {
+    "mode": "direct"
+  },
+  "hitBoxes": {
+    "default": {
+      "x": -13,
+      "y": -10,
+      "w": 26,
+      "h": 28
+    },
+    "sleeping": {
+      "x": -13,
+      "y": 4,
+      "w": 26,
+      "h": 14
+    }
+  }
+}

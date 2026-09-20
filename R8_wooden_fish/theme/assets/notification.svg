@@ -1,0 +1,273 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="fish-wood-grad" cx="42%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="25%" stop-color="#F59E0B"/>
+      <stop offset="65%" stop-color="#D97706"/>
+      <stop offset="92%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </radialGradient>
+
+    <linearGradient id="fish-tail-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="60%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <radialGradient id="mallet-head-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="40%" stop-color="#D97706"/>
+      <stop offset="85%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#581C87"/>
+    </radialGradient>
+
+    <linearGradient id="mallet-handle-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <!-- 耀眼金色文字渐变 -->
+    <linearGradient id="mega-gold-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="35%" stop-color="#FEF08A"/>
+      <stop offset="70%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* 急促敲击动画 (1.2s 循环敲击三次，狂击模式) */
+    @keyframes mallet-frenzy {
+      0%, 100% {
+        transform: translate(0px, 0px) rotate(-15deg);
+      }
+      8% {
+        transform: translate(3px, -4px) rotate(-40deg);
+      }
+      18% {
+        transform: translate(-7px, 3px) rotate(18deg); /* 第 1 击 */
+      }
+      26% {
+        transform: translate(2px, -3px) rotate(-35deg);
+      }
+      36% {
+        transform: translate(-7px, 3px) rotate(18deg); /* 第 2 击 */
+      }
+      44% {
+        transform: translate(2px, -3px) rotate(-35deg);
+      }
+      54% {
+        transform: translate(-7px, 3px) rotate(18deg); /* 第 3 击 */
+      }
+      65% {
+        transform: translate(-2px, -1px) rotate(-10deg);
+      }
+      85% {
+        transform: translate(0px, 0px) rotate(-15deg);
+      }
+    }
+
+    /* 全身受击震颤律动 */
+    @keyframes fish-shake {
+      0%, 100% {
+        transform: scale(1.0, 1.0) rotate(0deg);
+      }
+      18%, 36%, 54% {
+        transform: scale(1.08, 0.90) rotate(-1deg);
+      }
+      22%, 40%, 58% {
+        transform: scale(0.96, 1.04) rotate(1deg);
+      }
+      75% {
+        transform: scale(1.0, 1.0) rotate(0deg);
+      }
+    }
+
+    /* 兴奋大眼闪烁与缩放 */
+    @keyframes eyes-excited {
+      0%, 100% {
+        transform: scale(1.0);
+      }
+      18%, 36%, 54% {
+        transform: scale(1.2);
+      }
+      75% {
+        transform: scale(1.0);
+      }
+    }
+
+    /* 佛光光环爆发式扩散 */
+    @keyframes buddha-halo-burst {
+      0%, 100% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+      18% {
+        opacity: 0.9;
+      }
+      65% {
+        transform: scale(2.8);
+        opacity: 0;
+      }
+    }
+
+    /* 爆出“功德+999”大号字体 */
+    @keyframes merit-mega-float {
+      0%, 100% {
+        transform: translateY(0px) scale(0.4);
+        opacity: 0;
+      }
+      20% {
+        transform: translateY(-5px) scale(1.25);
+        opacity: 1;
+      }
+      75% {
+        transform: translateY(-16px) scale(1.05);
+        opacity: 0.9;
+      }
+      95% {
+        transform: translateY(-22px) scale(0.85);
+        opacity: 0;
+      }
+    }
+
+    /* 四散金色小星芒 */
+    @keyframes sparkle-burst {
+      0%, 100% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      60% {
+        transform: scale(1.4);
+        opacity: 0.8;
+      }
+      85% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    #fish-body-notif {
+      transform-origin: 0px 17.5px;
+      animation: fish-shake 1.2s ease-out infinite;
+    }
+
+    #mallet-notif {
+      transform-origin: 12px 3px;
+      animation: mallet-frenzy 1.2s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+    }
+
+    #eyes-notif-group {
+      transform-origin: 0px 6.2px;
+      animation: eyes-excited 1.2s ease-in-out infinite;
+    }
+
+    #buddha-halo {
+      transform-origin: 0px 6px;
+      animation: buddha-halo-burst 1.2s ease-out infinite;
+    }
+
+    #merit-mega-text {
+      animation: merit-mega-float 1.2s ease-out infinite;
+    }
+
+    #sparkles-group {
+      transform-origin: 0px -2px;
+      animation: sparkle-burst 1.2s ease-out infinite;
+    }
+  </style>
+
+  <!-- 1. 地面投影层 -->
+  <g id="shadow-js">
+    <ellipse cx="0" cy="17.5" rx="11" ry="2.4" fill="rgba(60,26,6,0.2)"/>
+  </g>
+
+  <!-- 2. 木鱼主体躯干层 -->
+  <g id="body-js">
+    <g id="fish-body-notif">
+      <!-- 卷尾 -->
+      <path id="fish-tail" d="M -9 6 C -12 3, -15 7, -13 11 C -11.5 13.5, -8 13.5, -7 11 C -8 9.5, -8 7.5, -9 6 Z"
+            fill="url(#fish-tail-grad)" stroke="#3C1A06" stroke-width="0.8" stroke-linejoin="round"/>
+
+      <!-- 主球体 -->
+      <path id="fish-shell" d="M -10 11 C -11 6, -9 -1, -2 -3 C 3 -4.5, 9 -2, 11 4 C 12.5 8, 12 13, 8 16 C 4 17.5, -5 17.5, -9 15 C -10.5 13.8, -10.5 12.2, -10 11 Z"
+            fill="url(#fish-wood-grad)" stroke="#3C1A06" stroke-width="0.9" stroke-linejoin="round"/>
+
+      <!-- 顶部高光弧 -->
+      <path d="M -5 -0.5 C -1 -2, 4 -2, 7 1.5"
+            fill="none" stroke="#FEF3C7" stroke-width="0.8" stroke-linecap="round" opacity="0.65"/>
+
+      <!-- 雕刻纹线 -->
+      <g id="carved-lines" opacity="0.55">
+        <path d="M -7 4 C -5 2, -1 2, 1 3.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+        <path d="M 3 2.5 C 5 2.5, 8 4, 9 6.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+      </g>
+
+      <!-- 发音横缝 -->
+      <g id="fish-slit">
+        <path d="M -6.5 12.5 Q 0 14.5 7.5 12 Q 9 12 9.5 13 Q 9 14.2 7 14.5 Q 0 16 -6.5 14 Q -8 13.5 -8 12.8 Z"
+              fill="#451A03" stroke="#3C1A06" stroke-width="0.6"/>
+        <circle cx="-6.2" cy="13.2" r="1.1" fill="#2E1002"/>
+        <circle cx="7.2" cy="13.2" r="1.1" fill="#2E1002"/>
+      </g>
+
+      <!-- 浓郁腮红 -->
+      <g id="blush">
+        <ellipse cx="-6" cy="8.2" rx="1.8" ry="1.1" fill="rgba(239,68,68,0.55)"/>
+        <ellipse cx="6" cy="8.2" rx="1.8" ry="1.1" fill="rgba(239,68,68,0.55)"/>
+      </g>
+
+      <!-- 兴奋大眼 (#eyes-js) -->
+      <g id="eyes-js">
+        <g id="eyes-notif-group">
+          <!-- 左眼 -->
+          <g id="eye-left">
+            <circle cx="-3.6" cy="6.2" r="2.0" fill="#18181B"/>
+            <circle cx="-4.2" cy="5.4" r="0.8" fill="#FFFFFF"/>
+            <circle cx="-3.0" cy="7.2" r="0.3" fill="#FFFFFF"/>
+          </g>
+          <!-- 右眼 -->
+          <g id="eye-right">
+            <circle cx="3.6" cy="6.2" r="2.0" fill="#18181B"/>
+            <circle cx="3.0" cy="5.4" r="0.8" fill="#FFFFFF"/>
+            <circle cx="4.2" cy="7.2" r="0.3" fill="#FFFFFF"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 3. 悬浮急促敲击小木槌层 -->
+  <g id="mallet-js">
+    <g id="mallet-notif">
+      <ellipse cx="10" cy="16.5" rx="3.5" ry="1.0" fill="rgba(60,26,6,0.12)"/>
+      <path d="M 9.5 3 L 13 -7.5" stroke="url(#mallet-handle-grad)" stroke-width="1.3" stroke-linecap="round"/>
+      <rect x="11.2" y="-4" width="2" height="1.2" rx="0.5" fill="#DC2626" transform="rotate(-65 12 -3.5)"/>
+      <ellipse cx="8.5" cy="-3.5" rx="3.2" ry="2.4" fill="url(#mallet-head-grad)" stroke="#3C1A06" stroke-width="0.75" transform="rotate(-25 8.5 -3.5)"/>
+      <circle cx="7.8" cy="-4.2" r="0.7" fill="#FEF3C7" opacity="0.75"/>
+    </g>
+  </g>
+
+  <!-- 4. 浮空佛光与狂暴“功德+999”特效 (#effects-js) -->
+  <g id="effects-js">
+    <!-- 扩散佛光大圆环 -->
+    <circle id="buddha-halo" cx="0" cy="6" r="10" fill="none" stroke="#FDE047" stroke-width="1.2" opacity="0"/>
+
+    <!-- 四散金色星芒粒子 -->
+    <g id="sparkles-group" opacity="0">
+      <polygon points=" -10,-4 -8,-3 -10,-2 -12,-3 " fill="#FEF08A"/>
+      <polygon points=" 10,-4 12,-3 10,-2 8,-3 " fill="#FEF08A"/>
+      <polygon points=" 0,-12 1.5,-10 0,-8 -1.5,-10 " fill="#FBBF24"/>
+      <polygon points=" -6,-10 -5,-8.5 -6,-7 -7,-8.5 " fill="#F59E0B"/>
+      <polygon points=" 6,-10 7,-8.5 6,-7 5,-8.5 " fill="#F59E0B"/>
+    </g>
+
+    <!-- 大号“功德+999” -->
+    <g id="merit-mega-text" opacity="0">
+      <text x="0" y="-8" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="5.5" font-weight="900" fill="url(#mega-gold-grad)" stroke="#92400E" stroke-width="0.5" text-anchor="middle">功德+999</text>
+    </g>
+  </g>
+</svg>

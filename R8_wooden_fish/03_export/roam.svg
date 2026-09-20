@@ -1,0 +1,213 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="fish-wood-grad" cx="42%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="25%" stop-color="#F59E0B"/>
+      <stop offset="65%" stop-color="#D97706"/>
+      <stop offset="92%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </radialGradient>
+
+    <linearGradient id="fish-tail-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="60%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <radialGradient id="mallet-head-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="40%" stop-color="#D97706"/>
+      <stop offset="85%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#581C87"/>
+    </radialGradient>
+
+    <linearGradient id="mallet-handle-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* Q 弹果冻跳跃关键帧 (Hop and Squash 1.2s 循环首尾闭环) */
+    @keyframes fish-hop {
+      0%, 100% {
+        transform: translateY(0px) scale(1.0, 1.0) rotate(0deg);
+      }
+      15% {
+        transform: translateY(2px) scale(1.15, 0.82) rotate(-2deg);
+      }
+      35% {
+        transform: translateY(-6px) scale(0.90, 1.12) rotate(4deg);
+      }
+      55% {
+        transform: translateY(-9px) scale(1.02, 0.98) rotate(2deg);
+      }
+      75% {
+        transform: translateY(-2px) scale(0.92, 1.08) rotate(-2deg);
+      }
+      85% {
+        transform: translateY(1.8px) scale(1.12, 0.86) rotate(0deg);
+      }
+      94% {
+        transform: translateY(-0.5px) scale(0.98, 1.02) rotate(0deg);
+      }
+    }
+
+    /* 地面阴影随弹跳高度缩放渐隐 */
+    @keyframes shadow-hop {
+      0%, 100% {
+        transform: scale(1.0, 1.0);
+        opacity: 0.22;
+      }
+      15% {
+        transform: scale(1.2, 1.1);
+        opacity: 0.28;
+      }
+      35% {
+        transform: scale(0.7, 0.7);
+        opacity: 0.12;
+      }
+      55% {
+        transform: scale(0.55, 0.55);
+        opacity: 0.08;
+      }
+      75% {
+        transform: scale(0.85, 0.85);
+        opacity: 0.18;
+      }
+      85% {
+        transform: scale(1.15, 1.05);
+        opacity: 0.26;
+      }
+      94% {
+        transform: scale(0.98, 0.98);
+        opacity: 0.21;
+      }
+    }
+
+    /* 悬浮小木槌跟随滞后与惯性倾角 */
+    @keyframes mallet-follow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      15% {
+        transform: translateY(1px) rotate(-8deg);
+      }
+      35% {
+        transform: translateY(-4px) rotate(14deg);
+      }
+      55% {
+        transform: translateY(-8px) rotate(8deg);
+      }
+      75% {
+        transform: translateY(-3px) rotate(-6deg);
+      }
+      85% {
+        transform: translateY(1.5px) rotate(-4deg);
+      }
+      94% {
+        transform: translateY(-0.5px) rotate(1deg);
+      }
+    }
+
+    /* 兴奋前瞻眼神微动 */
+    @keyframes roam-eyes {
+      0%, 100% {
+        transform: translate(0px, 0px);
+      }
+      50% {
+        transform: translate(0.6px, -0.4px);
+      }
+    }
+
+    #body-hop-group {
+      transform-origin: 0px 17.5px;
+      animation: fish-hop 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    #shadow-js {
+      transform-origin: 0px 17.5px;
+      animation: shadow-hop 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    #mallet-follow-group {
+      transform-origin: 10px -4px;
+      animation: mallet-follow 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    #roam-eye-group {
+      animation: roam-eyes 1.2s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- 1. 地面投影层 (#shadow-js) -->
+  <g id="shadow-js">
+    <ellipse cx="0" cy="17.5" rx="11" ry="2.4" fill="rgba(60,26,6,0.2)"/>
+  </g>
+
+  <!-- 2. 木鱼主体躯干层 (#body-js) 面朝右侧 (Facing Right) -->
+  <g id="body-js">
+    <g id="body-hop-group">
+      <!-- 2.1 卷尾 (朝左后方) -->
+      <path id="fish-tail" d="M -9 6 C -12 3, -15 7, -13 11 C -11.5 13.5, -8 13.5, -7 11 C -8 9.5, -8 7.5, -9 6 Z"
+            fill="url(#fish-tail-grad)" stroke="#3C1A06" stroke-width="0.8" stroke-linejoin="round"/>
+
+      <!-- 2.2 木鱼主圆顶 (前倾朝右) -->
+      <path id="fish-shell" d="M -10 11 C -11 6, -9 -1, -2 -3 C 3 -4.5, 9 -2, 11 4 C 12.5 8, 12 13, 8 16 C 4 17.5, -5 17.5, -9 15 C -10.5 13.8, -10.5 12.2, -10 11 Z"
+            fill="url(#fish-wood-grad)" stroke="#3C1A06" stroke-width="0.9" stroke-linejoin="round"/>
+
+      <!-- 2.3 顶部柔和高光弧 -->
+      <path d="M -5 -0.5 C -1 -2, 4 -2, 7 1.5"
+            fill="none" stroke="#FEF3C7" stroke-width="0.8" stroke-linecap="round" opacity="0.65"/>
+
+      <!-- 2.4 木雕鱼身刻线 -->
+      <g id="carved-lines" opacity="0.55">
+        <path d="M -7 4 C -5 2, -1 2, 1 3.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+        <path d="M 3 2.5 C 5 2.5, 8 4, 9 6.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+      </g>
+
+      <!-- 2.5 发音镂空横缝 (朝右前方张口) -->
+      <g id="fish-slit">
+        <path d="M -6.5 12.5 Q 0 14.5 7.5 12 Q 9 12 9.5 13 Q 9 14.2 7 14.5 Q 0 16 -6.5 14 Q -8 13.5 -8 12.8 Z"
+              fill="#451A03" stroke="#3C1A06" stroke-width="0.6"/>
+        <circle cx="-6.2" cy="13.2" r="1.1" fill="#2E1002"/>
+        <circle cx="7.2" cy="13.2" r="1.1" fill="#2E1002"/>
+      </g>
+
+      <!-- 2.6 两颊软萌腮红 -->
+      <g id="blush">
+        <ellipse cx="-5" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
+        <ellipse cx="6.5" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
+      </g>
+
+      <!-- 2.7 前瞻大眼 (#eyes-js) -->
+      <g id="eyes-js">
+        <g id="roam-eye-group">
+          <!-- 左眼 -->
+          <g id="eye-left">
+            <circle cx="-2.6" cy="6.2" r="1.7" fill="#18181B"/>
+            <circle cx="-2.0" cy="5.6" r="0.6" fill="#FFFFFF"/>
+            <circle cx="-2.0" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
+          </g>
+          <!-- 右眼 (靠近行进前方侧) -->
+          <g id="eye-right">
+            <circle cx="4.5" cy="6.2" r="1.8" fill="#18181B"/>
+            <circle cx="5.2" cy="5.6" r="0.7" fill="#FFFFFF"/>
+            <circle cx="4.0" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- 3. 悬浮伴生小木槌层 (随行跟斗惯性) -->
+  <g id="mallet-js">
+    <g id="mallet-follow-group">
+      <ellipse cx="10" cy="16.5" rx="3.5" ry="1.0" fill="rgba(60,26,6,0.12)"/>
+      <path d="M 9.5 3 L 13 -7.5" stroke="url(#mallet-handle-grad)" stroke-width="1.3" stroke-linecap="round"/>
+      <rect x="11.2" y="-4" width="2" height="1.2" rx="0.5" fill="#DC2626" transform="rotate(-65 12 -3.5)"/>
+      <ellipse cx="8.5" cy="-3.5" rx="3.2" ry="2.4" fill="url(#mallet-head-grad)" stroke="#3C1A06" stroke-width="0.75" transform="rotate(-25 8.5 -3.5)"/>
+      <circle cx="7.8" cy="-4.2" r="0.7" fill="#FEF3C7" opacity="0.75"/>
+    </g>
+  </g>
+</svg>

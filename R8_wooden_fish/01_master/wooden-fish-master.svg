@@ -1,0 +1,119 @@
+<svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 木鱼主体木质渐变 -->
+    <radialGradient id="fish-wood-grad" cx="42%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="25%" stop-color="#F59E0B"/>
+      <stop offset="65%" stop-color="#D97706"/>
+      <stop offset="92%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </radialGradient>
+
+    <!-- 木鱼鱼尾/雕花深色木质渐变 -->
+    <linearGradient id="fish-tail-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="60%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <!-- 伴生木槌槌头渐变 -->
+    <radialGradient id="mallet-head-grad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="40%" stop-color="#D97706"/>
+      <stop offset="85%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#581C87"/>
+    </radialGradient>
+
+    <!-- 伴生木槌木柄渐变 -->
+    <linearGradient id="mallet-handle-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <!-- 功德金色光晕渐变 -->
+    <radialGradient id="merit-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. 地面投影层 (#shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 0px 17.5px">
+    <ellipse cx="0" cy="17.5" rx="11" ry="2.4" fill="rgba(60,26,6,0.2)"/>
+  </g>
+
+  <!-- 2. 木鱼主体躯干层 (#body-js) -->
+  <g id="body-js" style="transform-origin: 0px 17.5px">
+    <!-- 2.1 木鱼后部把手/卷尾 (Tail handle) -->
+    <path id="fish-tail" d="M -9 6 C -12 3, -15 7, -13 11 C -11.5 13.5, -8 13.5, -7 11 C -8 9.5, -8 7.5, -9 6 Z"
+          fill="url(#fish-tail-grad)" stroke="#3C1A06" stroke-width="0.8" stroke-linejoin="round"/>
+
+    <!-- 2.2 木鱼主球体 (Main Dome) -->
+    <path id="fish-shell" d="M -10 11 C -11 6, -9 -1, -2 -3 C 3 -4.5, 9 -2, 11 4 C 12.5 8, 12 13, 8 16 C 4 17.5, -5 17.5, -9 15 C -10.5 13.8, -10.5 12.2, -10 11 Z"
+          fill="url(#fish-wood-grad)" stroke="#3C1A06" stroke-width="0.9" stroke-linejoin="round"/>
+
+    <!-- 2.3 顶部柔和高光弧 -->
+    <path d="M -5 -0.5 C -1 -2, 4 -2, 7 1.5"
+          fill="none" stroke="#FEF3C7" stroke-width="0.8" stroke-linecap="round" opacity="0.65"/>
+
+    <!-- 2.4 木雕鱼身回纹/祥云刻线 (Traditional Carved Lines) -->
+    <g id="carved-lines" opacity="0.55">
+      <path d="M -7 4 C -5 2, -1 2, 1 3.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+      <path d="M 3 2.5 C 5 2.5, 8 4, 9 6.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+    </g>
+
+    <!-- 2.5 木鱼发音镂空横缝 (Fish Mouth Resonance Slit) -->
+    <g id="fish-slit">
+      <!-- 内部暗凹槽 -->
+      <path d="M -6.5 12.5 Q 0 14.5 7.5 12 Q 9 12 9.5 13 Q 9 14.2 7 14.5 Q 0 16 -6.5 14 Q -8 13.5 -8 12.8 Z"
+            fill="#451A03" stroke="#3C1A06" stroke-width="0.6"/>
+      <!-- 开孔两端的圆珠收口 -->
+      <circle cx="-6.2" cy="13.2" r="1.1" fill="#2E1002"/>
+      <circle cx="7.2" cy="13.2" r="1.1" fill="#2E1002"/>
+    </g>
+
+    <!-- 2.6 两颊软萌腮红 (#blush) -->
+    <g id="blush">
+      <ellipse cx="-6" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
+      <ellipse cx="6" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
+    </g>
+
+    <!-- 2.7 呆萌双眼与眼动跟随层 (#eyes-js) -->
+    <g id="eyes-js" style="transform-origin: 0px 6px">
+      <!-- 左眼 -->
+      <g id="eye-left">
+        <circle cx="-3.6" cy="6.2" r="1.7" fill="#18181B"/>
+        <!-- 灵动白色高光 -->
+        <circle cx="-4.2" cy="5.6" r="0.6" fill="#FFFFFF"/>
+        <circle cx="-3.0" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
+      </g>
+      <!-- 右眼 -->
+      <g id="eye-right">
+        <circle cx="3.6" cy="6.2" r="1.7" fill="#18181B"/>
+        <!-- 灵动白色高光 -->
+        <circle cx="3.0" cy="5.6" r="0.6" fill="#FFFFFF"/>
+        <circle cx="4.2" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 3. 悬浮伴生小木槌层 (#mallet-js) -->
+  <g id="mallet-js" style="transform-origin: 10px -4px">
+    <!-- 木槌阴影 (微弱悬空投影) -->
+    <ellipse cx="10" cy="16.5" rx="3.5" ry="1.0" fill="rgba(60,26,6,0.12)"/>
+    <!-- 槌柄 -->
+    <path d="M 9.5 3 L 13 -7.5" stroke="url(#mallet-handle-grad)" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- 槌柄顶部红绳绑带装饰 -->
+    <rect x="11.2" y="-4" width="2" height="1.2" rx="0.5" fill="#DC2626" transform="rotate(-65 12 -3.5)"/>
+    <!-- 槌头 (椭圆木球) -->
+    <ellipse cx="8.5" cy="-3.5" rx="3.2" ry="2.4" fill="url(#mallet-head-grad)" stroke="#3C1A06" stroke-width="0.75" transform="rotate(-25 8.5 -3.5)"/>
+    <!-- 槌头高光点 -->
+    <circle cx="7.8" cy="-4.2" r="0.7" fill="#FEF3C7" opacity="0.75"/>
+  </g>
+
+  <!-- 4. 浮空特效层 (#effects-js) -->
+  <g id="effects-js">
+    <!-- 静态母版中默认隐藏或示意 -->
+  </g>
+</svg>
