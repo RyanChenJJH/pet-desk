@@ -1,169 +1,263 @@
 <svg viewBox="-25 -25 50 50" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 木鱼主体木质渐变 -->
-    <radialGradient id="fish-wood-grad" cx="42%" cy="32%" r="68%">
-      <stop offset="0%" stop-color="#FDE68A"/>
-      <stop offset="25%" stop-color="#F59E0B"/>
-      <stop offset="65%" stop-color="#D97706"/>
-      <stop offset="92%" stop-color="#B45309"/>
-      <stop offset="100%" stop-color="#78350F"/>
+    <!-- 木鱼深紫檀红木渐变 -->
+    <radialGradient id="fish-wood-grad" cx="42%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="25%" stop-color="#D97706"/>
+      <stop offset="55%" stop-color="#92400E"/>
+      <stop offset="85%" stop-color="#78350F"/>
+      <stop offset="100%" stop-color="#451A03"/>
     </radialGradient>
 
-    <linearGradient id="fish-tail-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F59E0B"/>
-      <stop offset="60%" stop-color="#B45309"/>
-      <stop offset="100%" stop-color="#78350F"/>
+    <!-- 木鱼卷尾提梁渐变 -->
+    <linearGradient id="fish-handle-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="60%" stop-color="#78350F"/>
+      <stop offset="100%" stop-color="#451A03"/>
     </linearGradient>
 
+    <!-- 朱红锦缎蒲团绸面渐变 -->
+    <radialGradient id="cushion-silk-grad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="40%" stop-color="#DC2626"/>
+      <stop offset="80%" stop-color="#991B1B"/>
+      <stop offset="100%" stop-color="#7F1D1D"/>
+    </radialGradient>
+
+    <!-- 蒲团金丝滚边渐变 -->
+    <linearGradient id="gold-brocade-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#FEF08A"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <!-- 伴生木槌槌头渐变 -->
     <radialGradient id="mallet-head-grad" cx="35%" cy="35%" r="65%">
       <stop offset="0%" stop-color="#FDE68A"/>
       <stop offset="40%" stop-color="#D97706"/>
-      <stop offset="85%" stop-color="#92400E"/>
-      <stop offset="100%" stop-color="#581C87"/>
+      <stop offset="85%" stop-color="#78350F"/>
+      <stop offset="100%" stop-color="#451A03"/>
     </radialGradient>
 
+    <!-- 伴生木槌木柄渐变 -->
     <linearGradient id="mallet-handle-grad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#B45309"/>
       <stop offset="100%" stop-color="#78350F"/>
     </linearGradient>
+
+    <!-- 功德 +1 发光金色文字渐变 -->
+    <linearGradient id="gold-plus-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#FEF08A"/>
+      <stop offset="70%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
   </defs>
 
   <style>
-    /* 待机轻柔呼吸动画 (3.0s 循环首尾闭环) */
-    @keyframes fish-breathe {
+    /* 待机常态舒缓敲击动画 (1.6s 循环首尾 100% 闭环) */
+    @keyframes mallet-idle-knock {
+      0%, 100% {
+        transform: translate(2px, -3px) rotate(-32deg);
+      }
+      10% {
+        transform: translate(3px, -4px) rotate(-38deg); /* 高高扬起蓄力 */
+      }
+      18% {
+        transform: translate(-7px, 3px) rotate(16deg);  /* 沉稳击中木鱼顶 */
+      }
+      25% {
+        transform: translate(-2px, -1px) rotate(-10deg); /* 受力轻弹起 */
+      }
+      45% {
+        transform: translate(1px, -2px) rotate(-25deg);
+      }
+      70% {
+        transform: translate(2px, -3px) rotate(-32deg);
+      }
+    }
+
+    /* 木鱼受击瞬间在蒲团上下陷微颤 */
+    @keyframes fish-cushion-hit {
+      0%, 100% {
+        transform: translateY(0px) scale(1.0, 1.0);
+      }
+      18% {
+        transform: translateY(1.2px) scale(1.04, 0.92); /* 击中受压下沉 */
+      }
+      26% {
+        transform: translateY(-0.4px) scale(0.98, 1.02); /* 弹性回弹 */
+      }
+      38% {
+        transform: translateY(0px) scale(1.0, 1.0);
+      }
+    }
+
+    /* 蒲团同步弹性微挤压 */
+    @keyframes cushion-squeeze {
       0%, 100% {
         transform: scale(1.0, 1.0);
       }
-      50% {
-        transform: scale(1.03, 0.98);
+      18% {
+        transform: scale(1.05, 0.94);
       }
-    }
-
-    /* 地面阴影同步微缩放 */
-    @keyframes shadow-breathe {
-      0%, 100% {
+      26% {
+        transform: scale(0.99, 1.01);
+      }
+      38% {
         transform: scale(1.0, 1.0);
-        opacity: 0.2;
-      }
-      50% {
-        transform: scale(1.06, 1.03);
-        opacity: 0.25;
       }
     }
 
-    /* 悬浮小木槌悠闲微晃 */
-    @keyframes mallet-float {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
+    /* 敲击瞬间金色音波圆环涟漪 */
+    @keyframes ripple-expand {
+      0%, 16% {
+        transform: scale(0.2);
+        opacity: 0;
       }
-      50% {
-        transform: translateY(-2px) rotate(4deg);
+      19% {
+        opacity: 0.85;
       }
-    }
-
-    /* 自然眨眼 */
-    @keyframes eye-blink {
-      0%, 90%, 100% {
-        transform: scaleY(1);
-      }
-      95% {
-        transform: scaleY(0.1);
+      45%, 100% {
+        transform: scale(2.8);
+        opacity: 0;
       }
     }
 
-    #body-motion {
-      transform-origin: 0px 17.5px;
-      animation: fish-breathe 3.0s ease-in-out infinite;
-    }
-
-    #shadow-js {
-      transform-origin: 0px 17.5px;
-      animation: shadow-breathe 3.0s ease-in-out infinite;
+    /* 侧旁“+1”升腾并慢慢消散动画 */
+    @keyframes merit-plus-one {
+      0%, 16% {
+        transform: translate(0px, 0px) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        transform: translate(1px, -3px) scale(1.2);
+        opacity: 1;
+      }
+      40% {
+        transform: translate(2px, -8px) scale(1.05);
+        opacity: 0.9;
+      }
+      70% {
+        transform: translate(3px, -15px) scale(0.95);
+        opacity: 0.35;
+      }
+      85%, 100% {
+        transform: translate(3.5px, -19px) scale(0.85);
+        opacity: 0;
+      }
     }
 
     #mallet-anim {
-      transform-origin: 10px -4px;
-      animation: mallet-float 3.0s ease-in-out infinite;
+      transform-origin: 11px -2px;
+      animation: mallet-idle-knock 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
     }
 
-    .blink-eye {
-      transform-origin: 0px 6.2px;
-      animation: eye-blink 3.5s ease-in-out infinite;
+    #fish-body-anim {
+      transform-origin: 0px 14.5px;
+      animation: fish-cushion-hit 1.6s ease-out infinite;
+    }
+
+    #cushion-anim {
+      transform-origin: 0px 16px;
+      animation: cushion-squeeze 1.6s ease-out infinite;
+    }
+
+    #strike-ripple {
+      transform-origin: 0px -2px;
+      animation: ripple-expand 1.6s ease-out infinite;
+    }
+
+    #plus-one-text {
+      animation: merit-plus-one 1.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
     }
   </style>
 
-  <!-- 1. 地面投影层 (#shadow-js) -->
-  <g id="shadow-js">
-    <ellipse cx="0" cy="17.5" rx="11" ry="2.4" fill="rgba(60,26,6,0.2)"/>
+  <!-- 1. 地面柔和阴影 (#shadow-js) -->
+  <g id="shadow-js" style="transform-origin: 0px 18px">
+    <ellipse cx="0" cy="18" rx="13" ry="2.2" fill="rgba(28,10,0,0.22)"/>
   </g>
 
-  <!-- 2. 木鱼主体躯干层 (#body-js 契约挂点) -->
+  <!-- 2. 朱红金边锦缎蒲团底座 (#cushion-base) -->
+  <g id="cushion-base">
+    <g id="cushion-anim">
+      <!-- 蒲团底座厚度暗面 -->
+      <ellipse cx="0" cy="15.8" rx="12.5" ry="3.2" fill="#7F1D1D"/>
+      <!-- 蒲团锦缎绸面 -->
+      <ellipse cx="0" cy="14.8" rx="12" ry="3.0" fill="url(#cushion-silk-grad)" stroke="#451A03" stroke-width="0.6"/>
+      <!-- 蒲团侧边金色如意纹 -->
+      <path d="M -11 14.8 Q -6 16.5 0 16.5 Q 6 16.5 11 14.8" fill="none" stroke="url(#gold-brocade-grad)" stroke-width="0.8" stroke-linecap="round"/>
+      <path d="M -8 15.2 Q -4 16.8 0 16.8 Q 4 16.8 8 15.2" fill="none" stroke="#7F1D1D" stroke-width="0.5"/>
+      <!-- 蒲团前方金丝流苏结 -->
+      <line x1="0" y1="16.5" x2="0" y2="18.2" stroke="#F59E0B" stroke-width="0.9" stroke-linecap="round"/>
+      <circle cx="0" cy="16.3" r="0.8" fill="#FEF08A"/>
+    </g>
+  </g>
+
+  <!-- 3. 正宗法器木鱼主体躯干层 (#body-js) - 纯正法器美学无眼睛 -->
   <g id="body-js">
-    <g id="body-motion">
-      <!-- 2.1 木鱼后部把手/卷尾 -->
-      <path id="fish-tail" d="M -9 6 C -12 3, -15 7, -13 11 C -11.5 13.5, -8 13.5, -7 11 C -8 9.5, -8 7.5, -9 6 Z"
-            fill="url(#fish-tail-grad)" stroke="#3C1A06" stroke-width="0.8" stroke-linejoin="round"/>
-
-      <!-- 2.2 木鱼主球体 -->
-      <path id="fish-shell" d="M -10 11 C -11 6, -9 -1, -2 -3 C 3 -4.5, 9 -2, 11 4 C 12.5 8, 12 13, 8 16 C 4 17.5, -5 17.5, -9 15 C -10.5 13.8, -10.5 12.2, -10 11 Z"
-            fill="url(#fish-wood-grad)" stroke="#3C1A06" stroke-width="0.9" stroke-linejoin="round"/>
-
-      <!-- 2.3 顶部柔和高光弧 -->
-      <path d="M -5 -0.5 C -1 -2, 4 -2, 7 1.5"
-            fill="none" stroke="#FEF3C7" stroke-width="0.8" stroke-linecap="round" opacity="0.65"/>
-
-      <!-- 2.4 木雕鱼身刻线 -->
-      <g id="carved-lines" opacity="0.55">
-        <path d="M -7 4 C -5 2, -1 2, 1 3.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
-        <path d="M 3 2.5 C 5 2.5, 8 4, 9 6.5" fill="none" stroke="#78350F" stroke-width="0.65" stroke-linecap="round"/>
+    <g id="fish-body-anim">
+      <!-- 3.1 木鱼后部镂空卷尾提梁把手 -->
+      <g id="fish-handle">
+        <path d="M -6 5.5 C -9.5 2, -14 5, -13.5 10 C -13 13.5, -9 14.5, -6 12 C -7.5 10.5, -7.5 8, -6 5.5 Z"
+              fill="url(#fish-handle-grad)" stroke="#260C02" stroke-width="0.8" stroke-linejoin="round"/>
+        <path d="M -8 6.8 C -10.5 5, -11.8 7, -11.5 9.5 C -11.2 11.2, -9.5 11.8, -8 10.5 C -8.8 9.5, -8.8 8, -8 6.8 Z"
+              fill="#7F1D1D" stroke="#260C02" stroke-width="0.5"/>
       </g>
 
-      <!-- 2.5 木鱼发音镂空横缝 -->
-      <g id="fish-slit">
-        <path d="M -6.5 12.5 Q 0 14.5 7.5 12 Q 9 12 9.5 13 Q 9 14.2 7 14.5 Q 0 16 -6.5 14 Q -8 13.5 -8 12.8 Z"
-              fill="#451A03" stroke="#3C1A06" stroke-width="0.6"/>
-        <circle cx="-6.2" cy="13.2" r="1.1" fill="#2E1002"/>
-        <circle cx="7.2" cy="13.2" r="1.1" fill="#2E1002"/>
+      <!-- 3.2 木鱼饱满鱼腹共鸣腔体 -->
+      <path id="fish-main-dome"
+            d="M -7 11.5 C -8.5 4, -5 -3.5, 0 -4 C 5 -4.5, 9.8 -1.5, 10.5 4.5 C 11 8.5, 9.5 13, 5 14 C 0 14.8, -5 14.5, -7 11.5 Z"
+            fill="url(#fish-wood-grad)" stroke="#260C02" stroke-width="0.9" stroke-linejoin="round"/>
+
+      <!-- 3.3 顶部受光琥珀色高光弧面 -->
+      <path d="M -4 -1.5 C -1 -3, 3 -3, 6 0.5"
+            fill="none" stroke="#FEF3C7" stroke-width="0.9" stroke-linecap="round" opacity="0.65"/>
+
+      <!-- 3.4 背脊双层立体浮雕鱼鳞云纹雕花 -->
+      <g id="carved-motifs">
+        <!-- 第 1 层背脊雕纹 (上层) -->
+        <path d="M -4 1 C -1 -1.2, 4 -0.8, 6.5 2" fill="none" stroke="#260C02" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M -4 0.6 C -1 -1.6, 4 -1.2, 6.5 1.6" fill="none" stroke="#FEF3C7" stroke-width="0.5" stroke-linecap="round" opacity="0.75"/>
+
+        <!-- 第 2 层背脊雕纹 (中层) -->
+        <path d="M -5 4.8 C -1 2.8, 4 3.2, 7.5 5.8" fill="none" stroke="#260C02" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M -5 4.4 C -1 2.4, 4 2.8, 7.5 5.4" fill="none" stroke="#FEF3C7" stroke-width="0.5" stroke-linecap="round" opacity="0.75"/>
+
+        <!-- 第 3 层如意回纹 (下层侧雕) -->
+        <path d="M -3 8.2 C 0 6.6, 3.5 6.8, 6.5 9" fill="none" stroke="#260C02" stroke-width="0.7" stroke-linecap="round"/>
+        <path d="M -3 7.8 C 0 6.2, 3.5 6.4, 6.5 8.6" fill="none" stroke="#D97706" stroke-width="0.5" stroke-linecap="round" opacity="0.8"/>
       </g>
 
-      <!-- 2.6 两颊软萌腮红 -->
-      <g id="blush">
-        <ellipse cx="-6" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
-        <ellipse cx="6" cy="8.2" rx="1.5" ry="0.9" fill="rgba(244,63,94,0.42)"/>
-      </g>
-
-      <!-- 2.7 呆萌双眼与眼动跟随层 (#eyes-js 契约挂点) -->
-      <g id="eyes-js">
-        <g class="blink-eye">
-          <!-- 左眼 -->
-          <g id="eye-left">
-            <circle cx="-3.6" cy="6.2" r="1.7" fill="#18181B"/>
-            <circle cx="-4.2" cy="5.6" r="0.6" fill="#FFFFFF"/>
-            <circle cx="-3.0" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
-          </g>
-          <!-- 右眼 -->
-          <g id="eye-right">
-            <circle cx="3.6" cy="6.2" r="1.7" fill="#18181B"/>
-            <circle cx="3.0" cy="5.6" r="0.6" fill="#FFFFFF"/>
-            <circle cx="4.2" cy="7.0" r="0.25" fill="#FFFFFF" opacity="0.8"/>
-          </g>
-        </g>
+      <!-- 3.5 贯穿正面与侧面的镂空发音横槽与共鸣双孔 -->
+      <g id="sound-slit">
+        <path d="M -4.5 11.5 Q 1 12.8 8 10.2 Q 8.8 10.8 7.5 11.8 Q 1 14 -4.5 12.8 Z"
+              fill="#1C0A00" stroke="#260C02" stroke-width="0.6"/>
+        <circle cx="-4.2" cy="12.0" r="1.3" fill="#1C0A00" stroke="#260C02" stroke-width="0.6"/>
+        <circle cx="7.8" cy="10.8" r="1.6" fill="#1C0A00" stroke="#260C02" stroke-width="0.6"/>
+        <path d="M -4.2 10.8 Q 1 12.0 7.8 9.5" fill="none" stroke="#FEF3C7" stroke-width="0.6" stroke-linecap="round" opacity="0.65"/>
       </g>
     </g>
   </g>
 
-  <!-- 3. 悬浮伴生小木槌层 -->
+  <!-- 4. 悬浮敲击小木槌层 (#mallet-js) -->
   <g id="mallet-js">
     <g id="mallet-anim">
-      <!-- 槌柄悬空投影 -->
-      <ellipse cx="10" cy="16.5" rx="3.5" ry="1.0" fill="rgba(60,26,6,0.12)"/>
-      <!-- 槌柄 -->
-      <path d="M 9.5 3 L 13 -7.5" stroke="url(#mallet-handle-grad)" stroke-width="1.3" stroke-linecap="round"/>
-      <!-- 绑带装饰 -->
-      <rect x="11.2" y="-4" width="2" height="1.2" rx="0.5" fill="#DC2626" transform="rotate(-65 12 -3.5)"/>
-      <!-- 槌头 -->
-      <ellipse cx="8.5" cy="-3.5" rx="3.2" ry="2.4" fill="url(#mallet-head-grad)" stroke="#3C1A06" stroke-width="0.75" transform="rotate(-25 8.5 -3.5)"/>
-      <circle cx="7.8" cy="-4.2" r="0.7" fill="#FEF3C7" opacity="0.75"/>
+      <path d="M 10 4 L 14 -8" stroke="url(#mallet-handle-grad)" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="12" y="-4" width="2.2" height="1.4" rx="0.5" fill="#DC2626" transform="rotate(-68 13 -3.5)"/>
+      <ellipse cx="8.8" cy="-4" rx="3.5" ry="2.6" fill="url(#mallet-head-grad)" stroke="#260C02" stroke-width="0.8" transform="rotate(-28 8.8 -4)"/>
+      <circle cx="8.0" cy="-4.8" r="0.8" fill="#FEF3C7" opacity="0.8"/>
+    </g>
+  </g>
+
+  <!-- 5. 敲击金色涟漪与“+1”升腾消散层 (#effects-js) -->
+  <g id="effects-js">
+    <!-- 敲击金色震波圆环 -->
+    <circle id="strike-ripple" cx="0" cy="-2" r="3.2" fill="none" stroke="#FBBF24" stroke-width="0.75" opacity="0"/>
+
+    <!-- 侧旁伴随敲击升腾消散的“+1”文字 -->
+    <g id="plus-one-text" opacity="0">
+      <text x="5.5" y="-1" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="5.2" font-weight="900" fill="url(#gold-plus-grad)" stroke="#78350F" stroke-width="0.35" text-anchor="middle">+1</text>
     </g>
   </g>
 </svg>

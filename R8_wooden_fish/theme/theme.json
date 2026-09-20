@@ -3,7 +3,7 @@
   "name": "WoodenFish",
   "author": "Antigravity & User",
   "version": "1.0.0",
-  "description": "Healing Chibi wooden fish desktop pet with pure SVG animations, cursor eye-tracking, and merit-accumulating knocking rhythms.",
+  "description": "Sacred authentic wooden fish desktop pet with pure SVG animations, continuous soothing knocking and floating merit +1 effects.",
   "viewBox": {
     "x": -25,
     "y": -25,
@@ -13,9 +13,9 @@
   "layout": {
     "contentBox": {
       "x": -13,
-      "y": -10,
+      "y": -11,
       "width": 26,
-      "height": 28
+      "height": 29
     },
     "centerX": 0,
     "baselineY": 18,
@@ -23,22 +23,7 @@
     "baselineBottomRatio": 0.05
   },
   "eyeTracking": {
-    "enabled": true,
-    "states": [
-      "idle"
-    ],
-    "eyeRatioX": 0.45,
-    "eyeRatioY": 0.45,
-    "maxOffset": 2.0,
-    "bodyScale": 0.25,
-    "shadowStretch": 0.12,
-    "shadowShift": 0.2,
-    "ids": {
-      "eyes": "eyes-js",
-      "body": "body-js",
-      "shadow": "shadow-js"
-    },
-    "shadowOrigin": "0px 18px"
+    "enabled": false
   },
   "states": {
     "idle": [
@@ -75,15 +60,15 @@
   "hitBoxes": {
     "default": {
       "x": -13,
-      "y": -10,
+      "y": -11,
       "w": 26,
-      "h": 28
+      "h": 29
     },
     "sleeping": {
       "x": -13,
-      "y": 4,
+      "y": 5,
       "w": 26,
-      "h": 14
+      "h": 13
     }
   }
 }
