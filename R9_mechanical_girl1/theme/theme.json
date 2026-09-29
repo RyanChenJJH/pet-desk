@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "name": "Mechanical Girl",
+  "author": "Qoder & User",
+  "version": "1.0.0",
+  "description": "Cool exoskeleton mecha girl desktop pet with animated APNG assets.",
+  "viewBox": {
+    "x": 0,
+    "y": 0,
+    "width": 256,
+    "height": 256
+  },
+  "layout": {
+    "contentBox": {
+      "x": 32,
+      "y": 20,
+      "width": 192,
+      "height": 215
+    },
+    "centerX": 128,
+    "baselineY": 235,
+    "visibleHeightRatio": 0.42,
+    "baselineBottomRatio": 0.05
+  },
+  "eyeTracking": {
+    "enabled": false
+  },
+  "states": {
+    "idle": [
+      "idle.apng"
+    ],
+    "roam": [
+      "roam.apng"
+    ],
+    "working": [
+      "working.apng"
+    ],
+    "thinking": [
+      "thinking.apng"
+    ],
+    "sleeping": [
+      "sleeping.apng"
+    ],
+    "notification": [
+      "notification.apng"
+    ],
+    "attention": [
+      "notification.apng"
+    ],
+    "error": [
+      "error.apng"
+    ],
+    "sweeping": [
+      "polish-armor.apng"
+    ],
+    "carrying": [
+      "cable-stuck.apng"
+    ],
+    "dozing": [
+      "lag-reboot.apng"
+    ]
+  },
+  "workingTiers": [
+    {
+      "minSessions": 2,
+      "file": "checklist.apng"
+    },
+    {
+      "minSessions": 1,
+      "file": "working.apng"
+    }
+  ],
+  "idleAnimations": [
+    {
+      "file": "jetpack-hover.apng",
+      "duration": 4000
+    },
+    {
+      "file": "holo-drone.apng",
+      "duration": 4000
+    },
+    {
+      "file": "servo-check.apng",
+      "duration": 4000
+    },
+    {
+      "file": "boot-stomp.apng",
+      "duration": 4000
+    }
+  ],
+  "reactions": {
+    "drag": {
+      "file": "react-drag.apng"
+    },
+    "clickLeft": {
+      "file": "react-poke.apng",
+      "duration": 2500
+    },
+    "clickRight": {
+      "file": "react-poke.apng",
+      "duration": 2500
+    },
+    "double": {
+      "files": [
+        "react-double.apng"
+      ],
+      "duration": 3000
+    }
+  },
+  "sleepSequence": {
+    "mode": "direct"
+  },
+  "hitBoxes": {
+    "default": {
+      "x": 32,
+      "y": 20,
+      "w": 192,
+      "h": 215
+    },
+    "sleeping": {
+      "x": 40,
+      "y": 96,
+      "w": 176,
+      "h": 139
+    }
+  },
+  "sleepingHitboxFiles": [
+    "sleeping.apng"
+  ]
+}

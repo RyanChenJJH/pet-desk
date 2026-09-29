@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>机械少女 R9.0 全状态 APNG 动效矩阵预览沙盒</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #fb923c;
+            --border: #334155;
+            --checker-1: #242f3d;
+            --checker-2: #192231;
+        }
+        body.light-theme {
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --accent: #ea580c;
+            --border: #cbd5e1;
+            --checker-1: #e2e8f0;
+            --checker-2: #f8fafc;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        h1 { margin-bottom: 6px; font-size: 26px; color: var(--accent); }
+        p.subtitle { color: var(--text-sub); margin-top: 0; margin-bottom: 20px; font-size: 14px; text-align: center; max-width: 800px; }
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .btn.active, .btn:hover {
+            background: var(--accent);
+            color: #0f172a;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1360px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(251, 146, 60, 0.2);
+            border-color: var(--accent);
+        }
+        .preview-box {
+            width: 100%;
+            height: 260px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--checker-1);
+            background-image: linear-gradient(45deg, var(--checker-2) 25%, transparent 25%),
+                              linear-gradient(-45deg, var(--checker-2) 25%, transparent 25%),
+                              linear-gradient(45deg, transparent 75%, var(--checker-2) 75%),
+                              linear-gradient(-45deg, transparent 75%, var(--checker-2) 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+        }
+        .preview-box img {
+            max-width: 240px;
+            max-height: 240px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+        }
+        .card-info {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: var(--card-bg);
+        }
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .state-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: rgba(251, 146, 60, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(251, 146, 60, 0.3);
+        }
+        .desc {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <h1>⚙️ 机械少女 R9.0 全状态 APNG 动效矩阵预览沙盒</h1>
+    <p class="subtitle">采用全自动 rembg 智能高精抠图与透明 Alpha 通道，专为 Clawd-on-Desk 打造的 3D 写实风动力装甲冷面机械少女桌宠</p>
+
+    <div class="controls">
+        <button class="btn active" onclick="toggleTheme('dark')">🌙 暗黑棋盘格</button>
+        <button class="btn" onclick="toggleTheme('light')">☀️ 明亮棋盘格</button>
+        <button class="btn" onclick="togglePure('black')">⬛ 纯黑背景</button>
+        <button class="btn" onclick="togglePure('white')">⬜ 纯白背景</button>
+    </div>
+
+    <div class="grid" id="cardGrid"></div>
+
+    <script>
+        const states = [
+            { id: "idle", name: "笔挺待机", desc: "原地立正，胸口随呼吸微起伏，背包橙色指示灯缓慢呼吸闪烁，偶尔眨眼", badge: "核心待机" },
+            { id: "working", name: "全息操作台", desc: "三块橙色全息屏幕悬浮身前，机械手指快速交替敲击虚拟键盘，屏幕光映在脸上", badge: "核心工作" },
+            { id: "thinking", name: "点唇沉思", desc: "食指轻点下唇头微歪，视线上瞟，天线亮圈，身旁浮出旋转的橙色全息小问号", badge: "核心思考" },
+            { id: "roam", name: "正步巡逻 (面朝右)", desc: "高抬腿军人正步原地行走，双臂规律摆动，上身笔直，管线随步伐微晃", badge: "巡逻漫步" },
+            { id: "sleeping", name: "抱膝休眠", desc: "抱膝坐地闭眼，呼吸极缓，指示灯转蓝绿慢闪，头顶每隔两秒浮出小Z消散", badge: "核心睡眠" },
+            { id: "notification", name: "点赞报告", desc: "突然抬头对镜头竖大拇指，嘴角轻抬浅笑，头顶炸开橙色小礼花光点", badge: "通知唤醒" },
+            { id: "error", name: "系统故障", desc: "双手按头皱眉闭眼，背包迸蓝白电火花，面罩位置闪烁红色×全息警告", badge: "报错异常" },
+            { id: "react-drag", name: "被拎起 (僵直木板)", desc: "被无形力拎起悬空瞬间全身绷直成木板，只有机械靴咔哒相碰，红色警报灯快闪", badge: "拖拽反应" },
+            { id: "react-poke", name: "被戳 (感叹号盯视)", desc: "头缓缓转向镜头冷眼盯视，头侧弹出红色全息感叹号，面罩滑下又被食指顶回", badge: "点击反应" },
+            { id: "react-double", name: "双击 (面罩军礼)", desc: "双指敲太阳穴咔哒拉下面罩，橙色扫描光横过面罩，干脆军礼后面罩弹回", badge: "双击彩蛋" },
+            { id: "jetpack-hover", name: "推进器悬浮", desc: "背包双喷口点火喷蓝白火焰，离地悬停20厘米上下浮沉，发梢被气流吹起", badge: "待机彩蛋" },
+            { id: "holo-drone", name: "全息无人机闹头顶", desc: "橙色全息小无人机绕头盘旋，挥手驱赶落空皱眉，最后停上头顶僵住翻白眼", badge: "待机彩蛋" },
+            { id: "servo-check", name: "关节自检", desc: "右臂缓慢屈伸侧耳听伺服声，指节敲两下肘甲，甲缝亮起一道橙光，点头收臂", badge: "待机彩蛋" },
+            { id: "boot-stomp", name: "跺靴除尘", desc: "抬脚跺地两下听闷响，弯腰指节敲敲靴头，再在另一靴侧蹭掉靴底灰恢复立正", badge: "待机彩蛋" },
+            { id: "checklist", name: "全息清单核销", desc: "橙色清单板悬浮胸前，食指逐条下滑打勾，偶尔停顿抬眼思考再继续", badge: "多级工作" },
+            { id: "polish-armor", name: "擦拭肩甲", desc: "拿小布来回慢擦左肩甲除尘，举布见脏甩手丢到身后，继续擦右肩甲", badge: "装甲保养" },
+            { id: "cable-stuck", name: "管线挂住 (面朝右)", desc: "行走时背包软管挂地被拽得前倾，停步弯腰理顺抖开搭过肩，继续正步", badge: "负重前行" },
+            { id: "lag-reboot", name: "低电量卡顿重启", desc: "红灯快闪动作掉帧卡顿，拔电池重插瞬间恢复流畅挺直，轻轻点头", badge: "浅睡序列" }
+        ];
+
+        const container = document.getElementById("cardGrid");
+        states.forEach(s => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <div class="preview-box">
+                    <img src="../theme/assets/${s.id}.apng" alt="${s.name}" onerror="this.onerror=null; this.src='${s.id}_preview.gif';">
+                </div>
+                <div class="card-info">
+                    <div class="title-row">
+                        <span class="state-name">${s.id}</span>
+                        <span class="badge">${s.badge}</span>
+                    </div>
+                    <div class="desc">${s.desc}</div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        function toggleTheme(mode) {
+            document.body.className = mode === 'light' ? 'light-theme' : '';
+            document.querySelectorAll('.preview-box').forEach(el => {
+                el.style.backgroundColor = '';
+                el.style.backgroundImage = '';
+            });
+            updateActive(event.target);
+        }
+
+        function togglePure(color) {
+            document.querySelectorAll('.preview-box').forEach(el => {
+                el.style.backgroundImage = 'none';
+                el.style.backgroundColor = color === 'black' ? '#000000' : '#ffffff';
+            });
+            updateActive(event.target);
+        }
+
+        function updateActive(btn) {
+            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>
